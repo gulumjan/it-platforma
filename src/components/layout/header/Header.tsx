@@ -10,7 +10,7 @@ const Header: FC = () => {
   const router = useRouter();
   return (
     <header className={scss.Header}>
-      <div className={scss.container}>
+      <div className="container">
         <div className={scss.content}>
           <div className={scss.main}>
             <Image
