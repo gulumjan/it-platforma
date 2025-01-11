@@ -1,0 +1,108 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+@mixin mobile {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
+@mixin phone {
+  @media (max-width: 660px) {
+    @content;
+  }
+}
+.Courses {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  h1 {
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 35px;
+    text-align: center;
+    text-decoration-skip-ink: none;
+    padding: 32px 0;
+    @include mobile() {
+      font-size: 28px;
+    }
+  }
+  .allBtn {
+    width: 209px;
+    height: 51px;
+    border-radius: 5px;
+    background-color: rgba(4, 60, 113, 1);
+    border: none;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .blocks {
+      display: flex;
+      justify-content: space-between;
+      margin: 50px 0;
+      @include phone() {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+      }
+
+      @include mobile() {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+      }
+      .block {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: start;
+        width: 370px;
+        height: 282px;
+        padding: 0 22px;
+        border-radius: 15px;
+        border: 1px solid #1a73e8;
+        @include mobile() {
+          width: 320px;
+          height: 222px;
+        }
+        p {
+          padding: 22px 0;
+          color: #ffff;
+          width: 100%;
+          @include mobile() {
+            font-size: 11px;
+            padding: 10px 0;
+          }
+        }
+        h2 {
+          color: #ffff;
+          @include mobile() {
+            font-size: 16px;
+          }
+        }
+        button {
+          border: none;
+          border-bottom: 1px solid #fff;
+          background: none;
+          color: #fff;
+          font-family: Montserrat, sans-serif;
+          font-size: 16px;
+          font-weight: 700;
+          line-height: 19.5px;
+          text-align: left;
+          padding: 0;
+          @include mobile() {
+            font-size: 12px;
+          }
+        }
+      }
+    }
+  }
+}
