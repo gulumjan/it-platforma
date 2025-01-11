@@ -2,6 +2,9 @@
   background-color: #0e1d3b;
   padding: 20px 0;
   width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 
   .container {
     max-width: 1200px;
