@@ -1,74 +1,81 @@
 .Header {
   background-color: #0e1d3b;
   padding: 20px 0;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 
   .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
-  }
 
-  .content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .main {
-    display: flex;
-    align-items: center;
-
-    nav {
+    .content {
       display: flex;
-      gap: 30px;
-      margin-left: 20px;
+      justify-content: space-between;
+      align-items: center;
 
-      a {
-        color: #ffffff;
-        text-decoration: none;
-        font-size: 16px;
-        font-weight: 500;
-        transition: color 0.3s ease;
+      .main {
+        display: flex;
+        align-items: center;
+        img {
+          cursor: pointer;
+        }
 
-        &:hover {
-          color: #4da3ff;
+        nav {
+          display: flex;
+          gap: 30px;
+          margin-left: 20px;
+
+          a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+
+            &:hover {
+              color: #4da3ff;
+            }
+          }
         }
       }
-    }
-  }
 
-  .btns {
-    display: flex;
-    gap: 15px;
+      .btns {
+        display: flex;
+        gap: 15px;
 
-    button {
-      font-size: 16px;
-      font-weight: 500;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
+        button {
+          font-size: 16px;
+          font-weight: 500;
+          padding: 10px 20px;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+        }
 
-    .loginBtn {
-      background-color: transparent;
-      color: #ffffff;
-      border: 1px solid #ffffff;
-      transition: background-color 0.3s ease, color 0.3s ease;
+        .loginBtn {
+          background-color: transparent;
+          color: #ffffff;
+          border: 1px solid #ffffff;
+          transition: background-color 0.3s ease, color 0.3s ease;
 
-      &:hover {
-        background-color: #ffffff;
-        color: #0e1d3b;
-      }
-    }
+          &:hover {
+            background-color: #ffffff;
+            color: #0e1d3b;
+          }
+        }
 
-    .subscribeBtn {
-      background-color: #1a73e8;
-      color: #ffffff;
-      transition: background-color 0.3s ease;
+        .subscribeBtn {
+          background-color: #1a73e8;
+          color: #ffffff;
+          transition: background-color 0.3s ease;
 
-      &:hover {
-        background-color: #125bb5;
+          &:hover {
+            background-color: #125bb5;
+          }
+        }
       }
     }
   }

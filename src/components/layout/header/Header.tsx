@@ -1,18 +1,28 @@
+"use client";
 import { FC } from "react";
 import scss from "./Header.module.scss";
 import Logo from "@/assets/logo.svg";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const Header: FC = () => {
+  const router = useRouter();
   return (
     <header className={scss.Header}>
-      <div className="container">
+      <div className={scss.container}>
         <div className={scss.content}>
           <div className={scss.main}>
-            <Image src={Logo} width={40} height={40} alt="Logo" />
+            <Image
+              onClick={() => router.push("/")}
+              src={Logo}
+              width={72}
+              height={45}
+              alt="Logo"
+            />
+
             <nav>
-              <Link href="#">О школе</Link>
+              <Link href="/school">О школе</Link>
               <Link href="#">Наши курсы</Link>
               <Link href="#">О нас</Link>
             </nav>

@@ -1,0 +1,97 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+@mixin tablet {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin phone {
+  @media (max-width: 480px) {
+    @content;
+  }
+}
+.AboutSchool {
+  padding: 20px 0;
+
+  .content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    img {
+      width: 489px;
+      height: 435px;
+      @include mobile() {
+        width: 364px;
+        height: 365px;
+      }
+      @include tablet() {
+        width: 344px;
+        height: 345px;
+      }
+    }
+
+    @include mobile() {
+      display: flex;
+      flex-direction: column;
+    }
+    .text {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+
+      @include mobile() {
+        text-align: center;
+      }
+      @include phone() {
+        padding: 0 0 15px 0;
+      }
+      .relate {
+        h1 {
+          font-family: Montserrat;
+          font-size: 36px;
+          font-weight: 700;
+          line-height: 43.88px;
+          text-underline-position: from-font;
+          text-decoration-skip-ink: none;
+          color: rgba(255, 255, 255, 1);
+          @include mobile() {
+            font-size: 28px;
+          }
+          @include tablet() {
+            font-size: 28px;
+            line-height: 38px;
+          }
+        }
+        p {
+          width: 80%;
+          font-family: Montserrat;
+          font-size: 20px;
+          font-weight: 400;
+          line-height: 24.38px;
+          text-underline-position: from-font;
+          text-decoration-skip-ink: none;
+          color: rgba(255, 255, 255, 1);
+          padding: 12px 0;
+          @include mobile() {
+            font-size: 18px;
+          }
+          @include phone() {
+            font-size: 16px;
+            width: 320px;
+          }
+          @include tablet() {
+            font-size: 17px;
+            line-height: 20px;
+          }
+        }
+      }
+    }
+  }
+}
