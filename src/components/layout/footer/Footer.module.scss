@@ -1,0 +1,48 @@
+#footer {
+    .footer {
+        display: flex;
+        justify-content: space-between;
+
+        h3 {
+
+            font-size: 20px;
+            font-weight: 500;
+            line-height: 24.38px;
+            margin-top: 30px;
+
+
+
+        }
+
+        p {
+
+            font-size: 15px;
+            font-weight: 500;
+            line-height: 18.29px;
+
+
+        }
+
+        .footer1 {
+            .btn {
+                button {
+                    background: none;
+                    border: 1px solid white;
+                    font-size: 25px;
+                    margin-top: 30px;
+                }
+            }
+        }
+
+
+        .footer3{
+            .footer_icon{
+                display: flex;
+               width: 10%;
+               font-size: 30px;
+
+            }
+
+        }
+    }
+}
