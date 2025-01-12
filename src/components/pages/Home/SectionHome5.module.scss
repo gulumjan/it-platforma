@@ -1,0 +1,81 @@
+#home5 {
+    padding: 150px 0;
+    .home5 {
+        display: flex;
+        justify-content: space-between;
+       
+
+        .home5_text {
+
+            h2 {
+
+                font-size: 36px;
+                font-weight: 700;
+                line-height: 43.88px;
+                margin-bottom: 25px;
+
+            }
+
+            p {
+
+                font-size: 16px;
+                font-weight: 400;
+                line-height: 22.5px;
+                width: 58%;
+            }
+        }
+
+        .home_form {
+            width: 55%;
+
+            p {
+
+                font-size: 16px;
+                font-weight: 400;
+                line-height: 19.5px;
+
+                color: #B5B5B5;
+                margin-bottom: 5px;
+
+
+            }
+
+            input {
+                width:670px ;
+                height: 57px;
+                top: 3535px;
+                left: 635px;
+                gap: 0px;
+                border-radius: 10px;
+                opacity: 0px;
+                border: none;
+                outline: none;
+                background: #1B295966;
+                margin-bottom: 25px;
+                padding-left: 20px;
+
+
+            }
+
+            
+
+            button {
+             padding: 20px 90px;
+                gap: 0px;
+                border-radius: 10px ;
+                opacity: 0px;
+                background: #044076;
+                border: none;
+                outline: none;
+                font-size: 20px;
+                cursor: pointer;
+
+
+            }
+
+        }
+
+
+    }
+
+}
