@@ -1,7 +1,12 @@
 import React from "react";
+import AboutUs from "./about-us-sections/AboutUs";
 
 const AboutUsPage = () => {
-  return <></>;
+  return (
+    <>
+      <AboutUs />
+    </>
+  );
 };
 
 export default AboutUsPage;

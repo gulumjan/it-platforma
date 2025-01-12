@@ -1,0 +1,82 @@
+@mixin tablet {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+.Feedback {
+  background-color: #0b1124;
+  padding: 50px 0;
+  color: #ffffff;
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+
+  .title {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 40px;
+    font-weight: bold;
+  }
+
+  .cardsContainer {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .cardsContainer::-webkit-scrollbar {
+    display: none;
+  }
+
+  .card {
+    background-color: #16233c;
+    border-radius: 10px;
+    padding: 20px;
+    min-width: 450px;
+    max-width: 450px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    @include mobile() {
+      min-width: 340px;
+    }
+
+    .image {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin-bottom: 15px;
+      object-fit: cover;
+    }
+
+    .name {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .text {
+      font-size: 16px;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .date {
+      font-size: 14px;
+      color: #c2c7d1;
+    }
+  }
+}
