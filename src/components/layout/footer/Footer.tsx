@@ -59,6 +59,7 @@ const Footer: FC = () => {
 
           <div className={scss.footer4}>
             <h3>Контакты</h3>
+            <div className=""></div>
             <p>
               <span>
                 <GoMail />

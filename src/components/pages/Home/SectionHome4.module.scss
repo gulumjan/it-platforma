@@ -1,0 +1,74 @@
+#home4 {
+    padding: 50px 0;
+    .home4 {
+        display: flex;
+        justify-content: space-between;
+
+        .home4_text {
+            h2 {
+width: 30%;
+                font-size: 48px;
+                font-weight: 700;
+                line-height: 55px;
+                text-align: left;
+                margin-bottom: 30px;
+               
+
+            }
+           
+
+        }
+
+        .answer {
+
+
+            p {
+                font-size: 15px;
+                font-weight: 500;
+                line-height: 30px;
+                text-align: left;
+                color: #ffffff;
+                width: 80%;
+            }
+
+            summary {
+                position: relative;
+                padding-bottom: 40px;
+                font-size: 1.25rem;
+                font-weight: bold;
+                cursor: pointer;
+                padding-right: 2em;
+            }
+
+
+            summary::marker {
+                content: none;
+            }
+
+
+            summary::before {
+                content: "+";
+                position: absolute;
+                right: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                font-size: 2rem;
+                color: #ffffff;
+            }
+
+            details[open] summary::before {
+                content: "-";
+            }
+
+
+            details {
+                border-bottom: 1px solid rgb(184, 181, 181);
+                margin-bottom: 20px;
+            }
+        }
+    }
+
+
+
+
+}
