@@ -36,7 +36,6 @@ const Header: FC = () => {
               alt="Logo"
             />
 
-
             {!isMobile ? (
               <>
                 <nav>
@@ -52,18 +51,6 @@ const Header: FC = () => {
             ) : (
               <BurgerMenu />
             )}
-
-            <nav>
-              <Link href="/school">О школе</Link>
-              <Link href="/courses">Наши курсы</Link>
-              <Link href="/about">О нас</Link>
-            </nav>
-          </div>
-
-          <div className={scss.btns}>
-            <button className={scss.loginBtn}>Войти</button>
-            <button className={scss.subscribeBtn}>Подписаться</button>
-
           </div>
         </div>
       </div>
