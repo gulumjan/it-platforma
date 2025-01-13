@@ -30,8 +30,13 @@ const SectionHome2 = () => {
                             </div>
                         </div>
                     ))}
-                    <button>Показать больше</button>
+                  
                 </div>
+                <div className={scss.btn}>
+                <button>Показать больше</button>
+
+                </div>
+              
             </div>
         </div>
     );

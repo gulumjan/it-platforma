@@ -43,8 +43,6 @@ const Footer: FC = () => {
               <span>
                 <CiFacebook />
               </span>
-            </div>
-            <div className={scss.footer_icon}>
               <span>
                 <PiTwitterLogo />
               </span>
@@ -55,11 +53,14 @@ const Footer: FC = () => {
                 <PiTelegramLogoLight />
               </span>
             </div>
+          
+            
+            
           </div>
 
           <div className={scss.footer4}>
             <h3>Контакты</h3>
-            <div className=""></div>
+          
             <p>
               <span>
                 <GoMail />
@@ -82,7 +83,7 @@ const Footer: FC = () => {
               </span>
               Турусбекова 109 / 3
             </p>
-            <p>Идентификационный код: 1234567890</p>
+            <p>Идентификационный  <br /> код: 1234567890</p>
           </div>
         </div>
       </div>

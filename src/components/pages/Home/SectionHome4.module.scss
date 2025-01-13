@@ -1,21 +1,97 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+@mixin tablet {
+    @media (max-width: 1024px) {
+        @content;
+    }
+}
+
+@mixin mobile {
+    @media (max-width: 768px) {
+        @content;
+    }
+}
+
+@mixin phone {
+    @media (max-width: 480px) {
+        @content;
+    }
+}
+
+
 #home4 {
     padding: 50px 0;
+
     .home4 {
         display: flex;
         justify-content: space-between;
 
+        @include mobile() {
+
+            flex-direction: column;
+
+
+
+
+
+        }
+
         .home4_text {
+            @include mobile() {
+
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: 50px;
+    
+    
+    
+    
+    
+            }
             h2 {
-width: 30%;
+                width: 30%;
                 font-size: 48px;
                 font-weight: 700;
                 line-height: 55px;
                 text-align: left;
                 margin-bottom: 30px;
-               
+
+                @include mobile() {
+
+                   width: 100%;
+        
+        
+        
+        
+                }
+
+                @include phone() {
+
+                  font-size: 35px;
+         
+         
+         
+         
+                 }
+
 
             }
-           
+
+            img{
+
+                @include mobile() {
+
+                    width: 20%;
+                    height: auto;
+         
+         
+         
+         
+                 }
+                
+            }
+
 
         }
 
