@@ -1,81 +1,140 @@
-#home5 {
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+@mixin tablet {
+    @media (max-width: 1024px) {
+      @content;
+    }
+  }
+  
+  @mixin mobile {
+    @media (max-width: 768px) {
+      @content;
+    }
+  }
+  
+  @mixin phone {
+    @media (max-width: 480px) {
+      @content;
+    }
+  }
+
+  #home5 {
     padding: 150px 0;
+
     .home5 {
         display: flex;
         justify-content: space-between;
-       
+
+        @include phone {
+            flex-direction: column;
+            align-items: center;
+        }
 
         .home5_text {
-
             h2 {
-
                 font-size: 36px;
                 font-weight: 700;
                 line-height: 43.88px;
                 margin-bottom: 25px;
 
+                @include tablet {
+                    font-size: 28px;
+                    line-height: 36px;
+                }
+
+                @include phone {
+                    font-size: 24px;
+                    line-height: 32px;
+                    text-align: center; /* Центрируем заголовок */
+                }
             }
 
             p {
-
                 font-size: 16px;
                 font-weight: 400;
                 line-height: 22.5px;
                 width: 58%;
+
+                @include tablet {
+                    font-size: 14px;
+                    line-height: 20px;
+                    width: 80%;
+                }
+
+                @include phone {
+                    font-size: 12px;
+                    line-height: 18px;
+                    width: 100%; /* Делаем ширину 100% */
+                    text-align: center; /* Центрируем текст */
+                }
             }
         }
 
         .home_form {
             width: 55%;
 
-            p {
+            @include tablet {
+                width: 70%;
+            }
 
+            @include phone {
+                width: 100%;
+                margin-top: 20px;
+            }
+
+            p {
                 font-size: 16px;
                 font-weight: 400;
                 line-height: 19.5px;
-
                 color: #B5B5B5;
                 margin-bottom: 5px;
 
-
+                @include phone {
+                    font-size: 14px;
+                }
             }
 
             input {
-                width:670px ;
+                width: 670px;
                 height: 57px;
-                top: 3535px;
-                left: 635px;
-                gap: 0px;
                 border-radius: 10px;
-                opacity: 0px;
                 border: none;
                 outline: none;
                 background: #1B295966;
                 margin-bottom: 25px;
                 padding-left: 20px;
 
+                @include tablet {
+                    width: 100%;
+                    height: 50px;
+                }
 
+                @include phone {
+                    height: 45px;
+                }
             }
 
-            
-
             button {
-             padding: 20px 90px;
-                gap: 0px;
-                border-radius: 10px ;
-                opacity: 0px;
+                padding: 20px 90px;
+                border-radius: 10px;
                 background: #044076;
                 border: none;
                 outline: none;
                 font-size: 20px;
                 cursor: pointer;
 
+                @include tablet {
+                    padding: 15px 70px;
+                    font-size: 18px;
+                }
 
+                @include phone {
+                    padding: 10px 50px;
+                    font-size: 16px;
+                }
             }
-
         }
-
-
     }
-
 }
+
+

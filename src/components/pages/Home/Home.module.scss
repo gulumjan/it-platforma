@@ -1,10 +1,48 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+@mixin tablet {
+    @media (max-width: 1024px) {
+      @content;
+    }
+  }
+  
+  @mixin mobile {
+    @media (max-width: 768px) {
+      @content;
+    }
+  }
+  
+  @mixin phone {
+    @media (max-width: 480px) {
+      @content;
+    }
+  }
+
 #home {
     .home {
         align-items: center;
         justify-content: space-between;
         display: flex;
+        @include mobile() {
+          flex-direction: column;
+           
+
+
+        }
+
 
         .home_text {
+          @include mobile() {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+          
+      
+
+   
+  
+          }
             h1 {
                 position: relative;
                 top: -150px;
@@ -14,11 +52,43 @@
                 text-align: left;
                 width: 500px;
                 z-index: 99;
-              
+
+                @include tablet() {
+                  top: -29px;
+                  font-size: 40px;
+                  line-height: 50px;
+                  
+                   
+    
+    
+                }
+
+
+
+                @include mobile() {
+                  top: 50px;
+                  text-align: center;
+                  font-size: 50px;
+                  line-height: 60px;
+     
+         
+        
+                }
+
+                @include phone() {
+               
+                  font-size: 40px;
+                  line-height: 50px;
+                 
+     
+                }
+ 
+
 
             }
 
-            p { position: relative;
+            p {
+                position: relative;
                 font-size: 25px;
                 font-weight: 500;
                 line-height: 35px;
@@ -26,7 +96,73 @@
                 top: -100px;
                 width: 470px;
 
+
+                @include tablet() {
+                  top: 3px;
+                  font-size: 20px;
+             
+                  line-height: 30px;
+                   
+    
+    
+                }
+
+                @include mobile() {
+                  top: 70px;
+
+                  font-size: 30px;
+             
+                  line-height: 38px;
+
+                  text-align: center;
+                  width: 100%;
+                 
+        
+                }
+
+
+                @include phone() {
+               
+                  font-size: 20px;
+             
+                  line-height: 30px;
+                  width: 70%;
+                 
+     
+                }
+
+             
+
             }
         }
+
+        img {
+            width: 100%;
+            @include tablet() {
+              width: 45%;
+              height: auto;
+               
+
+
+            }
+
+            @include mobile() {
+              margin-top: 80px;
+              width: 90%;
+
+               
+                
+
+            }
+
+            @include phone() {
+               
+              
+                 
+     
+             }
+
+        }
+
     }
 }

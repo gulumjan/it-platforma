@@ -1,9 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+@mixin tablet {
+  @media (max-width: 1099px) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+@mixin phone {
+  @media (max-width: 480px) {
+    @content;
+  }
+}
+
 #footer {
 padding: 100px 0;
 
   .footer {
     display: flex;
     justify-content: space-between;
+ 
+
+    @include tablet(){
+      flex-wrap: wrap;
+      gap: 40px;
+     
+
+    }
+
+    @include phone(){
+    
+    flex-direction: column;
+
+    }
+
+   
 
     h3 {
       font-size: 20px;
@@ -20,13 +55,27 @@ padding: 100px 0;
     }
 
     .footer1 {
+
+      @include phone(){
+       display: flex;
+       align-items: center;
+       justify-content: space-between;
+  
+      }
       .btn {
         button {
           background: none;
           border: 1px solid white;
           font-size: 25px;
           margin-top: 30px;
+          @include phone(){
+            margin-top: 0px;
+           
+        
+            }
         }
+
+       
       }
     }
 
@@ -34,22 +83,42 @@ padding: 100px 0;
       display: flex;
       flex-direction: column;
       gap: 12px;
+
+      @include phone(){
+        display: none;
+      
+      }
     }
 
     .footer3 {
       .footer_icon {
         display: flex;
+       
         gap: 10px;
-        width: 10%;
+   width: 60%;
         font-size: 35px;
         padding: 8px 0;
+
+        
+
+        
       }
+
+      @include phone(){
+        display: flex;
+      flex-direction: column;
+         
+    
+      }
+
+
     }
 
     .footer4 {
       display: flex;
       flex-direction: column;
       gap: 10px;
+   
 
 
 
@@ -67,14 +136,21 @@ line-height: 19.5px;
     }
 
     .footer5 {
+      @include phone(){
+        display: none;
+      
+      }
 
       p {
-        display: flex;
+       display: flex;
+       align-items: center;
+       justify-content: center;
         gap: 10px;     
 font-size: 18px;
 font-weight: 400;
 line-height: 19.5px;
-width: 68%;
+
+
       }
 
       span{

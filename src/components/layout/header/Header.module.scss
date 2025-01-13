@@ -8,12 +8,14 @@
 
   .content {
     display: flex;
-    justify-content: space-between;
     align-items: center;
 
     .main {
       display: flex;
+      justify-content: space-between;
       align-items: center;
+      width: 100%; /* Убедимся, что занимает всю ширину */
+
       img {
         cursor: pointer;
       }
@@ -35,40 +37,40 @@
           }
         }
       }
-    }
 
-    .btns {
-      display: flex;
-      gap: 15px;
+      .btns {
+        display: flex;
+        gap: 15px;
 
-      button {
-        font-size: 16px;
-        font-weight: 500;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-      }
-
-      .loginBtn {
-        background-color: transparent;
-        color: #ffffff;
-        border: 1px solid #ffffff;
-        transition: background-color 0.3s ease, color 0.3s ease;
-
-        &:hover {
-          background-color: #ffffff;
-          color: #0e1d3b;
+        button {
+          font-size: 16px;
+          font-weight: 500;
+          padding: 10px 20px;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
         }
-      }
 
-      .subscribeBtn {
-        background-color: #1a73e8;
-        color: #ffffff;
-        transition: background-color 0.3s ease;
+        .loginBtn {
+          background-color: transparent;
+          color: #ffffff;
+          border: 1px solid #ffffff;
+          transition: background-color 0.3s ease, color 0.3s ease;
 
-        &:hover {
-          background-color: #125bb5;
+          &:hover {
+            background-color: #ffffff;
+            color: #0e1d3b;
+          }
+        }
+
+        .subscribeBtn {
+          background-color: #1a73e8;
+          color: #ffffff;
+          transition: background-color 0.3s ease;
+
+          &:hover {
+            background-color: #125bb5;
+          }
         }
       }
     }
