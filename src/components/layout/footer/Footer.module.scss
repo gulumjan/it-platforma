@@ -18,27 +18,20 @@
 }
 
 #footer {
-padding: 100px 0;
+  padding: 100px 0;
 
   .footer {
     display: flex;
     justify-content: space-between;
- 
 
-    @include tablet(){
+    @include tablet() {
       flex-wrap: wrap;
       gap: 40px;
-     
-
     }
 
-    @include phone(){
-    
-    flex-direction: column;
-
+    @include phone() {
+      flex-direction: column;
     }
-
-   
 
     h3 {
       font-size: 20px;
@@ -55,12 +48,10 @@ padding: 100px 0;
     }
 
     .footer1 {
-
-      @include phone(){
-       display: flex;
-       align-items: center;
-       justify-content: space-between;
-  
+      @include phone() {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
       }
       .btn {
         button {
@@ -68,14 +59,10 @@ padding: 100px 0;
           border: 1px solid white;
           font-size: 25px;
           margin-top: 30px;
-          @include phone(){
+          @include phone() {
             margin-top: 0px;
-           
-        
-            }
+          }
         }
-
-       
       }
     }
 
@@ -84,79 +71,63 @@ padding: 100px 0;
       flex-direction: column;
       gap: 12px;
 
-      @include phone(){
+      @include phone() {
         display: none;
-      
       }
     }
 
     .footer3 {
       .footer_icon {
         display: flex;
-       
+
         gap: 10px;
-   width: 60%;
+        width: 60%;
         font-size: 35px;
         padding: 8px 0;
-
-        
-
-        
       }
 
-      @include phone(){
+      @include phone() {
         display: flex;
-      flex-direction: column;
-         
-    
+        flex-direction: column;
       }
-
-
     }
 
     .footer4 {
       display: flex;
       flex-direction: column;
       gap: 10px;
-   
-
-
 
       p {
         display: flex;
-        gap: 10px;     
-font-size: 18px;
-font-weight: 400;
-line-height: 19.5px;
+        gap: 10px;
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 19.5px;
       }
 
-      span{
+      span {
         font-size: 30px;
       }
     }
 
     .footer5 {
-      @include phone(){
+      @include phone() {
         display: none;
-      
       }
 
       p {
-       display: flex;
-       align-items: center;
-       justify-content: center;
-        gap: 10px;     
-font-size: 18px;
-font-weight: 400;
-line-height: 19.5px;
-
-
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 19.5px;
       }
 
-      span{
+      span {
         font-size: 30px;
       }
-   
     }
   }
 }

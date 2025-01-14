@@ -1,0 +1,81 @@
+@mixin tablet {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+.ProgrammCourses {
+  h1 {
+    font-family: Montserrat;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 43.88px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    @include mobile() {
+      font-size: 28px;
+    }
+  }
+  .content {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    @include mobile() {
+      display: flex;
+      flex-direction: column;
+    }
+    .blocks {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      @include mobile() {
+        gap: 12px;
+      }
+      .block {
+        @include mobile() {
+          width: 100%;
+        }
+        width: 671px;
+        height: 69.62px;
+        border-radius: 10px;
+        border: 1px 0px 0px 0px;
+        display: flex;
+        justify-content: first baseline;
+        align-items: center;
+        border: 1px solid;
+        padding: 0 25px;
+        gap: 18px;
+        border: 1px solid #1a73e8;
+      }
+      button {
+        width: 264px;
+        height: 60px;
+        font-family: Montserrat;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 19.5px;
+        background-color: #125bb5;
+        padding: 12px 29px;
+        border: none;
+        @include mobile() {
+          font-size: 13px;
+          width: 234px;
+          height: 50px;
+        }
+      }
+    }
+    img {
+      width: 480px;
+      height: 503px;
+      @include mobile() {
+        width: 90%;
+      }
+    }
+  }
+}

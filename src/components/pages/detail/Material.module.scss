@@ -1,0 +1,79 @@
+@mixin tablet {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+.Material {
+  margin: 100px 0;
+  .content {
+    .blocks {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      @include mobile() {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+      .block {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        h4 {
+          padding: 12px 0;
+        }
+        p {
+          width: 290px;
+          text-align: center;
+        }
+      }
+    }
+    .author {
+      margin-top: 200px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      img {
+        width: 568px;
+        height: 588px;
+        @include mobile() {
+          width: 266px;
+          height: 300px;
+        }
+      }
+      h1 {
+        padding: 12px 0;
+        font-family: Montserrat;
+        font-size: 36px;
+        font-weight: 700;
+        line-height: 43.88px;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        @include mobile() {
+          font-size: 26px;
+          text-align: center;
+        }
+      }
+      p {
+        font-family: Montserrat;
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 24.38px;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        padding: 10px 0;
+        color: rgba(165, 165, 165, 1);
+      }
+    }
+  }
+}

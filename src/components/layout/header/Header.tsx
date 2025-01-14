@@ -40,8 +40,8 @@ const Header: FC = () => {
               <>
                 <nav>
                   <Link href="/school">О школе</Link>
-                  <Link href="#">Наши курсы</Link>
-                  <Link href="#">О нас</Link>
+                  <Link href="/courses">Наши курсы</Link>
+                  <Link href="/about">О нас</Link>
                 </nav>
                 <div className={scss.btns}>
                   <button className={scss.loginBtn}>Войти</button>

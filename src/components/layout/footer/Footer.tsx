@@ -19,8 +19,8 @@ const Footer: FC = () => {
           <div className={scss.footer1}>
             <Image src={footer_img} alt="img" />
             <div className={scss.btn}>
-              <button>KG</button>
-              <button>RU</button>
+              <button>kg</button>
+              <button>ru</button>
             </div>
           </div>
 
@@ -53,14 +53,11 @@ const Footer: FC = () => {
                 <PiTelegramLogoLight />
               </span>
             </div>
-          
-            
-            
           </div>
 
           <div className={scss.footer4}>
             <h3>Контакты</h3>
-          
+
             <p>
               <span>
                 <GoMail />
@@ -83,7 +80,9 @@ const Footer: FC = () => {
               </span>
               Турусбекова 109 / 3
             </p>
-            <p>Идентификационный  <br /> код: 1234567890</p>
+            <p>
+              Идентификационный <br /> код: 1234567890
+            </p>
           </div>
         </div>
       </div>

@@ -1,0 +1,153 @@
+@mixin tablet {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+.AboutCourses {
+  padding: 60px 20px;
+  color: #fff;
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .title {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    @include mobile() {
+      font-size: 28px;
+    }
+  }
+
+  .description {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    @include mobile() {
+      font-size: 14px;
+    }
+  }
+
+  .info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .column {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      margin-right: 20px;
+      .net {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: first baseline;
+        @include mobile() {
+          display: flex;
+          flex-direction: column;
+        }
+      }
+      h3 {
+        font-size: 24px;
+        margin-bottom: 15px;
+        @include mobile() {
+          font-size: 16px;
+          margin: 0;
+          padding: 10px 0;
+        }
+      }
+
+      ul {
+        padding: 28px 0;
+        @include mobile() {
+          padding: 0;
+        }
+        li {
+          font-size: 18px;
+          margin-bottom: 10px;
+          padding: 10px 0;
+          @include mobile() {
+            font-size: 15px;
+            margin: 0;
+            padding: 7px;
+          }
+        }
+      }
+
+      p {
+        font-size: 18px;
+      }
+    }
+
+    .column:last-child {
+      margin-right: 0;
+    }
+  }
+
+  .results {
+    margin-top: 40px;
+
+    h3 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 15px;
+      @include mobile() {
+        font-size: 19px;
+      }
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      @include mobile() {
+        font-size: 13px;
+      }
+    }
+  }
+
+  .actions {
+    display: flex;
+    gap: 18px;
+    margin-top: 40px;
+    @include mobile() {
+      gap: 14px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .buyButton,
+    .programButton {
+      padding: 15px 30px;
+      font-size: 18px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      @include mobile() {
+        font-size: 12px;
+        padding: 12px 24px;
+        font-weight: 400;
+      }
+    }
+
+    .buyButton {
+      background-color: #1b74e4;
+      color: #fff;
+    }
+
+    .programButton {
+      background-color: transparent;
+      color: #1b74e4;
+      border: 2px solid #1b74e4;
+    }
+  }
+}
