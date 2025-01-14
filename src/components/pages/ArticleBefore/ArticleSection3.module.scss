@@ -1,0 +1,198 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+@mixin tablet {
+    @media (max-width: 1024px) {
+        @content;
+    }
+}
+
+@mixin mobile {
+    @media (max-width: 768px) {
+        @content;
+    }
+}
+
+@mixin phone {
+    @media (max-width: 480px) {
+        @content;
+    }
+}
+
+
+
+#article2 {
+padding: 80px 0;
+
+h2{
+ 
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 43.88px;   
+    margin-bottom: 40px;
+
+    @include phone() {
+      text-align: center;
+      font-size: 30px;
+       
+
+
+    }
+}
+    .article2 {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        background: white;
+        padding: 40px 50px;
+        border-radius: 10px;
+
+        @include phone() {
+            flex-direction: column;
+            padding: 30px 40px;
+
+
+
+        }
+
+
+        img{
+            @include phone() {
+                display: none;
+
+                
+
+
+            }
+        }
+
+        .article2_text {
+
+            h3 {
+
+                font-size: 28px;
+                font-weight: 700;
+                line-height: 34.13px;
+                color: black;
+            
+                margin-bottom: 20px;
+                letter-spacing: 2;
+
+                @include tablet() {
+
+                    font-size: 22px;
+                    font-weight: 700;
+                    line-height: 27.13px;
+
+                    width: 80%;
+
+
+                }
+
+
+                @include phone() {
+                    text-align: center;
+
+                    font-size: 17px;
+                    font-weight: 700;
+                    line-height: 20.13px;
+
+                    width: 100%;
+
+
+                }
+
+
+
+            }
+
+            .span1 {
+
+
+                font-size: 16px;
+                font-weight: 500;
+                line-height: 19.5px;
+                color: #8D8D8D;
+
+
+
+                @include phone() {
+                    font-size: 15px;
+                   
+             
+                    
+    
+    
+                }
+
+                span{
+                    @include phone() {
+                        margin-bottom: 20px;
+                       
+                 
+                        
+        
+        
+                    }
+                   
+                }
+            }
+
+          
+
+
+
+        }
+
+
+
+        .article2_btn {
+            button {
+                padding: 20px 40px;
+
+                font-size: 16px;
+                font-weight: 600;
+                background: #04437B;
+                outline: none;
+                border: none;
+                border-radius: 5px;
+
+                @include tablet() {
+
+                    padding: 14px 38px;
+                    font-size: 14px;
+
+                }
+
+
+
+                @include mobile() {
+
+                    font-size: 10px;
+                    padding: 11px 40px;
+                }
+
+
+                @include phone() {
+                    margin-top: 20px;
+                    font-size: 14px;
+                    padding: 14px 38px;
+                   
+
+
+                }
+
+                }
+
+
+
+
+
+
+            }
+        }
+
+
+    }
+
+
