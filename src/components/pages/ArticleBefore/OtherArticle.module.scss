@@ -1,0 +1,136 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+@mixin tablet {
+    @media (max-width: 1024px) {
+        @content;
+    }
+}
+
+@mixin mobile {
+    @media (max-width: 768px) {
+        @content;
+    }
+}
+
+@mixin phone {
+    @media (max-width: 480px) {
+        @content;
+    }
+}
+
+
+
+
+#otherArticle {
+    padding-bottom: 100px;
+    h2 {
+        font-size: 35px;
+        font-weight: 700;
+        line-height: 35px;
+       
+        margin-bottom: 40px;
+
+        @include tablet() {
+            margin-top: 120px;
+            font-size: 45px;
+
+
+
+
+        }
+    }
+
+    .otherArticle {
+        display: flex;
+        align-items: center;
+     
+
+
+        gap: 40px;
+
+        @include tablet() {
+            flex-wrap: wrap;
+            
+   
+   
+   
+           }
+
+        @include phone() {
+         flex-direction: column;
+
+
+
+        }
+
+        .otherArticle_block {
+            background: white;
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+
+            img {
+                width: 100%;
+            }
+
+            .otherArticle_text {
+                padding: 30px 40px;
+
+                h6 {
+                    color: #898989;
+
+                    font-size: 17px;
+                    font-weight: 500;
+                    line-height: 17.07px;
+                    text-align: left;
+                    margin-bottom: 10px;
+
+                }
+
+                p {
+                    font-size: 18px;
+                    font-weight: 600;
+                    line-height: 25.5px;
+                    text-align: left;
+                    color: #000000;
+                    width: 85%;
+
+
+                }
+
+                .otherArticle_read {
+                    display: flex;
+                    align-items: center;
+                    gap: 55%;
+
+
+
+                    h5 {
+                        display: flex;
+                        gap: 5px;
+                        align-items: center;
+                        color: #044176;
+                        font-size: 15px;
+                        font-weight: 500;
+                        line-height: 18.29px;
+                        text-align: left;
+                        margin-top: 15px;
+
+
+                    }
+
+                }
+            }
+
+
+
+        }
+
+
+
+
+    }
+
+
+
+}
