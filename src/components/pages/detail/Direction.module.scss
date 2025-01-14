@@ -1,0 +1,103 @@
+@mixin tablet {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+.Direction {
+  margin-top: 100px;
+  .content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    @include mobile() {
+      display: flex;
+      flex-direction: column;
+    }
+    .content_text {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      h1 {
+        font-family: Montserrat;
+        font-size: 36px;
+        font-weight: 700;
+        line-height: 43.88px;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        @include mobile() {
+          font-size: 28px;
+        }
+        @include tablet() {
+          font-size: 30px;
+        }
+      }
+
+      p {
+        width: 670px;
+        font-family: Montserrat;
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 28.38px;
+        text-align: left;
+        text-decoration-skip-ink: none;
+        padding: 48px 0;
+        @include mobile() {
+          width: 98%;
+          text-align: center;
+        }
+        @include tablet() {
+          text-align: left;
+          font-size: 18px;
+        }
+      }
+      button {
+        width: 264px;
+        height: 60px;
+        font-family: Montserrat;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 19.5px;
+        background-color: #125bb5;
+        padding: 12px 29px;
+        border: none;
+        @include mobile() {
+          margin: 15px 0;
+          padding: 10px 25px;
+        }
+      }
+    }
+    .access {
+      display: flex;
+      flex-direction: column;
+      gap: 46px;
+      @include mobile() {
+        margin-top: 18px;
+        gap: 30px;
+      }
+      .together {
+        p {
+          font-family: Montserrat;
+          font-size: 20px;
+          font-weight: 400;
+          line-height: 24.38px;
+          text-underline-position: from-font;
+        }
+        h4 {
+          font-family: Montserrat;
+          font-size: 20px;
+          font-weight: 600;
+          line-height: 24.38px;
+          text-underline-position: from-font;
+          padding: 12px 0;
+        }
+      }
+    }
+  }
+}

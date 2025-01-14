@@ -1,7 +1,10 @@
+"use client";
 import { FC } from "react";
 import scss from "./MasterClass.module.scss";
+import { useRouter } from "next/navigation";
 
 const MasterClass: FC = () => {
+  const router = useRouter();
   return (
     <section className={scss.MasterClass}>
       <div className="container">
@@ -37,7 +40,12 @@ const MasterClass: FC = () => {
               сейчас он в тренде, рассказал на конференции РИТ++ ...
             </p>
           </div>
-          <button className={scss.allBtn}>Все мастер классы</button>
+          <button
+            onClick={() => router.push(`/master-class`)}
+            className={scss.allBtn}
+          >
+            Все мастер классы
+          </button>
         </div>
       </div>
     </section>
