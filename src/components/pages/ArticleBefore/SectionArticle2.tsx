@@ -2,6 +2,7 @@ import React from 'react';
 import scss from "@/components/pages/ArticleBefore/ArticleSection2.module.scss"
 import article2_img from "@/assets/sectionArticle2_img.png"
 import Image from 'next/image';
+import Link from 'next/link';
 
 const SectionArticle2 = () => {
     return (
@@ -20,8 +21,8 @@ const SectionArticle2 = () => {
                     </div>
 
                     <div className={scss.article2_btn}>
-                        <button>Получить доступ за 225,00$</button>
-
+                     <Link href={"/articleAfter"}>   <button>Получить доступ за 225,00$</button>
+                     </Link>
                     </div>
 
                 </div>
