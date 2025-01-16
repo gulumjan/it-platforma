@@ -8,7 +8,7 @@ const Home = () => {
     <div id={scss.home}>
       <div className="container">
         <div className={scss.home}>
-        <div className={scss.home_text}>
+          <div className={scss.home_text}>
             <h1>IT образовательная платформа </h1>
             <p>
               Наша образовательная платформа вам даст необходимые практические
@@ -16,7 +16,6 @@ const Home = () => {
             </p>
           </div>
           <Image src={img_home} alt="img" />
-         
         </div>
       </div>
     </div>
