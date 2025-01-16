@@ -77,7 +77,6 @@ const AllMasterClass: FC = () => {
               сейчас он в тренде, рассказал на конференции РИТ++ ...
             </p>
           </div>
-          <button className={scss.allBtn}>Все мастер классы</button>
         </div>
       </div>
     </section>
