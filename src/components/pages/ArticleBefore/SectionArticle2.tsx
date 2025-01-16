@@ -21,7 +21,7 @@ const SectionArticle2 = () => {
                     </div>
 
                     <div className={scss.article2_btn}>
-                     <Link href={"/articleAfter"}>   <button>Получить доступ за 225,00$</button>
+                     <Link href={"/registration"}>   <button>Получить доступ за 225,00$</button>
                      </Link>
                     </div>
 
