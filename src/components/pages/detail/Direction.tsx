@@ -1,7 +1,10 @@
+"use client";
 import { FC } from "react";
 import scss from "./Direction.module.scss";
+import { useRouter } from "next/navigation";
 
 const Direction: FC = () => {
+  const router = useRouter();
   return (
     <section className={scss.Direction}>
       <div className="container">
@@ -14,7 +17,9 @@ const Direction: FC = () => {
               лет 10 назад. Что вызвало популярность этого относительно нового
               подхода и почему сейчас он в тренде, рассказал на конференции
             </p>
-            <button>Купить курс за 46 $ </button>
+            <button onClick={() => router.push(`/kaufen`)}>
+              Купить курс за 46 ${" "}
+            </button>
           </div>
           <div className={scss.access}>
             <div className={scss.together}>

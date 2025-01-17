@@ -10,7 +10,10 @@ const MasterClass: FC = () => {
       <div className="container">
         <h1>Мастер Kлассы</h1>
         <div className={scss.content}>
-          <div className={scss.block}>
+          <div
+            onClick={() => router.push(`/detailMasterClass`)}
+            className={scss.block}
+          >
             <h4>
               Реактивное программирование на Java: как, зачем и стоит ли?{" "}
             </h4>
