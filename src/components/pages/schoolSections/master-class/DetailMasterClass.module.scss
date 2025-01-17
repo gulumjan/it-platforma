@@ -1,0 +1,114 @@
+.DetMasterClass {
+  padding: 150px 0;
+  @media (max-width: 767px) {
+    padding: 100px 0;
+    .homeNav {
+      display: none;
+    }
+    .nav {
+      display: none;
+    }
+    .navAb {
+      display: none;
+    }
+  }
+  .homeNav {
+    color: rgb(175, 172, 172);
+    margin-right: 5px !important;
+  }
+  .nav {
+    color: rgb(175, 172, 172);
+    margin-right: 5px !important;
+  }
+  .navAb {
+    color: rgb(255, 254, 254);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19.5px;
+    text-align: left;
+  }
+  .content {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 60px;
+    @media (max-width: 676px) {
+      text-align: center;
+    }
+    .left {
+      display: flex;
+      align-items: start;
+      justify-content: center;
+      flex-direction: column;
+      @media (max-width: 676px) {
+        align-items: center;
+      }
+      gap: 50px;
+      max-width: 670px;
+      width: 100%;
+      h1 {
+        font-size: clamp(26px, 4vw, 36px);
+        font-weight: 700;
+        line-height: 43.88px;
+        color: #fff;
+      }
+      p {
+        font-size: clapm(10px, 4vw, 20px);
+        font-weight: 400;
+        line-height: 24px;
+        color: #fff;
+      }
+      button {
+        padding: 20px 30px;
+        font-size: 16px;
+        font-weight: 500;
+        border-radius: 5px;
+        border: none !important;
+        background: #044076;
+        color: #fff;
+      }
+    }
+    .right {
+      max-width: 500px;
+      width: 100%;
+      display: flex;
+      align-items: start;
+      flex-direction: column;
+      gap: 60px;
+      h2 {
+        display: flex;
+        align-items: start;
+        justify-content: center;
+        gap: 24px;
+        flex-direction: column;
+        font-size: clapm(10px, 4vw, 20px);
+
+        font-weight: 400;
+        line-height: 24px;
+        color: #ffffff;
+        span {
+          font-size: clapm(10px, 4vw, 20px);
+
+          font-weight: 400;
+        }
+      }
+      h3 {
+        display: flex;
+        align-items: start;
+        justify-content: center;
+        gap: 24px;
+        flex-direction: column;
+        font-size: clapm(10px, 4vw, 20px);
+        font-weight: 400;
+        line-height: 24px;
+        color: #ffffff;
+        span {
+          font-size: clapm(10px, 4vw, 20px);
+
+          font-weight: 400;
+        }
+      }
+    }
+  }
+}
