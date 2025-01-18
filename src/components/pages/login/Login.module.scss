@@ -56,11 +56,12 @@
       font-weight: 500;
       display: flex;
       text-transform: 0.3s;
+      text-decoration: none;
       &:hover {
         background-color: rgb(9, 77, 141);
       }
     }
-    a {
+    .forgot {
       font-size: 16px;
       font-weight: 500;
       text-decoration-line: underline;

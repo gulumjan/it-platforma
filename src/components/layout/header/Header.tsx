@@ -79,7 +79,7 @@ const Header: FC = () => {
                 <div className={scss.btns}>
 
                   <button
-                    onClick={() => router.push(`/sign-in`)}
+                    onClick={() => router.push(`/auth`)}
                     className={scss.loginBtn}
                   >
                     {translate(`signIn`)}

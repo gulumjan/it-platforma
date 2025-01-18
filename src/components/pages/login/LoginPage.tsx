@@ -22,8 +22,8 @@ const LoginPage = () => {
        {showPassword ||  <GoEyeClosed  onClick={() => setShowPassword(!showPassword)}/>}
       </div>
       <div className={s.btn}>
-        <button>Войти</button>
-        <Link href={"#"}>Забыли пароль?</Link>
+        <Link href={"/profile"} id={s.enter}><button>Войти</button></Link>
+        <Link href={"/profile"} className={s.forgot}>Забыли пароль?</Link>
       </div>
     </form>
   );
