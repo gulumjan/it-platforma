@@ -1,4 +1,5 @@
-import { FC } from "react";
+"use client";
+import { FC, useEffect } from "react";
 import scss from "./Footer.module.scss";
 import footer_img from "@/assets/footer_logo.png";
 import Image from "next/image";
@@ -11,7 +12,39 @@ import { PiTelegramLogoLight } from "react-icons/pi";
 import { GoMail } from "react-icons/go";
 import { IoCallOutline } from "react-icons/io5";
 import { IoLocationOutline } from "react-icons/io5";
+import Language from "@/ui/language/Language";
+import { useLanguageStore } from "@/stores/UseLanguageStore";
+import Link from "next/link";
 const Footer: FC = () => {
+  const language = useLanguageStore((state) => state.language);
+
+  useEffect(() => {
+    console.log("Current language in Header:", language);
+  }, [language]);
+
+  const translations = {
+    ru: {
+      school: "О школе",
+      course: "Наши курсы",
+      about: "О нас",
+      signIn: "Войти",
+      follow: "Подписаться",
+    },
+    ky: {
+      course: "Биздин курстар",
+      school: "Мектеп жөнүндө",
+      about: "Биз жөнүндө",
+      signIn: "Кирүү",
+      follow: "Катталуу",
+    },
+  };
+
+  const translate = (key: keyof (typeof translations)["ru"]) => {
+    return (
+      translations[language as keyof typeof translations]?.[key] ??
+      translations.ru[key]
+    );
+  };
   return (
     <section id={scss.footer}>
       <div className="container">
@@ -25,10 +58,10 @@ const Footer: FC = () => {
           </div>
 
           <div className={scss.footer2}>
-            <h3>Быстрые ссылки</h3>
-            <p>О школе</p>
-            <p>Наши курсы</p>
-            <p>О нас</p>
+            <Link href="/school">{translate("school")}</Link>
+            <Link href="/courses">{translate("course")}</Link>
+            <Link href="/about">{translate("about")}</Link>
+            <Language />
           </div>
 
           <div className={scss.footer3}>

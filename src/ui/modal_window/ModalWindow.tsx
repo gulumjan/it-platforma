@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./ModalWindow.module.scss";
 // import { useParams } from "next/navigation";
 import { useLanguageStore } from "@/stores/UseLanguageStore";
@@ -12,7 +12,32 @@ interface ModalWindowProps {
 const ModalWindow: React.FC<ModalWindowProps> = ({ isOpen, onClose }) => {
   //   const params = useParams();
   const courseId = Number(1);
-  const { t } = useLanguageStore();
+
+  const language = useLanguageStore((state) => state.language);
+
+  useEffect(() => {
+    console.log("Current language in Header:", language);
+  }, [language]);
+
+  const translations = {
+    ru: {
+      course: "Теперь вам доступен курс",
+      okey: "Теперь вам доступен курс",
+      thank: "Благодарим за покупку!!!",
+    },
+    ky: {
+      course: "Эми сизге курс жеткиликтүү",
+      okey: "Ок, сатып алганды көрүү",
+      thank: "Сатып алганыңыз үчүн ыраазычылык билдиребиз!!!",
+    },
+  };
+
+  const translate = (key: keyof (typeof translations)["ru"]) => {
+    return (
+      translations[language as keyof typeof translations]?.[key] ??
+      translations.ru[key]
+    );
+  };
 
   const courses = [
     {
@@ -67,18 +92,13 @@ const ModalWindow: React.FC<ModalWindowProps> = ({ isOpen, onClose }) => {
   return (
     <div className={styles.main} onClick={handleOverlayClick}>
       <div className={styles.mainModal}>
-        <h1 className={styles.title}>
-          {t(
-            "Сатып алганыңыз үчүн ыраазычылык билдиребиз!!!",
-            "Благодарим за покупку!!!"
-          )}
-        </h1>
+        <h1 className={styles.title}>{translate("thank")}</h1>
         <h1 className={styles.text}>
-          {t("Эми сизге курс жеткиликтүү ", "Теперь вам доступен курс ")}
+          {translate("course")}
           {selectedCourse.name}
         </h1>
         <button type="button" className={styles.btn} onClick={onClose}>
-          {t("Ок, сатып алганды көрүү.", "Ок, посмотреть покупку")}
+          {translate("okey")}
         </button>
       </div>
     </div>
