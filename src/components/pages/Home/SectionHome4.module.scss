@@ -1,150 +1,93 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
-
 @mixin tablet {
-    @media (max-width: 1024px) {
-        @content;
+    @media (max-width: 1023px) {
+      @content;
     }
-}
-
-@mixin mobile {
+  }
+  
+  @mixin mobile {
     @media (max-width: 768px) {
-        @content;
+      @content;
     }
-}
+  }
+  #answer1 {
+    padding-bottom: 100px;
+    padding-top: 80px;
 
-@mixin phone {
-    @media (max-width: 480px) {
-        @content;
-    }
-}
-
-
-#home4 {
-    padding: 50px 0;
-
-    .home4 {
+    .answer1{
         display: flex;
-        justify-content: space-between;
-
-        @include mobile() {
-
-            flex-direction: column;
-
-
-
-
-
-        }
-
-        .home4_text {
+      justify-content: space-between;
+      .answer1_text{
+        h2 {
+            width: 50%;
+            font-size: 45px;
+            letter-spacing: 5px;
+            font-weight: 700;
+            line-height: 60.1px;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #fffafa;
             @include mobile() {
-
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                margin-bottom: 50px;
-    
-    
-    
-    
-    
+              font-size: 30px;
             }
-            h2 {
-                width: 30%;
-                font-size: 48px;
-                font-weight: 700;
-                line-height: 55px;
-                text-align: left;
-                margin-bottom: 30px;
-
-                @include mobile() {
-
-                   width: 100%;
+          }
+      }
+      
         
+          .answer {
+            width: 60%;
         
-        
-        
-                }
-
-                @include phone() {
-
-                  font-size: 35px;
-         
-         
-         
-         
-                 }
-
-
-            }
-
-            img{
-
-                @include mobile() {
-
-                    width: 20%;
-                    height: auto;
-         
-         
-         
-         
-                 }
-                
-            }
-
-
-        }
-
-        .answer {
-
-
             p {
-                font-size: 15px;
-                font-weight: 500;
-                line-height: 30px;
-               
-                color: #ffffff;
-                // width: 80%;
+              font-size: 27px;
+              font-weight: 500;
+              line-height: 32px;
+              text-align: left;
+              color: #ffffff;
+              width: 80%;
+              padding: 10px 0;
+              @include mobile() {
+                font-size: 20px;
+                line-height: 25px;
+                padding: 0;
+              }
             }
-
+        
             summary {
-                position: relative;
-                padding-bottom: 40px;
-                font-size: 1.25rem;
-                font-weight: bold;
-                cursor: pointer;
-                padding-right: 2em;
+              position: relative;
+              padding-bottom: 35px;
+              font-size: 2rem;
+              font-weight: bold;
+              color: #ffffff;
+              cursor: pointer;
+              padding-right: 2em;
+              @include mobile() {
+                font-size: 23px;
+              }
             }
-
-
+        
             summary::marker {
-                content: none;
+              content: none;
             }
-
-
+        
             summary::before {
-                content: "+";
-                position: absolute;
-                right: 0;
-                top: 50%;
-                transform: translateY(-50%);
-                font-size: 2rem;
-                color: #ffffff;
+              content: "+";
+              position: absolute;
+              right: 0;
+              top: 50%;
+              transform: translateY(-50%);
+              font-size: 2.25rem;
+              color: #fffafa;
             }
-
+        
             details[open] summary::before {
-                content: "-";
+              content: "-";
             }
-
-
+        
             details {
-                border-bottom: 1px solid rgb(184, 181, 181);
-                margin-bottom: 20px;
+              border-bottom: 1px solid rgb(255, 255, 255);
+              margin-bottom: 20px;
             }
-        }
+          }
     }
-
-
-
-
-}
+  
+  
+  }
