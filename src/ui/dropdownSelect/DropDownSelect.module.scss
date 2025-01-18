@@ -1,0 +1,41 @@
+.dropdown {
+    display: flex;
+    flex-direction: column;
+    font-family: "Montserrat", serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #a4a4a4;
+    gap: 10px;
+    width: 100%;
+  
+    select {
+      color: white;
+      font-size: 14px;
+      font-weight: 400;
+      padding: 15px 20px;
+      border-radius: 10px;
+      outline: none;
+      border: none;
+      padding-right: 2rem;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E")
+        no-repeat right 0.5rem center;
+      background-size: 1rem;
+      background-color: #1b295966;
+  
+      option {
+        background-color: black;
+      }
+    }
+  }
+
+  @media (max-width:890px) {
+    .dropdown {
+      select {
+        padding: 15px 10px;
+      }
+    }
+  }
+  

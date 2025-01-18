@@ -1,0 +1,87 @@
+.navBar {
+  width: 30%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 30px;
+  padding-bottom: 10px;
+  border-radius: 10px;
+  img {
+    width: 50%;
+  }
+  button {
+    width: 170px;
+    height: 39px;
+    background: #0272ce;
+    color: white;
+    border-radius: 12px;
+    font-family: "Montserrat", serif;
+    margin: 30px 0;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    font-weight: 500;
+  }
+  nav {
+    width: 100%;
+    a {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      font-size: 16px;
+      font-weight: 500;
+      border-bottom: 0.5px solid #9a9a9a6b;
+      color: black;
+      width: 100%;
+      padding: 16px 20%;
+      svg {
+        font-size: 24px;
+      }
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+}
+
+@media (max-width: 1480px) {
+  .navBar {
+    width: 34%;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    button {
+      margin: 15px 0;
+    }
+    nav {
+      a {
+        padding: 14px 20%;
+      }
+    }
+  }
+}
+
+
+@media (max-width: 1090px) {
+  .navBar {
+    button {
+      font-size: 14px;
+    }
+    nav {
+      a {
+        font-size: 14px;
+        svg {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 950px) {
+  .navBar {
+    img {
+      width: 30%;
+    }
+  }
+}
