@@ -44,8 +44,19 @@ const Header: FC = () => {
                   <Link href="/about">О нас</Link>
                 </nav>
                 <div className={scss.btns}>
-                  <button className={scss.loginBtn} onClick={() => router.push("/auth")}>Войти</button>
-                  <button className={scss.subscribeBtn}>Подписаться</button>
+
+                  <button
+                    onClick={() => router.push(`/sign-in`)}
+                    className={scss.loginBtn}
+                  >
+                    Войти
+                  </button>
+                  <button
+                    onClick={() => router.push(`/registration`)}
+                    className={scss.subscribeBtn}
+                  >
+                    Подписаться
+                  </button>
                 </div>
               </>
             ) : (

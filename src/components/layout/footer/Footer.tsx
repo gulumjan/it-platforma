@@ -34,24 +34,29 @@ const Footer: FC = () => {
           <div className={scss.footer3}>
             <h3>Социальные сети</h3>
             <div className={scss.footer_icon}>
-              <span>
-                <FaInstagram />
-              </span>
-              <span>
-                <AiOutlineYoutube />
-              </span>
-              <span>
-                <CiFacebook />
-              </span>
-              <span>
-                <PiTwitterLogo />
-              </span>
-              <span>
-                <PiTiktokLogoThin />
-              </span>
-              <span>
-                <PiTelegramLogoLight />
-              </span>
+              <div className={scss.div}>
+                <span>
+                  <FaInstagram />
+                </span>
+                <span>
+                  <AiOutlineYoutube />
+                </span>
+                <span>
+                  <CiFacebook />
+                </span>
+              </div>
+
+              <div className={scss.div}>
+                <span>
+                  <PiTwitterLogo />
+                </span>
+                <span>
+                  <PiTiktokLogoThin />
+                </span>
+                <span>
+                  <PiTelegramLogoLight />
+                </span>
+              </div>
             </div>
           </div>
 

@@ -1,3 +1,14 @@
+@mixin tablet {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
 .AboutUs {
   margin-top: 56px;
   .content {
@@ -24,6 +35,14 @@
       margin: 125px 0;
       width: 100%;
       gap: 15px;
+      img {
+        width: 582px;
+        height: 413px;
+        @include mobile() {
+          width: 100%;
+          height: auto;
+        }
+      }
     }
     p {
       width: 60%;
@@ -34,12 +53,28 @@
       text-align: center;
       text-underline-position: from-font;
       text-decoration-skip-ink: none;
+      @include mobile() {
+        width: 100%;
+      }
     }
     .images {
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 75px;
+      @include mobile() {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      img {
+        width: 520px;
+        height: 350px;
+        @include mobile() {
+          width: 100%;
+          height: auto;
+        }
+      }
     }
   }
 }

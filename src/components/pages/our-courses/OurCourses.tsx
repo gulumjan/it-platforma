@@ -108,7 +108,6 @@ const OurCourses: FC = () => {
           </div>
         </div>
       </div>
-      <button className={scss.allBtn}>Все курсы</button>
     </section>
   );
 };

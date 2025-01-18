@@ -5,7 +5,7 @@
   flex-direction: column;
   justify-content: space-around;
   width: 50px;
-  height: 39px;
+  height: 29px;
   cursor: pointer;
   position: fixed;
   top: 24px;
@@ -44,10 +44,10 @@
   z-index: 1111;
   top: 0;
   right: 0;
-  width: 100%;
-  height: 1000px;
-  background: #0A1128;
-
+  width: 50%;
+  height: 400px;
+  background: #0a1128;
+  border-radius: 22px;
 
   transform: translateX(100%);
   transition: transform 0.3s;
@@ -61,7 +61,7 @@
   background: white;
   height: 1px;
   width: 100%;
-  margin-top: 90px;
+  margin-top: 40px;
 }
 
 .nav-menu ul {

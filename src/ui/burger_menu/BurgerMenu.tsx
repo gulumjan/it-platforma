@@ -2,9 +2,11 @@
 import React, { useState } from "react";
 import "./BurgerMenu.css";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const BurgerMenu: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -28,27 +30,25 @@ const BurgerMenu: React.FC = () => {
         <div></div>
       </div>
       <nav className={`nav-menu ${isOpen ? "active" : ""}`}>
-    
-
         <ul>
           <li>
-            <Link href="/">
+            <Link href="/school">
               <p onClick={scrollToTop}>О школе</p>
             </Link>
           </li>
           <li>
-            <Link href="/">
+            <Link href="/courses">
               <p onClick={scrollToTop}>Наши курсы</p>
             </Link>
           </li>
           <li>
-            <Link href="/menu">
+            <Link href="/about">
               <p onClick={scrollToTop}>О нас</p>
             </Link>
           </li>
 
           <div className="under_switch">
-            <button>Войти</button>
+            <button onClick={() => router.push(`/sign-in`)}>Войти</button>
             <button>Подписаться</button>
           </div>
         </ul>
