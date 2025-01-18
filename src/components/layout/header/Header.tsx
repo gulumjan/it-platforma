@@ -6,6 +6,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
+import { useLanguageStore } from "@/stores/UseLanguageStore";
+import Language from "@/ui/language/Language";
 
 const BurgerMenu = dynamic(() => import("@/ui/burger_menu/BurgerMenu"), {
   ssr: false,
@@ -14,6 +16,35 @@ const BurgerMenu = dynamic(() => import("@/ui/burger_menu/BurgerMenu"), {
 const Header: FC = () => {
   const router = useRouter();
   const [isMobile, setIsMobile] = useState(false);
+  const language = useLanguageStore((state) => state.language);
+
+  useEffect(() => {
+    console.log("Current language in Header:", language);
+  }, [language]);
+
+  const translations = {
+    ru: {
+      school: "О школе",
+      course: "Наши курсы",
+      about: "О нас",
+      signIn: "Войти",
+      follow: "Подписаться",
+    },
+    ky: {
+      course: "Биздин курстар",
+      school: "Мектеп жөнүндө",
+      about: "Биз жөнүндө",
+      signIn: "Кирүү",
+      follow: "Катталуу",
+    },
+  };
+
+  const translate = (key: keyof (typeof translations)["ru"]) => {
+    return (
+      translations[language as keyof typeof translations]?.[key] ??
+      translations.ru[key]
+    );
+  };
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth <= 1119);
@@ -39,22 +70,24 @@ const Header: FC = () => {
             {!isMobile ? (
               <>
                 <nav>
-                  <Link href="/school">О школе</Link>
-                  <Link href="/courses">Наши курсы</Link>
-                  <Link href="/about">О нас</Link>
+                  <Link href="/school">{translate("school")}</Link>
+                  <Link href="/courses">{translate("course")}</Link>
+                  <Link href="/about">{translate("about")}</Link>
+                  <Language />
                 </nav>
+
                 <div className={scss.btns}>
                   <button
                     onClick={() => router.push(`/sign-in`)}
                     className={scss.loginBtn}
                   >
-                    Войти
+                    {translate(`signIn`)}
                   </button>
                   <button
                     onClick={() => router.push(`/registration`)}
                     className={scss.subscribeBtn}
                   >
-                    Подписаться
+                    {translate("follow")}
                   </button>
                 </div>
               </>
