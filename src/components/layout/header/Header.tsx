@@ -44,6 +44,7 @@ const Header: FC = () => {
                   <Link href="/about">О нас</Link>
                 </nav>
                 <div className={scss.btns}>
+
                   <button
                     onClick={() => router.push(`/sign-in`)}
                     className={scss.loginBtn}
