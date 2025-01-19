@@ -130,3 +130,42 @@
     }
   }
 }
+
+@media (max-width: 810px) {
+  .personal {
+    width: 100%;
+    h1 {
+      display: none;
+    }
+    form {
+      padding-top: 30px;
+      flex-direction: column;
+      width: 100%;
+      .left {
+        width: 80%;
+      }
+      .right {
+        width: 80%;
+      }
+    }
+  }
+}
+@media (max-width: 410px) {
+  .personal {
+    width: 100%;
+    h1 {
+      display: none;
+    }
+    form {
+      padding-top: 30px;
+      flex-direction: column;
+      width: 100%;
+      .left {
+        width: 90%;
+      }
+      .right {
+        width: 90%;
+      }
+    }
+  }
+}
