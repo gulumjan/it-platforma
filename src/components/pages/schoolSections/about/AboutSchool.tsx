@@ -1,9 +1,13 @@
+"use client";
 import { FC } from "react";
 import scss from "./AboutSchool.module.scss";
 import Image from "next/image";
 import Img from "@/assets/web_development_banner 1.png";
+import { useGetCoursQuery } from "@/redux/api/product";
 
 const AboutSchool: FC = () => {
+  const { data } = useGetCoursQuery();
+  console.log("🚀 ~ data:", data);
   return (
     <section className={scss.AboutSchool}>
       <div className="container">

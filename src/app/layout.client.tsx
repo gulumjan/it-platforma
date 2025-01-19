@@ -1,3 +1,4 @@
+"use client";
 import ReduxProvider from "@/provider/ReduxProvider";
 import React, { FC, ReactNode } from "react";
 
