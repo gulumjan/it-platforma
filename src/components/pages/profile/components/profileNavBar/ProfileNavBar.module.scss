@@ -3,6 +3,7 @@
   background-color: white;
   display: flex;
   align-items: center;
+  height: 520px;
   flex-direction: column;
   padding-top: 30px;
   padding-bottom: 10px;
@@ -13,6 +14,7 @@
   button {
     width: 170px;
     height: 39px;
+    padding: 9px 22px;
     background: #0272ce;
     color: white;
     border-radius: 12px;
@@ -38,17 +40,45 @@
       svg {
         font-size: 24px;
       }
+      .arrow {
+        display: none;
+      }
       &:last-child {
         border-bottom: none;
       }
     }
+    span {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      font-size: 16px;
+      font-weight: 500;
+      color: black;
+      cursor: pointer;
+      width: 100%;
+      padding: 16px 20%;
+      svg {
+        font-size: 24px;
+      }
+     
+    }
   }
+}
+.bg {
+  width: 100%;
+  position: absolute;
+  background: rgba(2, 2, 2, 0.897);
+  height: 100%;
+  z-index: 98;
+  top: 0;
+  left: 0;
 }
 
 @media (max-width: 1480px) {
   .navBar {
     width: 34%;
     padding-top: 10px;
+    height: 460px;
     padding-bottom: 5px;
     button {
       margin: 15px 0;
@@ -60,13 +90,8 @@
     }
   }
 }
-
-
 @media (max-width: 1090px) {
   .navBar {
-    button {
-      font-size: 14px;
-    }
     nav {
       a {
         font-size: 14px;
@@ -77,11 +102,17 @@
     }
   }
 }
-
 @media (max-width: 950px) {
   .navBar {
+    height: 430px;
     img {
       width: 30%;
     }
   }
 }
+@media (max-width: 810px) {
+  .navBar {
+   display: none;
+  }
+}
+

@@ -1,0 +1,102 @@
+.purchases {
+  width: 70%;
+  h1 {
+    font-family: "Montserrat", serif;
+    font-size: 36px;
+    font-weight: 700;
+    padding-bottom: 30px;
+  }
+  table {
+    width: 80%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    text-align: left;
+    thead {
+      tr {
+        th {
+          font-weight: 400;
+          color: #b0b0b0;
+          font-size: 16px;
+          padding: 20px 10px;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        th:last-child {
+          text-align: right;
+        }
+      }
+    }
+    tbody {
+      tr {
+        td {
+          padding: 30px 0 20px 0;
+          font-size: 16px;
+          color: #ffffff;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        td:last-child {
+          text-align: right;
+        }
+        tr:not(:last-child) td {
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1140px) {
+  .purchases {
+    width: 65%;
+  }
+}
+@media (max-width: 1020px) {
+  .purchases {
+    width: 60%;
+    table {
+      width: 90%;
+    }
+  }
+}
+@media (max-width: 1020px) {
+  .purchases {
+    width: 90%;
+    margin: 0 auto;
+    h1 {
+      display: none;
+    }
+    table {
+      margin: 30px 0;
+      width: 100%;
+      border-spacing: 0 5px;
+      tbody {
+        tr {
+          td {
+            padding: 15px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 420px) {
+  .purchases {
+    width: 100%;
+    table {
+      thead {
+        tr {
+          th {
+            font-size: 13px;
+          }
+        }
+      }
+      tbody {
+        tr {
+          td {
+            font-size: 12px;
+          }
+        }
+      }
+    }
+  }
+}

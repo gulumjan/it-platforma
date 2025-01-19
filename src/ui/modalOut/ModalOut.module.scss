@@ -1,0 +1,45 @@
+.modal {
+  width: 360px;
+  position: absolute;
+  top: auto;
+  left: 40%;
+  bottom: auto;
+  height: 200px;
+  padding: 21px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  background-color: rgba(10, 17, 40, 1);
+  align-items: center;
+  justify-content: center;
+  gap: 19px;
+  z-index: 99;
+  p {
+    font-family: "Montserrat", serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 19.5px;
+    text-align: center;
+  }
+  .btns {
+    display: flex;
+    gap: 10px;
+    button {
+      background: #034078;
+      width: 150px;
+      height: 40px;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+      font-size: 16px;
+      font-weight: 400;
+    }
+  }
+}
+
+@media (max-width: 880px) {
+  .modal {
+    left: 20%;
+    top: 200px;
+  }
+}

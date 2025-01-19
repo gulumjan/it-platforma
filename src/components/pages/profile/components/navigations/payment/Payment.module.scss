@@ -1,0 +1,214 @@
+.payment {
+  width: 70%;
+  h1 {
+    font-family: "Montserrat", serif;
+    font-size: 36px;
+    font-weight: 700;
+  }
+  .cards {
+    display: flex;
+    padding: 33px 0 88px 0;
+    flex-wrap: wrap;
+    gap: 10px;
+    .card {
+      width: 48%;
+      border-radius: 10px;
+      height: 225px;
+      padding: 20px 10px 10px 40px;
+      border: 1px solid #0272ce;
+      h2 {
+        font-size: 24px;
+        padding-bottom: 20px;
+        font-weight: 700;
+      }
+      h4 {
+        font-size: 24px;
+        padding: 20px 0 5px 0;
+        font-weight: 700;
+      }
+      .visa {
+        display: block;
+        margin-left: auto;
+      }
+    }
+  }
+  .addCard {
+    border: 1px solid #0272ce;
+    width: 100%;
+    border-radius: 10px;
+    height: 373px;
+    padding: 40px;
+    h1 {
+      font-size: 36px;
+      font-weight: 500;
+    }
+    p {
+      font-size: 16px;
+      font-weight: 400;
+      margin: 15px 0 119px 0;
+      line-height: 19.5px;
+    }
+    button {
+      width: 180px;
+      height: 40px;
+      border-radius: 10px;
+      background-color: #0272ce;
+      font-family: "Montserrat", serif;
+      border: none;
+      outline: none;
+      font-size: 16px;
+      font-weight: 400;
+    }
+  }
+}
+
+@media (max-width: 1480px) {
+  .payment {
+    width: 65%;
+  }
+}
+
+@media (max-width: 1110px) {
+  .payment {
+    width: 65%;
+    .cards {
+      padding: 22px 0 66px 0;
+      .card {
+        padding: 15px 10px 10px 25px;
+        h2 {
+          font-size: 20px;
+        }
+        img {
+          width: 22%;
+        }
+        h4 {
+          font-size: 20px;
+        }
+        span {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 990px) {
+  .payment {
+    .addCard {
+      padding: 22px;
+      height: 300px;
+      p {
+        margin: 15px 0 59px 0;
+      }
+    }
+  }
+}
+
+@media (max-width: 810px) {
+  .payment {
+    width: 100%;
+    h1 {
+      display: none;
+    }
+    .cards {
+      flex-wrap: nowrap;
+      flex-direction: column;
+      .card {
+        width: 75%;
+        margin: 0 auto;
+      }
+    }
+    .addCard {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 22px;
+      height: 350px;
+      width: 75%;
+      margin: 0 auto;
+      h1 {
+        display: block;
+      }
+      p {
+        margin: 15px 0;
+      }
+      button {
+        padding: 10px 20px;
+        margin-top: 80px;
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .payment {
+    .cards {
+      .card {
+        width: 98%;
+      }
+    }
+    .addCard {
+      width: 98%;
+    }
+  }
+}
+
+@media (max-width: 460px) {
+  .payment {
+    .cards {
+      padding: 50px 0 70px 0;
+      .card {
+        width: 100%;
+        padding: 10px 10px 10px 20px;
+        height: 200px;
+      }
+    }
+    .addCard {
+      width: 100%;
+      h1 {
+        font-size: 26px;
+      }
+      button {
+        margin-top: 50px;
+      }
+    }
+  }
+}
+@media (max-width: 360px) {
+  .payment {
+    .cards {
+      padding: 50px 0 70px 0;
+      .card {
+        width: 100%;
+        padding: 10px 10px 10px 20px;
+        height: 190px;
+        h2 {
+          font-size: 16px;
+        }
+        h4 {
+          font-size: 16px;
+        }
+        span {
+          font-size: 12px;
+        }
+        img {
+          width: 18%;
+        }
+      }
+    }
+    .addCard {
+      width: 100%;
+      button {
+        margin-top: 50px;
+        font-size: 13px;
+        width: 160px;
+        height: 36px;
+      }
+      p {
+        font-size: 12px;
+      }
+    }
+  }
+}
