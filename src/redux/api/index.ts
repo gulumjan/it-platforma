@@ -1,22 +1,25 @@
+import { useLanguageStore } from "@/stores/UseLanguageStore";
 import {
   BaseQueryFn,
   createApi,
   fetchBaseQuery,
 } from "@reduxjs/toolkit/query/react";
 
-const baseQuery = fetchBaseQuery({
-  baseUrl: ``,
-});
+const dynamicBaseQuery: BaseQueryFn = async (args, api, extraOptions) => {
+  const language = useLanguageStore.getState().language;
 
-const baseQueryExtended: BaseQueryFn = async (args, api, extraOptions) => {
-  const result = await baseQuery(args, api, extraOptions);
-  return result;
+  const baseUrl = `${process.env.NEXT_PUBLIC_URL}/${language}`;
+
+  const fetchBaseQueryWithLanguage = fetchBaseQuery({ baseUrl });
+
+  return fetchBaseQueryWithLanguage(args, api, extraOptions);
 };
+
 export const api = createApi({
   reducerPath: "api",
-  baseQuery: baseQueryExtended,
+  baseQuery: dynamicBaseQuery,
   refetchOnReconnect: true,
   refetchOnFocus: true,
-  tagTypes: ["product"],
+  tagTypes: ["data"],
   endpoints: () => ({}),
 });
