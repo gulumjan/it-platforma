@@ -59,7 +59,7 @@ const LoginPage = () => {
       </div>
       <div className={s.btn}>
         <Link href="/auth/register">У Вас нет аккаунта? </Link>
-        <Link href={"/"} className={s.forgot}>
+        <Link href={"/auth/forgot"} className={s.forgot}>
           Забыли пароль?
         </Link>
       </div>

@@ -7,7 +7,7 @@ const api = index.injectEndpoints({
       AUTH.RegisterUserRequest
     >({
       query: (data) => ({
-        url: "/api/auth/register/",
+        url: "/register/",
         method: "POST",
         body: data,
       }),
@@ -15,7 +15,18 @@ const api = index.injectEndpoints({
     }),
     loginUser: build.mutation<AUTH.LoginUserResponse, AUTH.LoginUserRequest>({
       query: (data) => ({
-        url: "/api/auth/login/",
+        url: "/login/",
+        method: "POST",
+        body: data,
+      }),
+      invalidatesTags: ["data"],
+    }),
+    forgotPassword: build.mutation<
+      AUTH.ForgotPasswordResponse,
+      AUTH.ForgotPasswordRequest
+    >({
+      query: (data) => ({
+        url: "/reset-password/",
         method: "POST",
         body: data,
       }),
@@ -24,4 +35,8 @@ const api = index.injectEndpoints({
   }),
 });
 
-export const { useRegisterUserMutation, useLoginUserMutation } = api;
+export const {
+  useRegisterUserMutation,
+  useLoginUserMutation,
+  useForgotPasswordMutation,
+} = api;

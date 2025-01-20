@@ -1,0 +1,102 @@
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3); // Полупрозрачный белый фон
+  backdrop-filter: blur(8px); // Размытие фона
+
+  .mainModal {
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: -1px 0px 23px 1px rgba(207, 207, 207, 0.2);
+    background: rgb(31, 39, 49);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 1;
+    position: relative;
+    max-width: 90%;
+    width: 400px;
+
+    .title {
+      color: white;
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 19.5px;
+      margin: 0;
+      text-align: center;
+    }
+    .text {
+      margin: 0;
+      color: white;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 20px;
+      text-align: center;
+    }
+    .btn {
+      border-radius: 5px;
+      border: none;
+      color: white;
+      padding: 10px 30px;
+      background: rgba(3, 64, 120, 1);
+      transition: 300ms;
+      &:hover {
+        padding: 12px 34px;
+        transform: translateY(-3px);
+        background: rgb(4, 90, 166);
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .mainModal {
+    width: 90%;
+    padding: 20px 30px;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .mainModal {
+    width: 95%;
+    padding: 15px 20px;
+    gap: 15px;
+  }
+
+  .btn {
+    padding: 8px 20px;
+    font-size: 14px;
+  }
+
+  .text {
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  .title {
+    font-size: 18px;
+    line-height: 22px;
+  }
+}
+
+@media (max-width: 375px) {
+  .mainModal {
+    width: 100%;
+    padding: 10px 15px;
+    gap: 10px;
+  }
+
+  .btn {
+    padding: 6px 15px;
+  }
+}

@@ -9,4 +9,10 @@ namespace AUTH {
     };
   };
   type LoginUserRequest = iUserLogin;
+  type ForgotPasswordResponse = {
+    email: string;
+  };
+  type ForgotPasswordRequest = {
+    email: string;
+  };
 }
