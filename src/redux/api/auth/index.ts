@@ -2,6 +2,13 @@ import { api as index } from "..";
 
 const api = index.injectEndpoints({
   endpoints: (build) => ({
+    getUser: build.query<AUTH.GetUserResponse, AUTH.GetUserRequest>({
+      query: () => ({
+        url: `/user/`,
+        method: "GET",
+      }),
+      providesTags: ["data"],
+    }),
     registerUser: build.mutation<
       AUTH.RegisterUserResponse,
       AUTH.RegisterUserRequest
@@ -33,10 +40,12 @@ const api = index.injectEndpoints({
       invalidatesTags: ["data"],
     }),
   }),
+  overrideExisting: true,
 });
 
 export const {
   useRegisterUserMutation,
   useLoginUserMutation,
   useForgotPasswordMutation,
+  useGetUserQuery,
 } = api;

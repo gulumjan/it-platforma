@@ -23,6 +23,7 @@ const Register = () => {
         "🚀 ~ constonSubmit:SubmitHandler<AUTH.RegisterUserRequest>=async ~ res:",
         res
       );
+      localStorage.setItem("tokens", JSON.stringify(res.data));
     } catch (error) {
       console.log(error);
     }
