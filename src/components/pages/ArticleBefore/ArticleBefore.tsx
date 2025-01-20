@@ -1,41 +1,34 @@
+"use client";
 import React from "react";
 import scss from "@/components/pages/ArticleBefore/ArticleBefore.module.scss";
 import article_img from "@/assets/Article_img.png";
 import Image from "next/image";
+import { useGetStatyaDoQuery } from "@/redux/api/product";
+import { useParams } from "next/navigation";
 
 const ArticleBefore = () => {
+  const { id } = useParams();
+  console.log(id, "id");
+
+  const { data } = useGetStatyaDoQuery(Number(id));
+  console.log(data, "xfdghjkgfhj");
+
   return (
     <div id={scss.articleBef}>
       <div className="container">
-        <div className={scss.articleBef}>
-          <h2>
-            Мы подготовили подборку самых популярных курсов по направлению Java
-            в IBS Training Center.
-          </h2>
-          <p>
-            Когда-то ни один крупный проект не обходился без применения
-            функционального и асинхронного программирования. Эти подходы до сих
-            пор популярны за счет своих преимуществ: они помогают выдерживать
-            большие нагрузки и писать эффективный код, не теряя в скорости
-            разработки.{" "}
-          </p>
-          <Image src={article_img} alt="img" />
-          <h6>
-            В рамках курса от IBS Training Center вы поймете, как работают
-            основные фичи Spring Framework 5, и узнаете:
-          </h6>
+          <div  className={scss.articleBef}>
+            <h2>{data?.title}</h2>
+            <p>{data?.description}</p>
+            <Image src={article_img} alt="img" />
+            <h6>{data?.for_key_description}</h6>
 
-          <ul>
-            <li>Какие существуют конфигурации для Spring Framework 5;</li>
-            <li>
-              Как работать с REST-сервисами и документацией при помощи Swagger.
-            </li>
-            <li>Что такое бины и как с ними работать;</li>
-            <li>Что такое Концепция IoC;</li>
-            <li>Примеры использования AOP;</li>
-          </ul>
-        </div>
-      </div>
+            {data?.keys_statya.map((item, idx) => (
+              <ul key={idx}>
+                <li>{item.key}</li>
+              </ul>
+            ))}
+          </div>
+      </div> 
     </div>
   );
 };

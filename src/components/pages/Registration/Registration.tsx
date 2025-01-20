@@ -4,8 +4,11 @@ import React, { useState } from "react";
 import scss from "@/components/pages/Registration/Registration.module.scss";
 import Link from "next/link";
 
+
 const Registration = () => {
     const [selectedCard, setSelectedCard] = useState<string>("");
+
+   
 
     const handleCardInput = (event: React.ChangeEvent<HTMLInputElement>) => {
         let input = event.target.value.replace(/\D/g, ""); // Удалить все символы, кроме цифр
@@ -24,6 +27,8 @@ const Registration = () => {
     const handleCardSelection = (event: React.ChangeEvent<HTMLInputElement>) => {
         setSelectedCard(event.target.value); // Сохранить выбранную карту
     };
+
+
 
     return (
         <div id={scss.registration}>
