@@ -43,14 +43,11 @@
       .btns {
         display: flex;
         gap: 15px;
-
-        button {
-          font-size: 16px;
-          font-weight: 500;
-          padding: 10px 20px;
+        .note {
+          background: none;
+          font-size: 28px;
           border: none;
-          border-radius: 5px;
-          cursor: pointer;
+          font-weight: 400;
         }
 
         .loginBtn {
@@ -58,6 +55,12 @@
           color: #ffffff;
           border: 1px solid #ffffff;
           transition: background-color 0.3s ease, color 0.3s ease;
+          font-size: 16px;
+          font-weight: 500;
+          padding: 10px 20px;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
 
           &:hover {
             background-color: #ffffff;
@@ -69,10 +72,25 @@
           background-color: #1a73e8;
           color: #ffffff;
           transition: background-color 0.3s ease;
+          font-size: 16px;
+          font-weight: 500;
+          padding: 10px 20px;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
 
           &:hover {
             background-color: #125bb5;
           }
+        }
+        .subscribeBtn2 {
+          background: none;
+          color: #ffffff;
+          transition: background-color 0.3s ease;
+          border: 1px solid #275793;
+          padding: 11px 48px;
+          border-radius: 13px;
+          font-size: 17px;
         }
       }
     }
