@@ -8,6 +8,8 @@ import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
 import { useLanguageStore } from "@/stores/UseLanguageStore";
 import Language from "@/ui/language/Language";
+import { useGetUserQuery } from "@/redux/api/auth";
+import { IoMdNotificationsOutline } from "react-icons/io";
 
 const BurgerMenu = dynamic(() => import("@/ui/burger_menu/BurgerMenu"), {
   ssr: false,
@@ -17,6 +19,8 @@ const Header: FC = () => {
   const router = useRouter();
   const [isMobile, setIsMobile] = useState(false);
   const language = useLanguageStore((state) => state.language);
+  const { data } = useGetUserQuery();
+  console.log("🚀 ~ data:", data);
 
   useEffect(() => {
     console.log("Current language in Header:", language);
@@ -77,18 +81,34 @@ const Header: FC = () => {
                 </nav>
 
                 <div className={scss.btns}>
-                  <button
-                    onClick={() => router.push(`/auth/login`)}
-                    className={scss.loginBtn}
-                  >
-                    {translate(`signIn`)}
-                  </button>
-                  <button
-                    onClick={() => router.push(`/registration`)}
-                    className={scss.subscribeBtn}
-                  >
-                    {translate("follow")}
-                  </button>
+                  {data ? (
+                    <>
+                      <button className={scss.note}>
+                        <IoMdNotificationsOutline />
+                      </button>
+                      <button
+                        onClick={() => router.push(`/profile`)}
+                        className={scss.subscribeBtn2}
+                      >
+                        Профиль
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <button
+                        onClick={() => router.push(`/auth/login`)}
+                        className={scss.loginBtn}
+                      >
+                        {translate(`signIn`)}
+                      </button>
+                      <button
+                        onClick={() => router.push(`/registration`)}
+                        className={scss.subscribeBtn}
+                      >
+                        {translate("follow")}
+                      </button>
+                    </>
+                  )}
                 </div>
               </>
             ) : (

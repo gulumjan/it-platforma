@@ -1,64 +1,49 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import scss from "./BuyCourses.module.scss";
 import { useParams } from "next/navigation";
 import ModalWindow from "@/ui/modal_window/ModalWindow";
 import { useLanguageStore } from "@/stores/UseLanguageStore";
+import { useGetCoursDetailQuery } from "@/redux/api/product";
+import { TbTrack } from "react-icons/tb";
 
 const BuyCourses = () => {
-  const params = useParams();
-  const courseId = Number(params?.confirm);
-  const { t } = useLanguageStore();
+  const { id } = useParams();
+  const { data } = useGetCoursDetailQuery(Number(id));
 
-  const courses = [
-    {
-      id: 1,
-      teacherProfession: "Frontend разработчик",
+  const language = useLanguageStore((state) => state.language);
 
-      access: "навсегда",
-      includes: ["9 модулей"],
-      price: 200,
-      about:
-        "Идея реактивного программирования появилась сравнительно недавно, лет 10 назад. ",
-      teacher: "Евгений Александрович",
-      materials: "60 материалов",
-      name: "Frontend-разработчик",
-      info: "Мастер создания сайтов. Умеет делать их красивыми, интерактивными, с большим функционалом.",
-    },
-    {
-      id: 2,
-      teacherProfession: "Frontend разработчик",
+  useEffect(() => {
+    console.log("Current language in Header:", language);
+  }, [language]);
 
-      teacher: "Евгений Александрович",
-      about:
-        "Идея реактивного программирования появилась сравнительно недавно, лет 10 назад. ",
-      includes: ["6 модулей"],
-      access: "месяц",
-      price: 900,
-      materials: "90 материалов",
-      name: "Backend-разработчик",
-      info: "Специалист, который отвечает за построение логики для воплощения любой идеи.",
+  const translations = {
+    ru: {
+      agree: "Я ознакомился и согласен с Условиями оказания услуг",
+      pay: "Оплатить",
+      cart: "Выберите платежную карту",
+      number: "Номер карты *",
     },
-    {
-      id: 3,
-      teacherProfession: "Frontend разработчик",
-      about:
-        "Идея реактивного программирования появилась сравнительно недавно, лет 10 назад. ",
-      teacher: "Евгений Александрович",
-      includes: ["3 модулей", "30 материалов"],
-      price: 40,
-      access: "год",
-      name: "UX / UI Дизайнер",
-      info: "Креативный специалист, который придумывает дизайн и интерфейс продукта.",
+    ky: {
+      agree: "Мен кызмат көрсөтүү шарттары менен тааныштым жана макулмун",
+      pay: "Төлөм жасоо",
+      cart: "Төлөм картасын тандаңыз",
+      number: "Картанын номери *",
     },
-  ];
+  };
+
+  const translate = (key: keyof (typeof translations)["ru"]) => {
+    return (
+      translations[language as keyof typeof translations]?.[key] ??
+      translations.ru[key]
+    );
+  };
+
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
-
-  const selectedCourse = courses.find((course) => course.id === courseId);
 
   return (
     <section className={scss.BuyInputs}>
@@ -83,9 +68,7 @@ const BuyCourses = () => {
         </div>
         <div className={scss.card}>
           {" "}
-          <h1 className={scss.inputText}>
-            {t("Төлөм картасын тандаңыз", "Выберите платежную карту")}
-          </h1>
+          <h1 className={scss.inputText}>{translate("cart")}</h1>
           <div className={scss.checkBoxes}>
             <div className={scss.checkBox}>
               <input
@@ -109,9 +92,7 @@ const BuyCourses = () => {
         </div>
         <div className={scss.cardNumber}>
           {" "}
-          <h1 className={scss.inputText}>
-            {t("Картанын номери *", "Номер карты *")}
-          </h1>
+          <h1 className={scss.inputText}>{translate("cart")}</h1>
           <input type="number" className={scss.input} />
         </div>
         <div className={scss.cardCode}>
@@ -126,8 +107,8 @@ const BuyCourses = () => {
         </div>
         <div className={scss.actions}>
           <button className={scss.button} onClick={openModal}>
-            {t("Төлөм жасоо ", "Оплатить ")}
-            {selectedCourse?.price}.00 $
+            {translate("pay")}
+            {data?.price}.00 $
           </button>
           <div className={scss.checkBox}>
             <input
@@ -136,12 +117,7 @@ const BuyCourses = () => {
               className={scss.customCheckbox}
             />
             <label htmlFor="checkbox3"></label>{" "}
-            <h1 className={scss.text}>
-              {t(
-                "Мен кызмат көрсөтүү шарттары менен тааныштым жана макулмун",
-                "Я ознакомился и согласен с Условиями оказания услуг "
-              )}
-            </h1>
+            <h1 className={scss.text}>{translate("agree")}</h1>
           </div>{" "}
         </div>
       </div>

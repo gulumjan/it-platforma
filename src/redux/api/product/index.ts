@@ -13,6 +13,16 @@ const api = index.injectEndpoints({
       }),
       providesTags: ["data"],
     }),
+    getCoursDetail: build.query<
+      PRODUCT.GetCourseDetailResponse,
+      PRODUCT.GetCourseDetailRequest
+    >({
+      query: (id) => ({
+        url: `/cours/${id}`,
+        method: "GET",
+      }),
+      providesTags: ["data"],
+    }),
     getStatya: build.query<
       PRODUCT.GetStatyasResponse,
       PRODUCT.GetStatyaRequest
@@ -43,4 +53,7 @@ const api = index.injectEndpoints({
   }),
 });
 
-export const { useGetCoursQuery, useGetStatyaQuery,useGetStatyaDoQuery,useGetStatyaAfterQuery } = api;
+
+export const { useGetCoursQuery, useGetStatyaQuery, useGetCoursDetailQuery } =
+  api;
+

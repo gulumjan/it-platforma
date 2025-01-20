@@ -1,34 +1,32 @@
 "use client";
 import { FC } from "react";
 import scss from "./Direction.module.scss";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
+import { useGetCoursDetailQuery } from "@/redux/api/product";
 
 const Direction: FC = () => {
   const router = useRouter();
+  const { id } = useParams();
+  const { data } = useGetCoursDetailQuery(Number(id));
   return (
     <section className={scss.Direction}>
       <div className="container">
         <div className={scss.content}>
           <div className={scss.content_text}>
-            <h1>Frontend-разработчик</h1>
-            <p>
-              {" "}
-              Идея реактивного программирования появилась сравнительно недавно,
-              лет 10 назад. Что вызвало популярность этого относительно нового
-              подхода и почему сейчас он в тренде, рассказал на конференции
-            </p>
-            <button onClick={() => router.push(`/kaufen`)}>
-              Купить курс за 46 ${" "}
+            <h1>{data?.title}</h1>
+            <p> {data?.description1}</p>
+            <button onClick={() => router.push(`/kaufen/${data?.id}`)}>
+              Купить курс за {data?.price}${" "}
             </button>
           </div>
           <div className={scss.access}>
             <div className={scss.together}>
               <p>Доступ:</p>
-              <h4>Навсегда</h4>
+              <h4>{data?.dostup_course}</h4>
             </div>
             <div className={scss.together}>
               <p>В курс входит: </p>
-              <h4>3 модулей 60 материалов</h4>
+              <h4>{data?.into_course[0].material}</h4>
             </div>
           </div>
         </div>
