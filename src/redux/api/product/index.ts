@@ -12,7 +12,17 @@ const api = index.injectEndpoints({
       }),
       providesTags: ["data"],
     }),
+    getStatya: build.query<
+      PRODUCT.GetStatyasResponse,
+      PRODUCT.GetStatyaRequest
+    >({
+      query: () => ({
+        url: "/statya/",
+        method: "GET",
+      }),
+      providesTags: ["data"],
+    }),
   }),
 });
 
-export const { useGetCoursQuery } = api;
+export const { useGetCoursQuery, useGetStatyaQuery } = api;

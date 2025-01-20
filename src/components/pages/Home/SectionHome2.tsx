@@ -1,9 +1,11 @@
+"use client"
 import React from 'react';
 import scss from "@/components/pages/Home/SectionHome2.module.scss";
 import home2_img from "@/assets/home2_img.png";
 import Image from 'next/image';
 import { FaClipboardList } from "react-icons/fa";
 import Link from 'next/link';
+import { useGetStatyaQuery } from '@/redux/api/product';
 
 const articles = Array(6).fill({
     title: "Статьи",
@@ -13,6 +15,9 @@ const articles = Array(6).fill({
 });
 
 const SectionHome2 = () => {
+
+    const {data} = useGetStatyaQuery()
+    console.log("🚀 ~ SectionHome2 ~ data:", data)
     return (
         <div id={scss.home2}>
             <div className="container">
