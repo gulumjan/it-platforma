@@ -20,3 +20,10 @@ interface iUserLogin {
   email: string;
   password: string;
 }
+
+interface IStatya {
+   id: number
+  title: string
+  date: string
+  image: string
+}
