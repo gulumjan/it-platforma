@@ -1,140 +1,151 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
 @mixin tablet {
-    @media (max-width: 1024px) {
-      @content;
-    }
+  @media (max-width: 1024px) {
+    @content;
   }
-  
-  @mixin mobile {
-    @media (max-width: 768px) {
-      @content;
-    }
+}
+
+@mixin mobile {
+  @media (max-width: 768px) {
+    @content;
   }
-  
-  @mixin phone {
-    @media (max-width: 480px) {
-      @content;
-    }
+}
+
+@mixin phone {
+  @media (max-width: 480px) {
+    @content;
   }
+}
 
 
 
 
 #home2 {
-    h1 {
-        font-size: 50px;
-        font-weight: 700;
-        line-height: 35px;
-        text-align: center;
-        margin-bottom: 80px;
+  padding-bottom: 70px;
+  h1 {
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 35px;
+    text-align: center;
+    margin-bottom: 80px;
 
-        @include tablet() {
-           margin-top:120px;
-           font-size: 45px;
-      
+    @include tablet() {
+      margin-top: 120px;
+      font-size: 45px;
 
-   
-  
-          }
+
+
+
     }
+  }
 
-    .home2 {
+  .home2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    gap: 40px;
+
+    .home2_block {
+      background: white;
+      width: 450px;
+      height: 450px;
+      border-radius: 20px;
+
+      img {
+        width: 100%;
+        border-top-left-radius:20px ;
+        border-top-right-radius:20px ;
+      }
+
+      .home2_text {
+        height: 37%;
+        padding: 20px 10px;
         display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 0 auto;
-        flex-wrap: wrap;
-        gap: 40px;
+        flex-direction: column;
+        justify-content: space-between;
 
-        .home2_block {
-            background: white;
-            width: 450px;
-            height: auto;
-            border-radius: 20px;
+        h6 {
+          color: #898989;
 
-            img {
-                width: 100%;
-            }
+          font-size: 14px;
+          font-weight: 500;
+          line-height: 17.07px;
+          text-align: left;
+          margin-bottom: 10px;
 
-            .home2_text {
-                padding: 20px 10px;
+        }
 
-                h6 {
-                    color: #898989;
-
-                    font-size: 14px;
-                    font-weight: 500;
-                    line-height: 17.07px;
-                    text-align: left;
-                    margin-bottom: 10px;
-
-                }
-
-                p {
-                    font-size: 16px;
-                    font-weight: 600;
-                    line-height: 19.5px;
-                    text-align: left;
-                    color: #000000;
-                    width: 85%;
-
-
-                }
-
-                .home2_read {
-                    display: flex;
-                    align-items: center;
-                    gap: 55%;
-
-
-
-                    h5 {
-                        display: flex;
-                        gap: 5px;
-                        align-items: center;
-                        color: #044176;
-                        font-size: 15px;
-                        font-weight: 500;
-                        line-height: 18.29px;
-                        text-align: left;
-                        margin-top: 15px;
-
-
-                    }
-
-                }
-            }
-
+        p {
+          font-size: 16px;
+          font-weight: 600;
+          line-height: 19.5px;
+          text-align: left;
+          color: #000000;
+          width: 85%;
 
 
         }
 
-        
+        .home2_read {
+          display: flex;
 
 
-    }
-    .btn{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-top: 50px;
-        button {
-     
-            padding: 20px 60px;
-            background: #034078;
-            font-size: 18px;
+
+          gap: 55%;
+
+
+
+          h5 {
+            display: flex;
+            gap: 5px;
+            align-items: center;
+            color: #044176;
+            font-size: 15px;
             font-weight: 500;
-            line-height: 21.94px;
-            border: none;
-    
-            border-radius: 10px;
-            cursor: pointer;
-    
-    
+            line-height: 18.29px;
+            text-align: left;
+            margin-top: 15px;
+
+
+          }
+
         }
+      }
+
+
 
     }
 
-    
+
+
+
+  }
+
+  .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+
+    button {
+
+      padding: 20px 60px;
+      background: #034078;
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 21.94px;
+      border: none;
+
+      border-radius: 10px;
+      cursor: pointer;
+
+
+    }
+
+  }
+
+
 }

@@ -1,3 +1,4 @@
+
 import { api as index } from "..";
 
 const api = index.injectEndpoints({
@@ -22,7 +23,24 @@ const api = index.injectEndpoints({
       }),
       providesTags: ["data"],
     }),
+
+    getStatyaDo: build.query<PRODUCT.GetStatyaDoResponse, PRODUCT.GetStatyaDoRequest>({
+      query:(id)=>({
+        url:`/statyado/${id}`,
+        method:"GET",
+      }),
+      providesTags:["data"]
+    }),
+
+    getStatyaAfter: build.query<PRODUCT.GetStatyaAfterResponse, PRODUCT.GetStatyaAfterRequest>({
+      query:(id)=>({
+        url:`/statyado/${id}`,
+        method:"GET",
+      }),
+      providesTags:["data"]
+    }),
+
   }),
 });
 
-export const { useGetCoursQuery, useGetStatyaQuery } = api;
+export const { useGetCoursQuery, useGetStatyaQuery,useGetStatyaDoQuery,useGetStatyaAfterQuery } = api;
