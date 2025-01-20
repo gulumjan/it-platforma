@@ -54,6 +54,6 @@ const api = index.injectEndpoints({
 });
 
 
-export const { useGetCoursQuery, useGetStatyaQuery, useGetCoursDetailQuery } =
+export const { useGetCoursQuery, useGetStatyaQuery, useGetCoursDetailQuery,useGetStatyaAfterQuery,useGetStatyaDoQuery } =
   api;
 
