@@ -18,10 +18,7 @@ const LoginPage = () => {
     console.log(data);
     try {
       const res = await loginUser(data);
-      console.log(
-        "🚀 ~ constonSubmit:SubmitHandler<AUTH.LoginUserRequest>=async ~ res:",
-        res
-      );
+      router.push("/profile")
     } catch (error) {
       console.log(error);
     }
