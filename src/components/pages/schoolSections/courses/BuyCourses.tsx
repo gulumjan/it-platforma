@@ -9,7 +9,7 @@ import { useLanguageStore } from "@/stores/UseLanguageStore";
 const BuyCourses = () => {
   const params = useParams();
   const courseId = Number(params?.confirm);
-  const { t } = useLanguageStore();
+  const { language } = useLanguageStore();
 
   const courses = [
     {

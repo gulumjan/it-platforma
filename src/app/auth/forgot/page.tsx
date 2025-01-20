@@ -1,11 +1,11 @@
 import AuthLayout from "@/components/layout/authLayout/AuthLayout";
-import LoginPage from "@/components/pages/auth/login/LoginPage";
+import ForgotPassword from "@/components/pages/auth/forgot/ForgotPassword";
 import React from "react";
 
 const page = () => {
   return (
     <AuthLayout>
-      <LoginPage />
+      <ForgotPassword />
     </AuthLayout>
   );
 };
