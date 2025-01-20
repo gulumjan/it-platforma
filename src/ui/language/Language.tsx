@@ -54,9 +54,6 @@ const Language = () => {
   }, [language]);
 
   const translations = {
-    en: {
-      language: "Language",
-    },
     ru: {
       language: "Язык",
     },
@@ -65,15 +62,14 @@ const Language = () => {
     },
   };
 
-  const translate = (key: keyof (typeof translations)["en"]) => {
+  const translate = (key: keyof (typeof translations)["ru"]) => {
     return (
       translations[language as keyof typeof translations]?.[key] ??
-      translations.en[key]
+      translations.ru[key]
     );
   };
 
   const languages = [
-    { code: "en", label: "Eng" },
     { code: "ru", label: "Ru" },
     { code: "ky", label: "Kgz" },
   ];

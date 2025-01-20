@@ -1,3 +1,4 @@
+"use client";
 import { FC } from "react";
 import scss from "./Material.module.scss";
 import Image from "next/image";
@@ -5,8 +6,12 @@ import img from "@/assets/ЗВЕЗДА.svg";
 import img2 from "@/assets/Frame 10.svg";
 import img3 from "@/assets/100 материао.svg";
 import profile from "@/assets/Rectangle 2196.svg";
+import { useParams } from "next/navigation";
+import { useGetCoursDetailQuery } from "@/redux/api/product";
 
 const Material: FC = () => {
+  const { id } = useParams();
+  const { data } = useGetCoursDetailQuery(Number(id));
   return (
     <section className={scss.Material}>
       <div className="container">
@@ -38,11 +43,18 @@ const Material: FC = () => {
             </div>
           </div>
           <div className={scss.author}>
-            <Image width={568} height={588} src={profile} alt="" />
+            <Image
+              width={568}
+              height={588}
+              src={
+                data?.image_prepod! ||
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRg-WjMailx0S8JX3m80ELdb8mIIpvx9dGcig&s"
+              }
+              alt=""
+            />
             <p>Мастер класс ведет</p>
-            <h1>Евгений Александрович</h1>
-            Frontend developer
-            <p></p>
+            <h1>{data?.full_name}</h1>
+            {data?.position}
           </div>
         </div>
       </div>
