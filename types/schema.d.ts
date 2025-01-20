@@ -1,7 +1,7 @@
 interface iCourse {
   id: number;
   title: string;
-  about_description: string;
+  description: string;
 }
 interface iUserRegister {
   id: number;
@@ -15,6 +15,43 @@ interface iUserRegister {
   city?: string;
   position?: string;
 }
+interface iCourseDetail{
+  id: number
+  title: string
+  description: string
+  into_course: Array<{
+    material: string
+  }>
+  description1: string
+  description2: string
+  description3: string
+  price: string
+  dostup_course: string
+  description4: any
+  description5: string
+  image_prepod: string
+  full_name: string
+  position: string
+  who_for_course: Array<{
+    id: number
+    name: string
+  }>
+  you_learns: Array<{
+    id: number
+    name: string
+  }>
+  modules: Array<{
+    id: number
+    module_num: string
+    description: string
+  }>
+  course_pl: Array<{
+    id: number
+    number: number
+    title: string
+    description: string
+  }>
+}
 
 interface iUserLogin {
   email: string;
@@ -22,8 +59,8 @@ interface iUserLogin {
 }
 
 interface IStatya {
-   id: number
-  title: string
-  date: string
-  image: string
+  id: number;
+  title: string;
+  date: string;
+  image: string;
 }

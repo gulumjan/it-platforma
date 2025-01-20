@@ -2,50 +2,31 @@
 import { FC } from "react";
 import scss from "./Courses.module.scss";
 import { useRouter } from "next/navigation";
+import { useGetCoursQuery } from "@/redux/api/product";
 
 const Courses: FC = () => {
   const router = useRouter();
+  const { data } = useGetCoursQuery();
   return (
     <section className={scss.Courses}>
       <h1>Курсы</h1>
       <div className="container">
         <div className={scss.content}>
           <div className={scss.blocks}>
-            <div className={scss.block}>
-              <h2>Frontend-разработчик</h2>
-              <p>
-                Мастер создания сайтов. Умеет делать их красивыми,
-                интерактивными, с большим функционалом. Профессия отлично
-                подойдет тем, кто хочет фрилансить и постоянно разрабатывать
-                новые проекты
-              </p>
-              <button onClick={() => router.push(`/detail-course`)}>
-                Подробнее
-              </button>
-            </div>
-            <div className={scss.block}>
-              <h2>Frontend-разработчик</h2>
-              <p>
-                Мастер создания сайтов. Умеет делать их красивыми,
-                интерактивными, с большим функционалом. Профессия отлично
-                подойдет тем, кто хочет фрилансить и постоянно разрабатывать
-                новые проекты
-              </p>
-              <button onClick={() => router.push(`/detail-course`)}>
-                Подробнее
-              </button>
-            </div>
-            <div className={scss.block}>
-              <h2>Frontend-разработчик</h2>
-              <p>
-                Мастер создания сайтов. Умеет делать их красивыми,
-                интерактивными, с большим функционалом. Профессия отлично
-                подойдет тем, кто хочет фрилансить и постоянно разрабатывать
-                новые проекты
-              </p>
-              <button onClick={() => router.push(`/detail-course`)}>
-                Подробнее
-              </button>
+            <div className={scss.blocks}>
+              {data?.map((el) => (
+                <div
+                  onClick={() => router.push(`/courses/${el.id}`)}
+                  key={el.id}
+                  className={scss.block}
+                >
+                  <h2>{el.title}</h2>
+                  <p>{el.description}</p>
+                  <button onClick={() => router.push(`/detail-course`)}>
+                    Подробнее
+                  </button>
+                </div>
+              ))}
             </div>
           </div>
         </div>

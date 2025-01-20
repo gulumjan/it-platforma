@@ -16,6 +16,7 @@ const dynamicBaseQuery: BaseQueryFn = async (args, api, extraOptions) => {
     baseUrl,
     prepareHeaders: (headers) => {
       const tokens = localStorage.getItem("tokens");
+      console.log("🚀 ~ constdynamicBaseQuery:BaseQueryFn= ~ tokens:", tokens);
       const token = tokens ? JSON.parse(tokens).accessToken : null;
 
       if (token) {

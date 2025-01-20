@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
 import { useLanguageStore } from "@/stores/UseLanguageStore";
 import Language from "@/ui/language/Language";
+import { useGetUserQuery } from "@/redux/api/auth";
 
 const BurgerMenu = dynamic(() => import("@/ui/burger_menu/BurgerMenu"), {
   ssr: false,
@@ -17,6 +18,8 @@ const Header: FC = () => {
   const router = useRouter();
   const [isMobile, setIsMobile] = useState(false);
   const language = useLanguageStore((state) => state.language);
+  const { data } = useGetUserQuery();
+  console.log("🚀 ~ data:", data);
 
   useEffect(() => {
     console.log("Current language in Header:", language);
