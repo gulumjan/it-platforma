@@ -15,4 +15,18 @@ namespace AUTH {
   type ForgotPasswordRequest = {
     email: string;
   };
+  type GetUserResponse = {
+    id: number;
+    username: string;
+    fio: string;
+    image: string;
+    phone_number: string;
+    gender_status: string;
+    birthday: string;
+    country: string;
+    city: string;
+    position: string;
+  };
+
+  type GetUserRequest = void;
 }

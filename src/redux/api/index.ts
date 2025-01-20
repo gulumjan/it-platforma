@@ -8,9 +8,23 @@ import {
 const dynamicBaseQuery: BaseQueryFn = async (args, api, extraOptions) => {
   const language = useLanguageStore.getState().language;
 
+  // Формирование базового URL с учетом языка
   const baseUrl = `${process.env.NEXT_PUBLIC_URL}/${language}`;
 
-  const fetchBaseQueryWithLanguage = fetchBaseQuery({ baseUrl });
+  // Конфигурация fetchBaseQuery
+  const fetchBaseQueryWithLanguage = fetchBaseQuery({
+    baseUrl,
+    prepareHeaders: (headers) => {
+      const tokens = localStorage.getItem("tokens");
+      const token = tokens ? JSON.parse(tokens).accessToken : null;
+
+      if (token) {
+        headers.set("Authorization", `Bearer ${token}`);
+      }
+
+      return headers;
+    },
+  });
 
   return fetchBaseQueryWithLanguage(args, api, extraOptions);
 };
