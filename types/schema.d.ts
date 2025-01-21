@@ -66,6 +66,14 @@ interface IStatya {
 }
 
 
+interface iMasterClass {
+  id: number
+  title: string
+  price: string
+  dostup: string
+}
+
+
 interface IStatyaDo {
   id: number;
   title: string;
@@ -101,5 +109,6 @@ interface IStatyaPosle {
     }
   ];
 }
+
 
 

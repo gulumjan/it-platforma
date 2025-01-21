@@ -2,9 +2,11 @@
 import { FC } from "react";
 import scss from "./MasterClass.module.scss";
 import { useRouter } from "next/navigation";
+import { useGetMasterClassQuery } from "@/redux/api/product";
 
 const MasterClass: FC = () => {
   const router = useRouter();
+  const {data}=useGetMasterClassQuery()
   return (
     <section className={scss.MasterClass}>
       <div className="container">
