@@ -1,52 +1,62 @@
-"use client"
-import React from 'react';
+"use client";
+import React, { useState } from "react";
 import scss from "@/components/pages/Home/SectionHome2.module.scss";
-import home2_img from "@/assets/home2_img.png";
-import Image from 'next/image';
-import { FaClipboardList } from "react-icons/fa";
-import Link from 'next/link';
-import { useGetStatyaQuery } from '@/redux/api/product';
 
-const articles = Array(6).fill({
-    title: "Статьи",
-    description: "Мы подготовили подборку самых популярных курсов по направлению Java в IBS Training Center.",
-    date: "01.02.2022",
-    image: home2_img,
-});
+import Image from "next/image";
+import { FaClipboardList } from "react-icons/fa";
+import { useGetStatyaQuery } from "@/redux/api/product";
+import { useRouter } from "next/navigation";
 
 const SectionHome2 = () => {
+  const route = useRouter();
 
-    const {data} = useGetStatyaQuery()
-    console.log("🚀 ~ SectionHome2 ~ data:", data)
-    return (
-        <div id={scss.home2}>
-            <div className="container">
-                <h1>Последние статьи</h1>
-                <div className={scss.home2}>
-                    {articles.map((article, index) => (
-                        <div key={index} className={scss.home2_block}>
-                            <Image src={article.image} alt="img" />
-                            <div className={scss.home2_text}>
-                                <h6>{article.title}</h6>
-                                <p>{article.description}</p>
-                                <div className={scss.home2_read}>
-                                    <Link href={"/articleBefore"}> <h5><FaClipboardList /><span></span>Читать</h5></Link>
-                                   
-                                    <h5>{article.date}</h5>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
-                  
-                </div>
-                <div className={scss.btn}>
-                <button>Показать больше</button>
+  const handlebox = (id: number) => {
+    route.push(`/articleBefore/${id}`);
+  };
 
+  const { data } = useGetStatyaQuery();
+  console.log("🚀 ~ SectionHome2 ~ data:", data);
+
+  // Локальное состояние для управления отображением блоков
+  const [visibleCount, setVisibleCount] = useState(6); // Отображаем первые 6 блоков
+
+  const handleShowMore = () => {
+    setVisibleCount((prev) => prev + 6); // Увеличиваем количество отображаемых блоков на 6
+  };
+
+  const visibleData = data?.slice(0, visibleCount); // Берем только видимые блоки
+
+  return (
+    <div id={scss.home2}>
+      <div className="container">
+        <h1>Последние статьи</h1>
+        <div className={scss.home2}>
+          {visibleData?.map((el, index) => (
+            <div key={index} className={scss.home2_block}>
+              <Image src={el.image} width={250} height={250} alt="img" />
+              <div className={scss.home2_text}>
+                <h6>Статьи</h6>
+                <p>{el.title.slice(0, 100)}</p>
+                <div className={scss.home2_read}>
+                  <h5 onClick={() => handlebox(el.id)}>
+                    <FaClipboardList />
+                    <span></span>Читать
+                  </h5>
+                  <h5>{el.date}</h5>
                 </div>
-              
+              </div>
             </div>
+          ))}
         </div>
-    );
+        {/* Кнопка отображается, только если есть скрытые блоки */}
+        {data && visibleCount < data.length && (
+          <div className={scss.btn}>
+            <button onClick={handleShowMore}>Показать больше</button>
+          </div>
+        )}
+      </div>
+    </div>
+  );
 };
 
 export default SectionHome2;
