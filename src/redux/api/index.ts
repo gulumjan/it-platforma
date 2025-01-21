@@ -8,26 +8,59 @@ import {
 const dynamicBaseQuery: BaseQueryFn = async (args, api, extraOptions) => {
   const language = useLanguageStore.getState().language;
 
-  // Формирование базового URL с учетом языка
+  if (!language) {
+    console.error("Ошибка: Язык не установлен");
+    throw new Error("Language is not set");
+  }
+
   const baseUrl = `${process.env.NEXT_PUBLIC_URL}/${language}`;
 
-  // Конфигурация fetchBaseQuery
   const fetchBaseQueryWithLanguage = fetchBaseQuery({
     baseUrl,
     prepareHeaders: (headers) => {
       const tokens = localStorage.getItem("tokens");
-      console.log("🚀 ~ constdynamicBaseQuery:BaseQueryFn= ~ tokens:", tokens);
-      const token = tokens ? JSON.parse(tokens).accessToken : null;
 
-      if (token) {
-        headers.set("Authorization", `Bearer ${token}`);
+      if (tokens) {
+        try {
+          const parsedTokens = JSON.parse(tokens);
+
+          const accessToken = parsedTokens.tokens.access || null;
+
+          if (accessToken) {
+            headers.set("Authorization", `Bearer ${accessToken}`);
+            console.log("Authorization header:", headers.get("Authorization"));
+          } else {
+            console.warn("Access token отсутствует в сохранённых данных");
+          }
+        } catch (error) {
+          console.error("Ошибка парсинга токенов из localStorage:", error);
+        }
+      } else {
+        console.warn("Токены отсутствуют в localStorage");
       }
 
       return headers;
     },
   });
 
-  return fetchBaseQueryWithLanguage(args, api, extraOptions);
+  console.log("Base URL:", baseUrl);
+  console.log("Request arguments (args):", args);
+
+  try {
+    const result = await fetchBaseQueryWithLanguage(args, api, extraOptions);
+
+    if (result.error && result.error.status === 401) {
+      console.warn("Токен истёк. Необходимо выполнить обновление токенов.");
+    }
+
+    console.log("Request successful. Result:", result.meta?.request.headers);
+    console.log("Request successful. Result:", result.meta?.response?.headers);
+
+    return result;
+  } catch (error) {
+    console.error("Ошибка выполнения запроса:", error);
+    throw error;
+  }
 };
 
 export const api = createApi({

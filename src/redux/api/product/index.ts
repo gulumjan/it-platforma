@@ -22,6 +22,16 @@ const api = index.injectEndpoints({
       }),
       providesTags: ["data"],
     }),
+    getMasterClass: build.query<
+      PRODUCT.GetMasterClassResponse,
+      PRODUCT.GetMasterClassRequest
+    >({
+      query: () => ({
+        url: "/masterclass/",
+        method: "GET",
+      }),
+      providesTags: ["data"],
+    }),
     getStatya: build.query<
       PRODUCT.GetStatyasResponse,
       PRODUCT.GetStatyaRequest
@@ -35,5 +45,9 @@ const api = index.injectEndpoints({
   }),
 });
 
-export const { useGetCoursQuery, useGetStatyaQuery, useGetCoursDetailQuery } =
-  api;
+export const {
+  useGetCoursQuery,
+  useGetStatyaQuery,
+  useGetCoursDetailQuery,
+  useGetMasterClassQuery,
+} = api;

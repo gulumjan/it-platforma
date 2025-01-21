@@ -64,3 +64,10 @@ interface IStatya {
   date: string;
   image: string;
 }
+
+interface iMasterClass {
+  id: number
+  title: string
+  price: string
+  dostup: string
+}

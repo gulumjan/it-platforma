@@ -6,4 +6,7 @@ namespace PRODUCT {
 
   type GetStatyasResponse = IStatya[];
   type GetStatyaRequest = void;
+
+  type GetMasterClassResponse = iMasterClass[];
+  type GetMasterClassRequest = void;
 }
