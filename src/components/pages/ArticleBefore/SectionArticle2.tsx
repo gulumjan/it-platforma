@@ -4,7 +4,10 @@ import article2_img from "@/assets/sectionArticle2_img.png"
 import Image from 'next/image';
 import Link from 'next/link';
 
+
 const SectionArticle2 = () => {
+    // const router = useRouter();
+    // const { id } = useParams();
     return (
         <div id={scss.article2}>
             <div className="container">
@@ -21,7 +24,7 @@ const SectionArticle2 = () => {
                     </div>
 
                     <div className={scss.article2_btn}>
-                     <Link href={"/registration"}>   <button>Получить доступ за 225,00$</button>
+                     <Link href={`/kaufen/{id}`}>   <button>Получить доступ за 225,00$</button>
                      </Link>
                     </div>
 

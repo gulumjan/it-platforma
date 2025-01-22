@@ -72,4 +72,5 @@ export const {
   useGetStatyaQuery,
   useGetCoursDetailQuery,
   useGetMasterClassQuery,
+  useGetStatyaDoQuery
 } = api;
