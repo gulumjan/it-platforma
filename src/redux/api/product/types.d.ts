@@ -21,5 +21,9 @@ namespace PRODUCT {
   type GetStatyaAfterRequest = number; 
 
 
+  type GetFeedbackResponse = IFeedback;
+  type GetFeedbackRequest = void; 
+
+
 
 }

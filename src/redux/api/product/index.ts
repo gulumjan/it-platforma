@@ -64,6 +64,17 @@ const api = index.injectEndpoints({
       }),
       providesTags: ["data"],
     }),
+
+    getFeedback: build.query<
+      PRODUCT.GetFeedbackResponse,
+      PRODUCT.GetFeedbackRequest
+    >({
+      query: (id) => ({
+        url: `/feedback_list/`,
+        method: "GET",
+      }),
+      providesTags: ["data"],
+    }),
   }),
 });
 
@@ -72,5 +83,6 @@ export const {
   useGetStatyaQuery,
   useGetCoursDetailQuery,
   useGetMasterClassQuery,
-  useGetStatyaDoQuery
+  useGetStatyaDoQuery,
+  useGetFeedbackQuery
 } = api;
