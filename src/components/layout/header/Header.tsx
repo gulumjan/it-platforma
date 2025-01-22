@@ -20,7 +20,6 @@ const Header: FC = () => {
   const [isMobile, setIsMobile] = useState(false);
   const language = useLanguageStore((state) => state.language);
   const { data } = useGetUserQuery();
-  console.log("🚀 ~ data:", data);
 
   useEffect(() => {
     console.log("Current language in Header:", language);
@@ -79,9 +78,8 @@ const Header: FC = () => {
                   <Link href="/about">{translate("about")}</Link>
                   <Language />
                 </nav>
-
                 <div className={scss.btns}>
-                  {data ? (
+                  {data && data.length > 1 ? (
                     <>
                       <button className={scss.note}>
                         <IoMdNotificationsOutline />

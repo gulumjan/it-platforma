@@ -71,6 +71,28 @@ interface iMasterClass {
   price: string;
   dostup: string;
 }
+interface iMasterClassById {
+  id: number;
+  title: string;
+  description: string;
+  dostup: string;
+  count_lesson: string;
+  price: string;
+  description_about_master_class: string;
+  image_master: string;
+  position: string;
+  description_process: string;
+  materials: Array<{
+    name: string;
+  }>;
+  programma_master_classes: Array<{
+    name_master: string;
+  }>;
+  master_classes: Array<{
+    title: string;
+    description: string;
+  }>;
+}
 
 interface IStatyaDo {
   id: number;

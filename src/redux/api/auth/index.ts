@@ -39,6 +39,16 @@ const api = index.injectEndpoints({
       }),
       invalidatesTags: ["data"],
     }),
+    logoutUser: build.mutation<AUTH.LogoutUserResponse, AUTH.LogoutUserRequest>(
+      {
+        query: (data) => ({
+          url: "/logout/",
+          method: "POST",
+          body: data,
+        }),
+        invalidatesTags: ["data"],
+      }
+    ),
   }),
   overrideExisting: true,
 });
@@ -48,4 +58,5 @@ export const {
   useLoginUserMutation,
   useForgotPasswordMutation,
   useGetUserQuery,
+  useLogoutUserMutation,
 } = api;

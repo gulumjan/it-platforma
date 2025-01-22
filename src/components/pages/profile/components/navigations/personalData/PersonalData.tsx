@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useState, useEffect } from "react";
 import s from "./PersonalData.module.scss";
 import InputData from "@/ui/inputData/InputData";
@@ -10,6 +10,7 @@ import {
   years,
   getDaysInMonth,
 } from "@/constants/constants";
+import { useGetUserQuery } from "@/redux/api/auth";
 
 const PersonalData = () => {
   const [selectedYear, setSelectedYear] = useState<string>("2025");
@@ -19,6 +20,7 @@ const PersonalData = () => {
   const [selectedCity, setSelectedCity] = useState<string>("");
   const [days, setDays] = useState<string[]>(getDaysInMonth(1, 2025));
   const [screenWidth, setScreenWidth] = useState<number>(window.innerWidth);
+  const { data } = useGetUserQuery();
 
   useEffect(() => {
     const handleResize = () => {

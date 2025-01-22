@@ -4,13 +4,15 @@ import AboutMasterClass from "./schoolSections/master-class/AboutMasterClass";
 import Process from "./schoolSections/master-class/Procees";
 import ProgrammCourses from "./detail/ProgrammCourses";
 import SectionHome4 from "./Home/SectionHome4";
+import ProgrammMasterClass from "./schoolSections/master-class/ProgrammMasterClass";
 
 const DetailMasterClassPage = () => {
   return (
     <>
       <DetailMasterClass />
       <AboutMasterClass />
-      <ProgrammCourses />
+      <ProgrammMasterClass />
+
       <Process />
       <SectionHome4 />
     </>

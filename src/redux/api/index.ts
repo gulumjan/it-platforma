@@ -24,7 +24,7 @@ const dynamicBaseQuery: BaseQueryFn = async (args, api, extraOptions) => {
         try {
           const parsedTokens = JSON.parse(tokens);
 
-          const accessToken = parsedTokens.tokens.access || null;
+          const accessToken = parsedTokens?.tokens?.access || null;
 
           if (accessToken) {
             headers.set("Authorization", `Bearer ${accessToken}`);

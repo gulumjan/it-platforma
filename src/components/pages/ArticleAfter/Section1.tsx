@@ -1,15 +1,8 @@
-"use cli"
+"use cli";
 import React from "react";
 import scss from "@/components/pages/ArticleAfter/Section1.module.scss";
-import { useGetStatyaAfterQuery } from "@/redux/api/product";
 
 const Section1 = () => {
-  // const {data} = useGetStatyaAfterQuery(Number(id))
-  // console.log(data, "data");
-  
-
-  
-
   return (
     <div id={scss.section1}>
       <div className="container">

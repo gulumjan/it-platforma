@@ -1,66 +1,71 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import scss from "./AboutMasterClass.module.scss";
-import { Link as Scrollhref } from "react-scroll";
 import { useLanguageStore } from "@/stores/UseLanguageStore";
+import { useParams } from "next/navigation";
+import { useGetMasterClassDetailQuery } from "@/redux/api/product";
+import { Link as Scrollhref } from "react-scroll";
 
 const AboutMasterClass = () => {
-  const { t } = useLanguageStore();
+  const language = useLanguageStore((state) => state.language);
+  const { id } = useParams();
+  const { data } = useGetMasterClassDetailQuery(Number(id));
+
+  useEffect(() => {
+    console.log("Current language in Header:", language);
+  }, [language]);
+
+  const translations = {
+    ru: {
+      was: "Что, как и почему",
+      about: "О МАСТЕР-КЛАССЕ",
+
+      block:
+        "В режиме мастер-класса он продемонстрировал, почему так важен неблокирующий ввод-вывод, в чем минусы классической многопоточности, в каких ситуациях нужна реактивность, и что она может дать. А еще описал недостатки реактивного подхода.",
+      video: "Переходите к видеоурокам, что бы научится:",
+      buy: `Купить мастер-класс за ${data?.price} $`,
+      watch: "Смотреть программу",
+      dostup: "Доступ",
+      include: "В мастер-класс входит",
+    },
+    ky: {
+      was: "Эмне, кантип жана эмнеликтен",
+      about: "Мастер-класстан жөнүндө",
+      block:
+        "Мастер-класс режиминде ал блоктоп калбай турган киргизүү-чыгаруу маанилүүлүгүн, классикалык көптөгүндөгү программалоонун кемчиликтерин, кайсы учурларда реактивдүүлүк керектигин жана ал эмне берет экенин көрсөттү. Мындан тышкары реактивдүү ыкманын кемчиликтерин түшүндүрүп берди.",
+      video: "Видео сабактарга өтүңүз, үйрөнүү үчүн:",
+      buy: `Мастер-классты сатып алуу ${data?.price} $`,
+      watch: "Программаны караңыз",
+      dostup: "Жеткиликтүүлүк",
+      include: "Мастер-класска кирет",
+    },
+  };
+
+  const translate = (key: keyof (typeof translations)["ru"]) => {
+    return (
+      translations[language as keyof typeof translations]?.[key] ??
+      translations.ru[key]
+    );
+  };
 
   return (
     <div className={scss.AboutMasterClass}>
       <div className="container">
         <div className={scss.content}>
           <div className={scss.left}>
-            <h3>{t("Эмне, кантип жана эмнеликтен", "Что, как и почему")}</h3>
-            <h1>{t("Мастер-класстан жөнүндө", "О МАСТЕР-КЛАССЕ")}</h1>
-            <p>
-              {t(
-                "Мастер-класс режиминде ал блоктоп калбай турган киргизүү-чыгаруу маанилүүлүгүн, классикалык көптөгүндөгү программалоонун кемчиликтерин, кайсы учурларда реактивдүүлүк керектигин жана ал эмне берет экенин көрсөттү. Мындан тышкары реактивдүү ыкманын кемчиликтерин түшүндүрүп берди.",
-                "В режиме мастер-класса он продемонстрировал, почему так важен неблокирующий ввод-вывод, в чем минусы классической многопоточности, в каких ситуациях нужна реактивность, и что она может дать. А еще описал недостатки реактивного подхода."
-              )}
-            </p>
+            <h3>{translate("was")}</h3>
+            <h1>{translate("about")}</h1>
+            <p>{translate("block")}</p>
             <div className={scss.left_bottom}>
-              <h4>
-                {t(
-                  "Видео сабактарга өтүңүз, үйрөнүү үчүн:",
-                  "Переходите к видеоурокам, что бы научится:"
-                )}
-              </h4>
+              <h4>{translate("video")}</h4>
               <ul>
-                <li>
-                  {t(
-                    "Файлды окуу (blocked on reading file);",
-                    "Чтению файла (blocked on reading file);"
-                  )}
-                </li>
-                <li>
-                  {t(
-                    "Мамлекеттик маалымат базасын үйрөнүү (blocked on reading from DB);",
-                    "Что бы научиться базе данных (blocked on reading from DB);"
-                  )}
-                </li>
-                <li>
-                  {t(
-                    "Азырак эсептөөлөрдү жүргүзүү үчүн үйрөнүү (blocked on heavy calculations);",
-                    "Научится использовать в сложных вычислениях (blocked on heavy calculations);"
-                  )}
-                </li>
-                <li>
-                  {t(
-                    "Кардардан жооп алуу (blocked on responding the client).",
-                    "На ответе от клиента (blocked on responding the client)."
-                  )}
-                </li>
+                {data?.materials.map((el, index) => (
+                  <li key={index}>{el.name}</li>
+                ))}
               </ul>
             </div>
             <div className={scss.buttons}>
-              <button>
-                {t(
-                  "Мастер-классты сатып алуу 46 $",
-                  "Купить мастер-класс за 46 $"
-                )}
-              </button>
+              <button>{translate("video")}</button>
               <Scrollhref
                 activeClass="active"
                 to="programm"
@@ -69,20 +74,16 @@ const AboutMasterClass = () => {
                 offset={0}
                 duration={500}
               >
-                <button>
-                  {t("Программаны караңыз", "Смотреть программу")}
-                </button>
+                <button>{translate("watch")}</button>
               </Scrollhref>
             </div>
           </div>
           <div className={scss.right}>
             <h2>
-              {t("Жеткиликтүүлүк", "Доступ")}:{" "}
-              <span>{t("6 жума", "6 недель")}</span>
+              {translate("dostup")}: <span>{data?.dostup}</span>
             </h2>
             <h3>
-              {t("Мастер-класска кирет", "В мастер-класс входит")}:
-              <span>{t("5 сабак", "5 уроков")}</span>
+              {translate("include")}:<span>{data?.count_lesson}</span>
             </h3>
           </div>
         </div>
