@@ -8,11 +8,14 @@ import Link from "next/link";
 import { CiShoppingBasket } from "react-icons/ci";
 import { TbLogout } from "react-icons/tb";
 import ModalOut from "@/ui/modalOut/ModalOut";
-import { useRouter } from "next/navigation"; 
+import { useRouter } from "next/navigation";
+import { useGetUserQuery, useLogoutUserMutation } from "@/redux/api/auth";
 
 export const MobileProfileNavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
+  const { data } = useGetUserQuery();
+  const [logoutUser] = useLogoutUserMutation();
   const [selected, setSelected] = useState({
     href: "/profile",
     icon: <FaRegUser />,
@@ -30,7 +33,12 @@ export const MobileProfileNavBar = () => {
       icon: <CiShoppingBasket />,
       label: "Мои покупки",
     },
-    { href: "#", icon: <TbLogout />, label: "Выйти", requiresConfirmation: true },
+    {
+      href: "#",
+      icon: <TbLogout />,
+      label: "Выйти",
+      requiresConfirmation: true,
+    },
   ];
 
   const toggleDropdown = () => {
@@ -39,16 +47,39 @@ export const MobileProfileNavBar = () => {
 
   const handleSelect = (item: (typeof items)[0]) => {
     if (item.requiresConfirmation) {
-      setOpenModal(true); 
+      setOpenModal(true);
     } else {
       setSelected(item);
-      setIsOpen(false); 
+      setIsOpen(false);
     }
   };
+  const handleLogout = async () => {
+    const tokens = localStorage.getItem("tokens");
 
-  const handleLogout = () => {
-    setOpenModal(false);
-    router.push("/"); 
+    if (!tokens) {
+      console.error("No tokens found in localStorage. Cannot log out.");
+      return;
+    }
+
+    try {
+      const parsedTokens = JSON.parse(tokens);
+
+      if (!parsedTokens?.tokens) {
+        console.error("No refresh token found in tokens. Cannot log out.");
+        return;
+      }
+
+      const res = await logoutUser({
+        refresh: parsedTokens.tokens.refresh,
+      });
+
+      localStorage.removeItem("tokens");
+
+      setOpenModal(false);
+      console.log("Logout successful!");
+    } catch (error) {
+      console.error("Error during logout:", error);
+    }
   };
 
   return (

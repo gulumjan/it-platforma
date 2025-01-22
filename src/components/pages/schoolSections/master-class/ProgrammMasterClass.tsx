@@ -1,24 +1,24 @@
 "use client";
 import { FC } from "react";
-import scss from "./ProgrammCourses.module.scss";
+import scss from "./ProgrammMasterClass.module.scss";
 import Img from "@/assets/proggramImg.svg";
 import Image from "next/image";
 import { useParams } from "next/navigation";
-import { useGetCoursDetailQuery } from "@/redux/api/product";
+import { useGetMasterClassDetailQuery } from "@/redux/api/product";
 
-const ProgrammCourses: FC = () => {
+const ProgrammMasterClass: FC = () => {
   const { id } = useParams();
-  const { data } = useGetCoursDetailQuery(Number(id));
+  const { data } = useGetMasterClassDetailQuery(Number(id));
   return (
     <section className={scss.ProgrammCourses}>
       <div className="container">
-        <h1>{data?.description5}</h1>
+        <h1>Zakirova</h1>
         <div className={scss.content}>
           <div className={scss.blocks}>
-            {data?.modules.map((el) => (
-              <div key={el.id} className={scss.block}>
-                <h5>Модуль {el.module_num}</h5>
-                <p>{el.description}</p>
+            {data?.programma_master_classes.map((el, index) => (
+              <div key={index} className={scss.block}>
+                <h5>Модуль {index + 1}</h5>
+                <p>{el.name_master}</p>
               </div>
             ))}
 
@@ -32,17 +32,17 @@ const ProgrammCourses: FC = () => {
           width={568}
           height={588}
           src={
-            data?.image_prepod! ||
+            data?.image_master! ||
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRg-WjMailx0S8JX3m80ELdb8mIIpvx9dGcig&s"
           }
           alt=""
         />
         <p>Мастер класс ведет</p>
-        <h1>{data?.full_name}</h1>
+        <h1>Евгений Александрович</h1>
         {data?.position}
       </div>
     </section>
   );
 };
 
-export default ProgrammCourses;
+export default ProgrammMasterClass;

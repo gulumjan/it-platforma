@@ -1,62 +1,76 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import scss from "./DetailMasterClass.module.scss";
 
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { useLanguageStore } from "@/stores/UseLanguageStore";
+import { useGetMasterClassDetailQuery } from "@/redux/api/product";
 
 const DetailMasterClass = () => {
   const nav = useRouter();
-  const { t } = useLanguageStore();
+  const language = useLanguageStore((state) => state.language);
+  const { id } = useParams();
+  const { data } = useGetMasterClassDetailQuery(Number(id));
+  console.log("🚀 ~ DetailMasterClass ~ data:", data);
+
+  useEffect(() => {
+    console.log("Current language in Header:", language);
+  }, [language]);
+
+  const translations = {
+    ru: {
+      main: "Главная",
+      allMasterClass: "Мастер классы",
+      java: "Реактивное программирование на Java",
+      buy: "Купить мастер-класс за 46 $",
+      dostup: "Доступ",
+      include: "В мастер-класс входит",
+    },
+    ky: {
+      main: "Башкы бет",
+      allMasterClass: "Бардык мастер-класстар",
+      java: "Java да реактивдүү программалоо",
+      buy: "Мастер-классты 46 $ сатып алуу",
+      dostup: "Жеткиликтүүлүк",
+      include: "Мастер-класска кирет",
+    },
+  };
+
+  const translate = (key: keyof (typeof translations)["ru"]) => {
+    return (
+      translations[language as keyof typeof translations]?.[key] ??
+      translations.ru[key]
+    );
+  };
 
   return (
     <section className={scss.DetMasterClass}>
       <div className="container">
         <Link className={scss.homeNav} href={"/"}>
-          {t("Башкы бет", "Главная")}/
+          {translate("main")}
         </Link>
 
         <Link className={scss.nav} href={"/allMasterClass"}>
-          {t("Бардык мастер-класстар", "Мастер классы")}/
+          {translate("allMasterClass")}
         </Link>
 
         <Link className={scss.navAb} href={"/allMasterClass"}>
-          {t(
-            "Java'да реактивдүү программалоо",
-            "Реактивное программирование на Java"
-          )}
+          {translate("java")}
         </Link>
 
         <div className={scss.content}>
           <div className={scss.left}>
-            <h1>
-              {t(
-                "Java'да реактивдүү программалоо: кантип, эмне үчүн жана керекпи? 1-бөлүк",
-                "Реактивное программирование на Java: как, зачем и стоит ли? Часть 1"
-              )}
-            </h1>
-            <p>
-              {t(
-                "Реактивдүү программалоонун идеясы салыштырмалуу жакында, 10 жыл мурун пайда болгон. Бул салыштырмалуу жаңы ыкманын популярдуулугун эмне пайда кылды жана эмне үчүн азыр ал трендде экенин конференцияда айтып берди",
-                "Идея реактивного программирования появилась сравнительно недавно, лет 10 назад. Что вызвало популярность этого относительно нового подхода и почему сейчас он в тренде, рассказал на конференции"
-              )}
-            </p>
-            <button onClick={() => nav.push("/poslePodpiski")}>
-              {t(
-                "Мастер-классты 46 $ сатып алуу",
-                "Купить мастер-класс за 46 $"
-              )}
-            </button>
+            <h1>{data?.title}</h1>
+            <p>{data?.description_about_master_class}</p>
+            <button>{translate("buy")}</button>
           </div>
           <div className={scss.right}>
             <h2>
-              {t("Жеткиликтүүлүк", "Доступ")}:{" "}
-              <span>{t("6 апта", "6 недель")}</span>
+              {translate("dostup")}: <span>{data?.dostup}</span>
             </h2>
             <h3>
-              {t("Мастер-класска кирет", "В мастер-класс входит")}:{" "}
-              <span>{t("5 сабак", "5 уроков")}</span>
+              {translate("include")}: <span>{data?.count_lesson}</span>
             </h3>
           </div>
         </div>

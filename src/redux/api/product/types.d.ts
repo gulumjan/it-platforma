@@ -11,19 +11,15 @@ namespace PRODUCT {
   type GetMasterClassResponse = iMasterClass[];
   type GetMasterClassRequest = void;
 
-
-  type GetStatyaRequest = void; 
+  type GetMasterClassDetailResponse = iMasterClassById;
+  type GetMasterClassDetailRequest = number;
 
   type GetStatyaDoResponse = IStatyaDo;
-  type GetStatyaDoRequest = number; 
+  type GetStatyaDoRequest = number;
 
   type GetStatyaAfterResponse = IStatyaAfter;
-  type GetStatyaAfterRequest = number; 
+  type GetStatyaAfterRequest = number;
 
-
-  type GetFeedbackResponse = IFeedback;
-  type GetFeedbackRequest = void; 
-
-
-
+  type GetFeedbackResponse = IFeedback[];
+  type GetFeedbackRequest = void;
 }

@@ -26,7 +26,17 @@ namespace AUTH {
     country: string;
     city: string;
     position: string;
+  }[];
+  type LogoutUserRequest = {
+    refresh: string;
   };
 
+  type LogoutUserResponse = {
+    message: string;
+    tokens: {
+      access: string;
+      refresh: string;
+    };
+  };
   type GetUserRequest = void;
 }
