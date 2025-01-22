@@ -17,14 +17,14 @@ const SectionHome2 = () => {
   const { data } = useGetStatyaQuery();
   console.log("🚀 ~ SectionHome2 ~ data:", data);
 
-  // Локальное состояние для управления отображением блоков
-  const [visibleCount, setVisibleCount] = useState(6); // Отображаем первые 6 блоков
+ 
+  const [visibleCount, setVisibleCount] = useState(6);
 
   const handleShowMore = () => {
-    setVisibleCount((prev) => prev + 6); // Увеличиваем количество отображаемых блоков на 6
+    setVisibleCount((prev) => prev + 6);
   };
 
-  const visibleData = data?.slice(0, visibleCount); // Берем только видимые блоки
+  const visibleData = data?.slice(0, visibleCount);
 
   return (
     <div id={scss.home2}>
@@ -48,7 +48,7 @@ const SectionHome2 = () => {
             </div>
           ))}
         </div>
-        {/* Кнопка отображается, только если есть скрытые блоки */}
+
         {data && visibleCount < data.length && (
           <div className={scss.btn}>
             <button onClick={handleShowMore}>Показать больше</button>
