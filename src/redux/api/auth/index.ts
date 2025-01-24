@@ -39,6 +39,17 @@ const api = index.injectEndpoints({
       }),
       invalidatesTags: ["data"],
     }),
+    changePassword: build.mutation<
+      AUTH.ChangePasswordResponse,
+      AUTH.ChangePasswordRequest
+    >({
+      query: (data) => ({
+        url: "/change-password/",
+        method: "PUT",
+        body: data,
+      }),
+      invalidatesTags: ["data"],
+    }),
     newPassword: build.mutation<
       AUTH.NewPasswordResponse,
       AUTH.NewPasswordRequest
@@ -71,4 +82,5 @@ export const {
   useGetUserQuery,
   useLogoutUserMutation,
   useNewPasswordMutation,
+  useChangePasswordMutation,
 } = api;

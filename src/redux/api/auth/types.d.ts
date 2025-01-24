@@ -46,4 +46,13 @@ namespace AUTH {
     token: string;
     password: string;
   };
+
+  type ChangePasswordResponse = {
+    message: string;
+  };
+  type ChangePasswordRequest = {
+    old_password: string;
+    new_password: string;
+    confirm_new_password: string;
+  };
 }
