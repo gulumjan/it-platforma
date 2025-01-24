@@ -39,6 +39,17 @@ const api = index.injectEndpoints({
       }),
       invalidatesTags: ["data"],
     }),
+    newPassword: build.mutation<
+      AUTH.NewPasswordResponse,
+      AUTH.NewPasswordRequest
+    >({
+      query: ({ password, token }) => ({
+        url: `/reset-password-confirm/${token}`,
+        method: "POST",
+        body: password,
+      }),
+      invalidatesTags: ["data"],
+    }),
     logoutUser: build.mutation<AUTH.LogoutUserResponse, AUTH.LogoutUserRequest>(
       {
         query: (data) => ({
@@ -59,4 +70,5 @@ export const {
   useForgotPasswordMutation,
   useGetUserQuery,
   useLogoutUserMutation,
+  useNewPasswordMutation,
 } = api;

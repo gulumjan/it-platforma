@@ -39,4 +39,11 @@ namespace AUTH {
     };
   };
   type GetUserRequest = void;
+  type NewPasswordResponse = {
+    message: string;
+  };
+  type NewPasswordRequest = {
+    token: string;
+    password: string;
+  };
 }

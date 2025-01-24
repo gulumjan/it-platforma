@@ -15,6 +15,7 @@ const MasterClass: FC = () => {
         <div className={scss.content}>
           {data?.map((el) => (
             <div
+              key={el.id}
               onClick={() => router.push(`/detailMasterClass/${el.id}`)}
               className={scss.block}
             >
