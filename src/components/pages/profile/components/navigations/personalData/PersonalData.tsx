@@ -13,6 +13,9 @@ import {
 import { useGetUserQuery } from "@/redux/api/auth";
 
 const PersonalData = () => {
+  const { data } = useGetUserQuery();
+  console.log("🚀 ~ PersonalData ~ data:", data)
+  const userData = data?.[0];
   const [selectedYear, setSelectedYear] = useState<string>("2025");
   const [selectedMonth, setSelectedMonth] = useState<string>("Январь");
   const [selectedDay, setSelectedDay] = useState<string>("");
@@ -20,7 +23,32 @@ const PersonalData = () => {
   const [selectedCity, setSelectedCity] = useState<string>("");
   const [days, setDays] = useState<string[]>(getDaysInMonth(1, 2025));
   const [screenWidth, setScreenWidth] = useState<number>(window.innerWidth);
-  const { data } = useGetUserQuery();
+
+  useEffect(() => {
+    if (userData) {
+      console.log("🚀 ~ useEffect ~ userData:", userData)
+      
+      if (userData.birthday) {
+        const [year, month, day] = userData.birthday.split("-");
+        setSelectedYear(year);
+        setSelectedMonth(months[parseInt(month, 10) - 1]);
+        setSelectedDay(day);
+        setDays(getDaysInMonth(parseInt(month, 10), parseInt(year, 10)));
+      }
+      if (userData.country && countries.includes(userData.country)) {
+        setSelectedCountry(userData.country);
+      } else {
+        setSelectedCountry("Кыргызстан");
+      }
+  
+      if (userData.city) {
+        setSelectedCity(userData.city);
+      }
+      console.log(userData.username);
+      
+    }
+  }, [userData]);
+  
 
   useEffect(() => {
     const handleResize = () => {
@@ -62,18 +90,32 @@ const PersonalData = () => {
       <h1>Личные данные</h1>
       <form>
         <div className={s.left}>
-          <InputData title="ФИО" values={"Осмонова Нурай"} />
-          <InputData title="Номер телефон" values={"+996 500 99 80 88"} />
-          <InputData title="Email" values={"osmonovanurai05@gmail.com"} />
+          <InputData title="ФИО" values={userData?.username || "Не указано"} />
+          <InputData
+            title="Номер телефона"
+            values={userData?.phone_number || "Не указан"}
+          />
+          <InputData
+            title="Email"
+            values={userData?.username ? `${userData.username}@gmail.com` : "Не указан"}
+          />
           <label className={s.label}>
             Пол
             <div className={s.input}>
               <div className={s.checkbox}>
-                <input type="checkbox" />
+                <input
+                  type="checkbox"
+                  checked={userData?.gender_status === "Мужской"}
+                  readOnly
+                />
                 Мужской
               </div>
               <div className={s.checkbox}>
-                <input type="checkbox" />
+                <input
+                  type="checkbox"
+                  checked={userData?.gender_status === "Женский"}
+                  readOnly
+                />
                 Женский
               </div>
             </div>
@@ -115,7 +157,10 @@ const PersonalData = () => {
             value={selectedCity}
             onChange={setSelectedCity}
           />
-          <InputData title="Род деятельности" values="Студент" />
+          <InputData
+            title="Род деятельности"
+            values={userData?.position || "Не указан"}
+          />
         </div>
       </form>
     </div>
