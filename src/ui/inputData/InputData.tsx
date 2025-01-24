@@ -20,7 +20,8 @@ const InputData: FC<IInputData> = ({ title, values, type="text" }) => {
       {title}
       <input
         type={type}
-        value={value}
+        value={values || ""}
+        readOnly
         onChange={handleChange}
         className={s.input}
       />
