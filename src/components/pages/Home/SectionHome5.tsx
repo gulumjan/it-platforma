@@ -73,27 +73,31 @@ const SectionHome5 = () => {
 
           <div className={scss.home_form}>
             <form onSubmit={handleSubmit(onSubmit)}>
-              {/* ФИО */}
               <p>ФИО*</p>
               <div className={scss.inputWrapper}>
                 <input
                   type="text"
                   placeholder="Введите ФИО"
-                  {...register("fullName", { required: "Пожалуйста, заполните это поле" })}
+                  {...register("fullName", {
+                    required: "Пожалуйста, заполните это поле",
+                  })}
                   className={errors.fullName ? scss.errorInput : ""}
                 />
                 {errors.fullName && (
-                  <span className={scss.errorText}>{errors.fullName.message}</span>
+                  <span className={scss.errorText}>
+                    {errors.fullName.message}
+                  </span>
                 )}
               </div>
 
-              {/* Номер телефона */}
               <p>Номер телефона*</p>
               <div className={scss.inputWrapper}>
                 <input
                   type="tel"
                   placeholder="Введите номер телефона"
-                  {...register("phone", { required: "Пожалуйста, введите номер телефона" })}
+                  {...register("phone", {
+                    required: "Пожалуйста, введите номер телефона",
+                  })}
                   className={errors.phone ? scss.errorInput : ""}
                 />
                 {errors.phone && (
@@ -101,7 +105,6 @@ const SectionHome5 = () => {
                 )}
               </div>
 
-              {/* Email */}
               <p>Email*</p>
               <div className={scss.inputWrapper}>
                 <input
@@ -121,7 +124,6 @@ const SectionHome5 = () => {
                 )}
               </div>
 
-              {/* Кнопка отправки */}
               <button type="submit">Отправить</button>
             </form>
           </div>

@@ -27,20 +27,6 @@ const ProgrammCourses: FC = () => {
           <Image width={480} height={503} src={Img} alt="" />
         </div>
       </div>
-      <div className={scss.author}>
-        <Image
-          width={568}
-          height={588}
-          src={
-            data?.image_prepod! ||
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRg-WjMailx0S8JX3m80ELdb8mIIpvx9dGcig&s"
-          }
-          alt=""
-        />
-        <p>Мастер класс ведет</p>
-        <h1>{data?.full_name}</h1>
-        {data?.position}
-      </div>
     </section>
   );
 };
