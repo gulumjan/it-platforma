@@ -53,9 +53,6 @@ const dynamicBaseQuery: BaseQueryFn = async (args, api, extraOptions) => {
       console.warn("Токен истёк. Необходимо выполнить обновление токенов.");
     }
 
-    console.log("Request successful. Result:", result.meta?.request.headers);
-    console.log("Request successful. Result:", result.meta?.response?.headers);
-
     return result;
   } catch (error) {
     console.error("Ошибка выполнения запроса:", error);
