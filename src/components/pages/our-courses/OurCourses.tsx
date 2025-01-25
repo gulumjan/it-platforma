@@ -7,7 +7,6 @@ import { useGetCoursQuery } from "@/redux/api/product";
 const OurCourses: FC = () => {
   const router = useRouter();
   const { data } = useGetCoursQuery();
-  console.log("🚀 ~ data:", data);
   return (
     <section className={scss.Courses}>
       <h1>Курсы</h1>
