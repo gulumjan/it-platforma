@@ -27,6 +27,7 @@ namespace AUTH {
     city: string;
     position: string;
   }[];
+  type GetUserRequest = void;
   type LogoutUserRequest = {
     refresh: string;
   };
@@ -38,7 +39,6 @@ namespace AUTH {
       refresh: string;
     };
   };
-  type GetUserRequest = void;
   type NewPasswordResponse = {
     message: string;
   };

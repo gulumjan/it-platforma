@@ -29,8 +29,8 @@ const ProgrammMasterClass: FC = () => {
       </div>
       <div className={scss.author}>
         <Image
-          width={568}
-          height={588}
+          width={5608}
+          height={5688}
           src={
             data?.image_master! ||
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRg-WjMailx0S8JX3m80ELdb8mIIpvx9dGcig&s"

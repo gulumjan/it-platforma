@@ -10,6 +10,7 @@ import { useLanguageStore } from "@/stores/UseLanguageStore";
 import Language from "@/ui/language/Language";
 import { useGetUserQuery } from "@/redux/api/auth";
 import { IoMdNotificationsOutline } from "react-icons/io";
+import { json } from "stream/consumers";
 
 const BurgerMenu = dynamic(() => import("@/ui/burger_menu/BurgerMenu"), {
   ssr: false,
@@ -20,6 +21,8 @@ const Header: FC = () => {
   const [isMobile, setIsMobile] = useState(false);
   const language = useLanguageStore((state) => state.language);
   const { data } = useGetUserQuery();
+  const user = localStorage.getItem("tokens");
+  console.log("🚀 ~ user:", user);
 
   useEffect(() => {
     console.log("Current language in Header:", language);
@@ -69,7 +72,6 @@ const Header: FC = () => {
               height={45}
               alt="Logo"
             />
-
             {!isMobile ? (
               <>
                 <nav>
@@ -79,19 +81,7 @@ const Header: FC = () => {
                   <Language />
                 </nav>
                 <div className={scss.btns}>
-                  {data && data.length > 1 ? (
-                    <>
-                      <button className={scss.note}>
-                        <IoMdNotificationsOutline />
-                      </button>
-                      <button
-                        onClick={() => router.push(`/profile`)}
-                        className={scss.subscribeBtn2}
-                      >
-                        Профиль
-                      </button>
-                    </>
-                  ) : (
+                  {user == "undefined" ? (
                     <>
                       <button
                         onClick={() => router.push(`/auth/login`)}
@@ -104,6 +94,18 @@ const Header: FC = () => {
                         className={scss.subscribeBtn}
                       >
                         {translate("follow")}
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <button className={scss.note}>
+                        <IoMdNotificationsOutline />
+                      </button>
+                      <button
+                        onClick={() => router.push(`/profile`)}
+                        className={scss.subscribeBtn2}
+                      >
+                        Профиль
                       </button>
                     </>
                   )}
