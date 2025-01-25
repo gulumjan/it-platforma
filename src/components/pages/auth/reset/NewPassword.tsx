@@ -5,11 +5,7 @@ import logo from "@/assets/logo.svg";
 import s from "./NewPassword.module.scss";
 import { useRouter } from "next/navigation";
 import { SubmitHandler, useForm } from "react-hook-form";
-import {
-  useChangePasswordMutation,
-  useForgotPasswordMutation,
-  useNewPasswordMutation,
-} from "@/redux/api/auth";
+import { useChangePasswordMutation } from "@/redux/api/auth";
 import BriefEmail from "@/ui/modal_window/BriefEmail";
 import { GoEye, GoEyeClosed } from "react-icons/go";
 

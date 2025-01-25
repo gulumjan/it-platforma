@@ -19,6 +19,7 @@
     img {
       width: 568px;
       height: 588px;
+      object-fit: cover;
       @include mobile() {
         width: 266px;
         height: 300px;

@@ -45,6 +45,7 @@
       display: flex;
       justify-content: space-between;
       margin: 50px 0;
+      gap: 24px;
       @include phone() {
         display: flex;
         flex-direction: column;
