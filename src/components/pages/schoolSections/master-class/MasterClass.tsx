@@ -7,7 +7,6 @@ import { useGetMasterClassQuery } from "@/redux/api/product";
 const MasterClass: FC = () => {
   const router = useRouter();
   const { data } = useGetMasterClassQuery();
-  console.log("🚀 ~ data:", data);
   return (
     <section className={scss.MasterClass}>
       <div className="container">

@@ -11,10 +11,6 @@ const AboutMasterClass = () => {
   const { id } = useParams();
   const { data } = useGetMasterClassDetailQuery(Number(id));
 
-  useEffect(() => {
-    console.log("Current language in Header:", language);
-  }, [language]);
-
   const translations = {
     ru: {
       was: "Что, как и почему",

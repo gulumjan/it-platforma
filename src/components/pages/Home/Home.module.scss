@@ -18,103 +18,194 @@
   }
 }
 
-#home {
-  .home {
-    align-items: center;
-    justify-content: space-between;
+.home {
+  min-height: 100vh;
+  overflow: hidden;
+
+  .content {
     display: flex;
-    @include mobile() {
+    padding: 80px 0;
+
+    @include mobile {
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
     }
 
-    .home_text {
-      @include mobile() {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-      }
+    .text {
+      flex: 1;
+      padding-left: 5%;
+
       h1 {
-        position: relative;
-        top: -140px;
-        font-size: 50px;
+        font-size: 52px;
         font-weight: 700;
-        line-height: 60px;
-        text-align: left;
-        width: 500px;
-        z-index: 99;
-        @include tablet() {
-          top: -29px;
-          font-size: 40px;
-          line-height: 50px;
+        color: #fff;
+        max-width: 500px;
+        margin-bottom: 24px;
+
+        @include tablet {
+          font-size: 42px;
         }
 
-        @include mobile() {
-          top: 50px;
+        @include mobile {
+          font-size: 32px;
           text-align: center;
-          font-size: 50px;
-          line-height: 60px;
-        }
-
-        @include phone() {
-          width: 80%;
-          font-size: 20px;
-          line-height: 30px;
+          margin: 0 auto 20px;
         }
       }
 
       p {
-        position: relative;
-        font-size: 25px;
-        font-weight: 500;
-        line-height: 35px;
-        text-align: left;
-        top: -100px;
-        width: 470px;
+        font-size: 24px;
+        line-height: 1.5;
+        color: #fff;
+        max-width: 470px;
 
-        @include tablet() {
-          top: 3px;
+        @include tablet {
           font-size: 20px;
-
-          line-height: 30px;
         }
 
-        @include mobile() {
-          top: 70px;
-
-          font-size: 30px;
-
-          line-height: 38px;
-
+        @include mobile {
+          font-size: 18px;
           text-align: center;
-          width: 90%;
-        }
-
-        @include phone() {
-          font-size: 20px;
-          line-height: 30px;
-          width: 70%;
+          margin: 0 auto;
         }
       }
     }
 
-    img {
-      width: 68%;
-      @include tablet() {
-        width: 45%;
-        height: auto;
+    .illustration {
+      position: relative;
+      width: 100%;
+      height: 600px;
+
+      @include mobile {
+        height: 450px;
+        margin-top: 40px;
       }
 
-      @include mobile() {
-        margin-top: 80px;
-        width: 90%;
+      .main_image {
+        width: 651px;
+        height: 535px;
+        position: absolute;
+        right: 10%;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 2;
+
+        @include tablet {
+          width: 100%;
+          height: auto;
+          right: 15%;
+        }
+
+        @include mobile {
+          width: 651px;
+          height: 535px;
+          right: 50%;
+          transform: translate(50%, -50%);
+        }
+
+        @include phone {
+          width: 280px;
+        }
       }
 
-      @include phone() {
-        width: 100%;
+      .floating_icons {
+        .settings {
+          width: 100%;
+          position: absolute;
+          right: 13%;
+          top: 33%;
+          animation: float 3s infinite;
+
+          @include tablet {
+            width: 90px;
+            right: 18%;
+            top: 30%;
+          }
+
+          @include mobile {
+            width: 70px;
+          }
+
+          @include phone {
+            width: 60px;
+          }
+        }
+
+        .brace {
+          width: 100%;
+          position: absolute;
+          left: 7%;
+          top: -3%;
+          animation: float 4s infinite;
+
+          @include tablet {
+            width: 90px;
+            left: 12%;
+            top: 0;
+          }
+
+          @include mobile {
+            width: 70px;
+          }
+
+          @include phone {
+            width: 60px;
+          }
+        }
+
+        .lamp {
+          width: 100%;
+          position: absolute;
+          left: 42%;
+          bottom: 35%;
+          animation: float 3.5s infinite;
+
+          @include tablet {
+            width: 90px;
+            left: 38%;
+            bottom: 32%;
+          }
+
+          @include mobile {
+            width: 70px;
+          }
+
+          @include phone {
+            width: 60px;
+          }
+        }
+
+        .tools {
+          width: 100%;
+          position: absolute;
+          left: 15%;
+          bottom: -2%;
+          animation: float 4.5s infinite;
+
+          @include tablet {
+            width: 100px;
+            left: 18%;
+            bottom: 0;
+          }
+
+          @include mobile {
+            width: 80px;
+          }
+
+          @include phone {
+            width: 70px;
+          }
+        }
       }
     }
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
   }
 }
