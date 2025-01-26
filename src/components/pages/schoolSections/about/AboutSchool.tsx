@@ -7,7 +7,6 @@ import { useGetUserQuery } from "@/redux/api/auth";
 
 const AboutSchool: FC = () => {
   const { data } = useGetUserQuery();
-  console.log("🚀 ~ data:", data);
 
   return (
     <section className={scss.AboutSchool}>

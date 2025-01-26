@@ -14,7 +14,6 @@ import { useGetUserQuery } from "@/redux/api/auth";
 
 const PersonalData = () => {
   const { data } = useGetUserQuery();
-  console.log("🚀 ~ PersonalData ~ data:", data)
   const userData = data?.[0];
   const [selectedYear, setSelectedYear] = useState<string>("2025");
   const [selectedMonth, setSelectedMonth] = useState<string>("Январь");
@@ -26,8 +25,6 @@ const PersonalData = () => {
 
   useEffect(() => {
     if (userData) {
-      console.log("🚀 ~ useEffect ~ userData:", userData)
-      
       if (userData.birthday) {
         const [year, month, day] = userData.birthday.split("-");
         setSelectedYear(year);
@@ -40,15 +37,13 @@ const PersonalData = () => {
       } else {
         setSelectedCountry("Кыргызстан");
       }
-  
+
       if (userData.city) {
         setSelectedCity(userData.city);
       }
       console.log(userData.username);
-      
     }
   }, [userData]);
-  
 
   useEffect(() => {
     const handleResize = () => {
@@ -97,7 +92,11 @@ const PersonalData = () => {
           />
           <InputData
             title="Email"
-            values={userData?.username ? `${userData.username}@gmail.com` : "Не указан"}
+            values={
+              userData?.username
+                ? `${userData.username}@gmail.com`
+                : "Не указан"
+            }
           />
           <label className={s.label}>
             Пол

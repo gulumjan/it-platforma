@@ -51,22 +51,19 @@ const SectionHome4 = () => {
           <div className="container">
             <div className={scss.answer1}>
               <div className={scss.answer1_text}>
-              <h2>Остались вопросы?</h2>
-              <Image src={img_home4} alt="img" />
+                <h2>Остались вопросы?</h2>
+                <Image src={img_home4} alt="img" />
               </div>
-         
 
-            <div className={scss.answer}>
-              {questions?.map((el, index) => (
-                <details key={index}>
-                  <summary>{el.question}</summary>
-                  <p>{el.answer}</p>
-                </details>
-              ))}
+              <div className={scss.answer}>
+                {questions?.map((el, index) => (
+                  <details key={index}>
+                    <summary>{el.question}</summary>
+                    <p>{el.answer}</p>
+                  </details>
+                ))}
+              </div>
             </div>
-            </div>
-
-           
           </div>
         </>
       ) : (

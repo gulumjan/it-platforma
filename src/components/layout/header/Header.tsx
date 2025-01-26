@@ -10,7 +10,6 @@ import { useLanguageStore } from "@/stores/UseLanguageStore";
 import Language from "@/ui/language/Language";
 import { useGetUserQuery } from "@/redux/api/auth";
 import { IoMdNotificationsOutline } from "react-icons/io";
-import { json } from "stream/consumers";
 
 const BurgerMenu = dynamic(() => import("@/ui/burger_menu/BurgerMenu"), {
   ssr: false,
@@ -20,13 +19,7 @@ const Header: FC = () => {
   const router = useRouter();
   const [isMobile, setIsMobile] = useState(false);
   const language = useLanguageStore((state) => state.language);
-  const { data } = useGetUserQuery();
   const user = localStorage.getItem("tokens");
-  console.log("🚀 ~ user:", user);
-
-  useEffect(() => {
-    console.log("Current language in Header:", language);
-  }, [language]);
 
   const translations = {
     ru: {

@@ -13,10 +13,6 @@ const Buy = () => {
   const { data } = useGetCoursDetailQuery(Number(id));
   const language = useLanguageStore((state) => state.language);
 
-  useEffect(() => {
-    console.log("Current language in Header:", language);
-  }, [language]);
-
   const translations = {
     ru: {
       material:

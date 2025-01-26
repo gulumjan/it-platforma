@@ -43,9 +43,6 @@ const dynamicBaseQuery: BaseQueryFn = async (args, api, extraOptions) => {
     },
   });
 
-  console.log("Base URL:", baseUrl);
-  console.log("Request arguments (args):", args);
-
   try {
     const result = await fetchBaseQueryWithLanguage(args, api, extraOptions);
 

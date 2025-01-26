@@ -15,11 +15,11 @@ import { useRouter } from "next/navigation";
 
 const ProfileNavBar = () => {
   const [openModal, setOpenModal] = useState(false);
-  const router = useRouter()
+  const router = useRouter();
 
   const handleLogoutConfirm = () => {
     setOpenModal(false);
-    router.push("/")
+    router.push("/");
   };
 
   const handleLogoutCancel = () => {

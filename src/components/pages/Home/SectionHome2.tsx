@@ -15,9 +15,7 @@ const SectionHome2 = () => {
   };
 
   const { data } = useGetStatyaQuery();
-  console.log("🚀 ~ SectionHome2 ~ data:", data);
 
- 
   const [visibleCount, setVisibleCount] = useState(6);
 
   const handleShowMore = () => {

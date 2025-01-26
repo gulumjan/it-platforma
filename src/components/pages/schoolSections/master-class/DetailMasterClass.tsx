@@ -12,11 +12,6 @@ const DetailMasterClass = () => {
   const language = useLanguageStore((state) => state.language);
   const { id } = useParams();
   const { data } = useGetMasterClassDetailQuery(Number(id));
-  console.log("🚀 ~ DetailMasterClass ~ data:", data);
-
-  useEffect(() => {
-    console.log("Current language in Header:", language);
-  }, [language]);
 
   const translations = {
     ru: {

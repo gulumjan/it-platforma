@@ -16,7 +16,8 @@ const Notification = () => {
         <div className={s.card}>
           <CiCreditCard1 />
           <div className={s.cardText}>
-            <h3>02.05.2022 г</h3><br />
+            <h3>02.05.2022 г</h3>
+            <br />
             <h3>Вы оформили подписку пакет “год” </h3>
           </div>
         </div>

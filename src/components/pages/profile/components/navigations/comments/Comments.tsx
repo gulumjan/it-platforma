@@ -48,8 +48,6 @@ const Comments = () => {
         </div>
         <div className={s.empty}>Вы еще не написали комментариев</div>
       </div>
-
-     
     </>
   );
 };
