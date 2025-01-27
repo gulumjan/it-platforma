@@ -16,7 +16,6 @@ const BurgerMenu = () => {
   const language = useLanguageStore((state) => state.language);
   const menuRef = useRef<HTMLDivElement>(null);
   const user = localStorage.getItem("tokens");
-  console.log("🚀 ~ BurgerMenu ~ user:", user);
   const router = useRouter();
 
   const translations = {

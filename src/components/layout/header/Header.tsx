@@ -74,7 +74,7 @@ const Header: FC = () => {
                   <Language />
                 </nav>
                 <div className={scss.btns}>
-                  {user == "undefined" ? (
+                  {!user ? (
                     <>
                       <button
                         onClick={() => router.push(`/auth/login`)}
