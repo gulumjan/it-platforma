@@ -6,6 +6,7 @@ import Settings from "@/assets/images (1) 1.svg";
 import Brace from "@/assets/images (1) 2.svg";
 import Lamp from "@/assets/lamp 1.svg";
 import Tools from "@/assets/tools 1.svg";
+
 const Home = () => {
   return (
     <section className={scss.home}>
@@ -19,35 +20,41 @@ const Home = () => {
             </p>
           </div>
           <div className={scss.illustration}>
-            <Image src={Men} alt="Developer" className={scss.main_image} />
+            <Image
+              src={Men}
+              alt="Developer"
+              className={scss.main_image}
+              width={651}
+              height={535}
+            />
             <div className={scss.floating_icons}>
               <Image
-                width={120}
-                height={120}
                 src={Settings}
                 alt="Settings"
                 className={scss.settings}
+                width={120}
+                height={120}
               />
               <Image
-                width={132}
-                height={136}
                 src={Brace}
                 alt="Code"
                 className={scss.brace}
+                width={132}
+                height={136}
               />
               <Image
-                width={196}
-                height={191}
                 src={Tools}
                 alt="Tools"
                 className={scss.tools}
+                width={300}
+                height={300}
               />
               <Image
-                width={135}
-                height={133}
                 src={Lamp}
                 alt="Idea"
                 className={scss.lamp}
+                width={300}
+                height={300}
               />
             </div>
           </div>

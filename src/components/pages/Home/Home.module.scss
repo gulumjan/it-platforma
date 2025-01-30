@@ -1,211 +1,124 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap");
 
-@mixin tablet {
-  @media (max-width: 1024px) {
-    @content;
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
   }
-}
-
-@mixin mobile {
-  @media (max-width: 768px) {
-    @content;
-  }
-}
-
-@mixin phone {
-  @media (max-width: 480px) {
-    @content;
+  50% {
+    transform: translateY(-20px);
   }
 }
 
 .home {
-  min-height: 100vh;
+
   overflow: hidden;
+  width: 100%;
+
 
   .content {
     display: flex;
-    padding: 80px 0;
-
-    @include mobile {
-      flex-direction: column;
-    }
+    flex-wrap: wrap;
+    padding: clamp(40px, 5vw, 80px) 0;
+    position: relative;
+    justify-content: center;
 
     .text {
       flex: 1;
-      padding-left: 5%;
+      // padding: clamp(20px, 5vw, 40px);
+      // z-index: 2;
+
 
       h1 {
-        font-size: 52px;
+        font-size: clamp(8px, 5vw, 52px);
         font-weight: 700;
         color: #fff;
-        max-width: 500px;
-        margin-bottom: 24px;
-
-        @include tablet {
-          font-size: 42px;
-        }
-
-        @include mobile {
-          font-size: 32px;
-          text-align: center;
-          margin: 0 auto 20px;
-        }
+        max-width: 175%;
+        // margin: 0 auto 20px;
+        margin-top: clamp(10px, 7vw, 120px);
+        margin-bottom: clamp(20px, 7vw, 50px);
       }
 
       p {
-        font-size: 24px;
+        font-size: clamp(8px, 3vw, 24px);
         line-height: 1.5;
         color: #fff;
-        max-width: 470px;
-
-        @include tablet {
-          font-size: 20px;
-        }
-
-        @include mobile {
-          font-size: 18px;
-          text-align: center;
-          margin: 0 auto;
-        }
+        max-width:489px ;
+        // margin: 0 auto;
       }
     }
 
     .illustration {
+      flex: 1;
       position: relative;
-      width: 100%;
-      height: 600px;
-
-      @include mobile {
-        height: 450px;
-        margin-top: 40px;
-      }
+      height: clamp(300px, 50vw, 600px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
       .main_image {
-        width: 651px;
-        height: 535px;
-        position: absolute;
-        right: 10%;
-        top: 50%;
-        transform: translateY(-50%);
+        width: clamp(200px, 40vw, 500px);
+        height: auto;
+        position: relative;
         z-index: 2;
-
-        @include tablet {
-          width: 100%;
-          height: auto;
-          right: 15%;
-        }
-
-        @include mobile {
-          width: 651px;
-          height: 535px;
-          right: 50%;
-          transform: translate(50%, -50%);
-        }
-
-        @include phone {
-          width: 280px;
-        }
       }
 
       .floating_icons {
-        .settings {
-          width: 100%;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+
+        .settings,
+        .brace,
+        .lamp,
+        .tools {
           position: absolute;
-          right: 13%;
-          top: 33%;
-          animation: float 3s infinite;
+          width: clamp(60px, 10vw, 120px);
+          height: clamp(60px, 10vw, 120px);
+          background: rgba(42, 96, 223, 0.2);
+          backdrop-filter: blur(5px);
+          border-radius: 16px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: all 0.3s ease;
+          box-shadow: 0 4px 15px rgba(42, 96, 223, 0.2);
+          animation: float 3s infinite ease-in-out;
 
-          @include tablet {
-            width: 90px;
-            right: 18%;
-            top: 30%;
+          img {
+            width: 75%;
+            height: 75%;
+            object-fit: contain;
           }
+        }
 
-          @include mobile {
-            width: 70px;
-          }
-
-          @include phone {
-            width: 60px;
-          }
+        .settings {
+          top: 28%;
+          right: 65%;
+          animation-duration: 3s;
         }
 
         .brace {
-          width: 100%;
-          position: absolute;
-          left: 7%;
-          top: -3%;
-          animation: float 4s infinite;
-
-          @include tablet {
-            width: 90px;
-            left: 12%;
-            top: 0;
-          }
-
-          @include mobile {
-            width: 70px;
-          }
-
-          @include phone {
-            width: 60px;
-          }
+          top: -1%;
+          right: 33%;
+          height: clamp(50px, 8vw, 100px);
+          width: clamp(50px, 8vw, 100px);
+          animation-duration: 4s;
         }
 
         .lamp {
-          width: 100%;
-          position: absolute;
-          left: 42%;
-          bottom: 35%;
-          animation: float 3.5s infinite;
-
-          @include tablet {
-            width: 90px;
-            left: 38%;
-            bottom: 32%;
-          }
-
-          @include mobile {
-            width: 70px;
-          }
-
-          @include phone {
-            width: 60px;
-          }
+          top: 44%;
+          left: 81%;
+          animation-duration: 3.5s;
         }
 
         .tools {
-          width: 100%;
-          position: absolute;
-          left: 15%;
-          bottom: -2%;
-          animation: float 4.5s infinite;
-
-          @include tablet {
-            width: 100px;
-            left: 18%;
-            bottom: 0;
-          }
-
-          @include mobile {
-            width: 80px;
-          }
-
-          @include phone {
-            width: 70px;
-          }
+          width: clamp(70px, 12vw, 140px);
+          height: clamp(70px, 12vw, 140px);
+          bottom: 8%;
+          left: 50%;
+          animation-duration: 4.5s;
         }
       }
     }
-  }
-}
-
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-15px);
   }
 }
