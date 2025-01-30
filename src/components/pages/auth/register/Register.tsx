@@ -124,7 +124,7 @@ const Register = () => {
         )}
       </div>
       <div className={s.btn}>
-        <Link href="/auth/register">У Вас нет аккаунта? </Link>
+        <Link href="/auth/register">У вас уже есть аккаунт ? </Link>
         <Link href={"/"} className={s.forgot}>
           Забыли пароль?
         </Link>

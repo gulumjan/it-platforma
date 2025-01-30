@@ -6,8 +6,8 @@ import s from "./NewPassword.module.scss";
 import { useRouter } from "next/navigation";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useChangePasswordMutation } from "@/redux/api/auth";
-import BriefEmail from "@/ui/modal_window/BriefEmail";
 import { GoEye, GoEyeClosed } from "react-icons/go";
+import PasswordChanged from "@/ui/modal_window/PasswordChanged";
 
 const NewPassword = () => {
   const router = useRouter();
@@ -17,7 +17,10 @@ const NewPassword = () => {
   const [changePassword] = useChangePasswordMutation();
 
   const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
+  const closeModal = () => {
+    setIsModalOpen(false);
+    router.push("/auth/login");
+  };
 
   const onSubmit: SubmitHandler<AUTH.ChangePasswordRequest> = async (data) => {
     console.log("Form Data:", data);
@@ -33,46 +36,32 @@ const NewPassword = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={s.login}>
       <Image src={logo} alt="logo" width={170} height={106} />
-      <BriefEmail isOpen={isModalOpen} onClose={closeModal} />
+      <PasswordChanged isOpen={isModalOpen} onClose={closeModal} />
 
       <div className={s.wrapperInput}>
-        <label htmlFor=""> Старый Пароль*</label>
+        <label htmlFor=""> Электронная почта*</label>
         <input
-          {...register("old_password")}
+          {...register("email")}
           placeholder="Пароль*"
           pattern=".{6,}"
           title="Password must be at least 6 characters long"
           required
-          type={`${showPassword ? "text" : "password"}`}
         />
-        {showPassword && (
-          <GoEye onClick={() => setShowPassword(!showPassword)} />
-        )}
-        {showPassword || (
-          <GoEyeClosed onClick={() => setShowPassword(!showPassword)} />
-        )}
+      </div>
+      <div className={s.wrapperInput}>
+        <label htmlFor="">Код подтверждения *</label>
+        <input
+          {...register("reset_code")}
+          placeholder="Пароль*"
+          pattern=".{6,}"
+          title="Password must be at least 6 characters long"
+          required
+        />
       </div>
       <div className={s.wrapperInput}>
         <label htmlFor="">Новый Пароль*</label>
         <input
           {...register("new_password")}
-          placeholder="Пароль*"
-          pattern=".{6,}"
-          title="Password must be at least 6 characters long"
-          required
-          type={`${showPassword ? "text" : "password"}`}
-        />
-        {showPassword && (
-          <GoEye onClick={() => setShowPassword(!showPassword)} />
-        )}
-        {showPassword || (
-          <GoEyeClosed onClick={() => setShowPassword(!showPassword)} />
-        )}
-      </div>
-      <div className={s.wrapperInput}>
-        <label htmlFor="">Подтвердите Пароль*</label>
-        <input
-          {...register("confirm_new_password")}
           placeholder="Пароль*"
           pattern=".{6,}"
           title="Password must be at least 6 characters long"

@@ -51,8 +51,8 @@ namespace AUTH {
     message: string;
   };
   type ChangePasswordRequest = {
-    old_password: string;
+    email: string;
+    reset_code: string;
     new_password: string;
-    confirm_new_password: string;
   };
 }
