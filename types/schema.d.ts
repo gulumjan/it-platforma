@@ -19,9 +19,7 @@ interface iCourseDetail {
   id: number;
   title: string;
   description: string;
-  into_course: Array<{
-    material: string;
-  }>;
+  count_materials: string;
   description1: string;
   description2: string;
   description3: string;

@@ -12,7 +12,7 @@ const ProgrammCourses: FC = () => {
   return (
     <section className={scss.ProgrammCourses}>
       <div className="container">
-        <h1>{data?.description5}</h1>
+        <h1>ПРОГРАММА КУРСА </h1>
         <div className={scss.content}>
           <div className={scss.blocks}>
             {data?.modules.map((el) => (
