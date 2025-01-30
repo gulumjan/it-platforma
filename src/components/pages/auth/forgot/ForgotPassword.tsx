@@ -15,7 +15,10 @@ const ForgotPassword = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
+  const closeModal = () => {
+    setIsModalOpen(false);
+    router.push("/auth/reset");
+  };
 
   const onSubmit: SubmitHandler<AUTH.ForgotPasswordRequest> = async (data) => {
     console.log("Form Data:", data);

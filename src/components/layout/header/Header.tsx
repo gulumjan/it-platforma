@@ -19,7 +19,7 @@ const Header: FC = () => {
   const router = useRouter();
   const [isMobile, setIsMobile] = useState(false);
   const language = useLanguageStore((state) => state.language);
-  const user = localStorage.getItem("tokens");
+  const { data: user } = useGetUserQuery();
 
   const translations = {
     ru: {

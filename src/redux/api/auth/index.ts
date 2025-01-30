@@ -33,7 +33,7 @@ const api = index.injectEndpoints({
       AUTH.ForgotPasswordRequest
     >({
       query: (data) => ({
-        url: "/reset-password/",
+        url: "/password-reset/",
         method: "POST",
         body: data,
       }),
@@ -44,8 +44,8 @@ const api = index.injectEndpoints({
       AUTH.ChangePasswordRequest
     >({
       query: (data) => ({
-        url: "/change-password/",
-        method: "PUT",
+        url: "/password-reset/confirm/",
+        method: "POST",
         body: data,
       }),
       invalidatesTags: ["data"],

@@ -25,8 +25,7 @@ const LoginPage = () => {
       );
       localStorage.setItem("tokens", JSON.stringify(res.data));
 
-      router.push("/profile")
-
+      router.push("/");
     } catch (error) {
       console.log(error);
     }
