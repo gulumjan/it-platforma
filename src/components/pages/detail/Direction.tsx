@@ -26,7 +26,7 @@ const Direction: FC = () => {
             </div>
             <div className={scss.together}>
               <p>В курс входит: </p>
-              <h4>{data?.into_course[0].material}</h4>
+              <h4>{data?.count_materials}</h4>
             </div>
           </div>
         </div>

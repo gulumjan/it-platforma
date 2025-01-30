@@ -62,11 +62,9 @@ const Buy = () => {
                 <div className={scss.access}>
                   <div className={scss.include}>
                     <h1 className={scss.courseTitle}>{translate("come")}</h1>
-                    {data?.into_course.map((include, index) => (
-                      <h1 key={index} className={scss.includeText}>
-                        ● {include.material}
-                      </h1>
-                    ))}
+                    <h1 className={scss.includeText}>
+                      ● {data?.count_materials}
+                    </h1>
                   </div>
                   <div className={scss.accessBlock}>
                     <h1 className={scss.courseTitle}>{translate("dostup")}</h1>

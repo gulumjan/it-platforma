@@ -13,7 +13,8 @@ const AboutCourses: FC = () => {
       <div className="container">
         <h2 className={scss.title}>О КУРСЕ</h2>
         <p>{data?.description2}</p>
-
+        <p>{data?.description3}</p>
+        <p>{data?.description4}</p>
         <div className={scss.info}>
           <div className={scss.column}>
             <h3>Для кого это</h3>

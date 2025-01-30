@@ -7,7 +7,7 @@ const api = index.injectEndpoints({
       PRODUCT.GetCoursesRequest
     >({
       query: () => ({
-        url: "/cours/",
+        url: "/courses/",
         method: "GET",
       }),
       providesTags: ["data"],
@@ -17,7 +17,7 @@ const api = index.injectEndpoints({
       PRODUCT.GetCourseDetailRequest
     >({
       query: (id) => ({
-        url: `/cours/${id}`,
+        url: `/courses/${id}`,
         method: "GET",
       }),
       providesTags: ["data"],
