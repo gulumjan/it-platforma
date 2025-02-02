@@ -16,11 +16,14 @@
   }
 }
 
+
+
 #answer1 {
   padding-bottom: 100px;
   padding-top: 80px;
 
   .answer1 {
+  
     display: flex;
     justify-content: space-between;
 
@@ -118,6 +121,7 @@
       }
 
       details {
+      
         border-bottom: 1px solid rgb(255, 255, 255);
         margin-bottom: 20px;
       }

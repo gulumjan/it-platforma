@@ -1,10 +1,12 @@
-"use client";
-import React from "react";
+"use client"
+import React, { useEffect } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css"; // Toastify styles
+import "react-toastify/dist/ReactToastify.css";
 import scss from "@/components/pages/Home/SectionHome5.module.scss";
+import AOS from "aos";
+import "aos/dist/aos.css"; // Импортируем стили для AOS
 
 interface FormData {
   fullName: string;
@@ -13,6 +15,13 @@ interface FormData {
 }
 
 const SectionHome5 = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, // Длительность анимации
+      easing: "ease-in-out", // Эффект перехода
+    });
+  }, []);
+
   const {
     register,
     handleSubmit,
@@ -63,7 +72,10 @@ const SectionHome5 = () => {
     <div id={scss.home5}>
       <div className="container">
         <div className={scss.home5}>
-          <div className={scss.home5_text}>
+          <div
+            className={scss.home5_text}
+            data-aos="fade-up" // Применяем анимацию
+          >
             <h2>Оставить заявку</h2>
             <p>
               Заполните краткую форму с ключевыми вопросами, и мы подготовимся к
@@ -71,7 +83,11 @@ const SectionHome5 = () => {
             </p>
           </div>
 
-          <div className={scss.home_form}>
+          <div
+            className={scss.home_form}
+            data-aos="fade-up"
+            data-aos-delay="200" // Задержка анимации для формы
+          >
             <form onSubmit={handleSubmit(onSubmit)}>
               <p>ФИО*</p>
               <div className={scss.inputWrapper}>
