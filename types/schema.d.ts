@@ -138,3 +138,21 @@ interface IFeedback {
   text: string;
   created_date: number;
 }
+
+interface IAboutUs {
+  title: string;
+  description1: string;
+  description2: string;
+  image1: string;
+  image2: string;
+  title_serti: string;
+  description_serti: string;
+  image_serti: string;
+}
+
+interface IAboutSchool {
+  title1: string;
+  description1: string;
+  title2: string;
+  description2: string;
+}

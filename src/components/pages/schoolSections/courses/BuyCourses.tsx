@@ -6,7 +6,6 @@ import { useParams } from "next/navigation";
 import ModalWindow from "@/ui/modal_window/ModalWindow";
 import { useLanguageStore } from "@/stores/UseLanguageStore";
 import { useGetCoursDetailQuery } from "@/redux/api/product";
-import { TbTrack } from "react-icons/tb";
 
 const BuyCourses = () => {
   const { id } = useParams();

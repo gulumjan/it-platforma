@@ -22,4 +22,10 @@ namespace PRODUCT {
 
   type GetFeedbackResponse = IFeedback[];
   type GetFeedbackRequest = void;
+
+  type GetAboutUsResponse = IAboutUs[];
+  type GetAboutUsRequest = void;
+
+  type GetAboutSchoolResponse = IAboutSchool[];
+  type GetAboutSchoolRequest = void;
 }
