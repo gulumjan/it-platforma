@@ -38,6 +38,125 @@
     border-radius: 10px;
     height: 373px;
     padding: 40px;
+    .checkBoxes {
+      display: flex;
+      width: 80%;
+      justify-content: space-evenly;
+      padding: 20px 0;
+      gap: 10px;
+      .checkBox {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        padding: 8px 20px;
+        width: 300px;
+        border: 2px solid gray;
+        gap: 10px;
+      }
+
+      .cardText {
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 24.38px;
+        text-align: left;
+      }
+
+      input[type="checkbox"] {
+        display: none;
+      }
+
+      label {
+        width: 30px;
+        height: 30px;
+        border-radius: 100%;
+        border: 2px solid gray;
+        background: transparent;
+        display: inline-block;
+        cursor: pointer;
+        position: relative;
+        padding: 10px 0;
+        transition: all 0.3s ease; /* Smooth transition */
+      }
+
+      input[type="checkbox"]:checked + label::after {
+        content: "✓";
+        position: absolute;
+        bottom: 2px;
+        left: 5px;
+        font-size: 20px;
+        color: inherit;
+      }
+    }
+    .cardCode {
+      width: 80%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 0 0 30px;
+      .year {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        padding: 0 10px; // Уменьшен отступ
+
+        .inputText {
+          color: white;
+          font-size: 14px; // Чуть меньше шрифт для компактности
+          font-weight: 400;
+          line-height: 10px;
+          text-align: left;
+          padding: 10px 0; // Уменьшил padding
+        }
+
+        .input {
+          font-size: 18px; // Немного уменьшил
+          border-radius: 8px;
+          color: white;
+          outline: none;
+          border: 2px solid gray;
+          background: transparent;
+          width: 50%; // Сделал уже, чтобы поля были ближе
+          transition: 300ms;
+          padding: 8px 12px; // Уменьшил padding
+
+          &:hover {
+            border: 2px solid white;
+          }
+        }
+      }
+    }
+
+    .number {
+      width: 100%;
+
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      .inputText {
+        color: white;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 10.5px;
+        text-align: left;
+        padding: 8px 0;
+      }
+      .input {
+        font-size: 20px;
+        border-radius: 10px;
+        color: white;
+        outline: none;
+        border: 2px solid gray;
+        background: transparent;
+        width: 80%;
+        transition: 300ms;
+        padding: 5px 15px;
+        &:hover {
+          border: 2px solid rgb(255, 255, 255);
+        }
+      }
+    }
     h1 {
       font-size: 36px;
       font-weight: 500;
@@ -58,6 +177,7 @@
       outline: none;
       font-size: 16px;
       font-weight: 400;
+      margin: 10px 0;
     }
   }
 }

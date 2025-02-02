@@ -27,7 +27,7 @@ const api = index.injectEndpoints({
       PRODUCT.GetMasterClassRequest
     >({
       query: () => ({
-        url: "/masterclass/",
+        url: "/master_class/",
         method: "GET",
       }),
       providesTags: ["data"],
@@ -79,8 +79,28 @@ const api = index.injectEndpoints({
       PRODUCT.GetFeedbackResponse,
       PRODUCT.GetFeedbackRequest
     >({
-      query: (id) => ({
+      query: () => ({
         url: `/feedback_list/`,
+        method: "GET",
+      }),
+      providesTags: ["data"],
+    }),
+    getAboutUs: build.query<
+      PRODUCT.GetAboutUsResponse,
+      PRODUCT.GetAboutUsRequest
+    >({
+      query: () => ({
+        url: `/about_us/`,
+        method: "GET",
+      }),
+      providesTags: ["data"],
+    }),
+    getAboutSchool: build.query<
+      PRODUCT.GetAboutSchoolResponse,
+      PRODUCT.GetAboutSchoolRequest
+    >({
+      query: () => ({
+        url: `/about_school/`,
         method: "GET",
       }),
       providesTags: ["data"],
@@ -96,4 +116,6 @@ export const {
   useGetStatyaDoQuery,
   useGetFeedbackQuery,
   useGetMasterClassDetailQuery,
+  useGetAboutUsQuery,
+  useGetAboutSchoolQuery,
 } = api;
