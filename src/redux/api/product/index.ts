@@ -47,7 +47,7 @@ const api = index.injectEndpoints({
       PRODUCT.GetStatyaRequest
     >({
       query: () => ({
-        url: "/statya/",
+        url: `/statya/`,
         method: "GET",
       }),
       providesTags: ["data"],
@@ -58,22 +58,12 @@ const api = index.injectEndpoints({
       PRODUCT.GetStatyaDoRequest
     >({
       query: (id) => ({
-        url: `/statyado/${id}`,
+        url: `/statya/${id}`,
         method: "GET",
       }),
       providesTags: ["data"],
     }),
 
-    getStatyaAfter: build.query<
-      PRODUCT.GetStatyaAfterResponse,
-      PRODUCT.GetStatyaAfterRequest
-    >({
-      query: (id) => ({
-        url: `/statyado/${id}`,
-        method: "GET",
-      }),
-      providesTags: ["data"],
-    }),
 
     getFeedback: build.query<
       PRODUCT.GetFeedbackResponse,
