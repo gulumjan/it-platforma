@@ -16,6 +16,7 @@ namespace AUTH {
     email: string;
   };
   type GetUserResponse = {
+    email: string;
     id: number;
     username: string;
     fio: string;

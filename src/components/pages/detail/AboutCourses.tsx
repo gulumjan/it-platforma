@@ -7,7 +7,6 @@ import { useGetCoursDetailQuery } from "@/redux/api/product";
 const AboutCourses: FC = () => {
   const { id } = useParams();
   const { data } = useGetCoursDetailQuery(Number(id));
-  console.log("🚀 ~ data:", data);
   return (
     <section className={scss.AboutCourses}>
       <div className="container">
@@ -18,7 +17,7 @@ const AboutCourses: FC = () => {
         <div className={scss.info}>
           <div className={scss.column}>
             <h3>Для кого это</h3>
-            {data?.who_for_course.map((el) => (
+            {data?.who_for_course?.map((el) => (
               <ul key={el.id}>
                 <li>{el.name}</li>
               </ul>
@@ -27,7 +26,7 @@ const AboutCourses: FC = () => {
           <div className={scss.column}>
             <h3>Вы изучите</h3>
             <div className={scss.net}>
-              {data?.you_learns.map((el) => (
+              {data?.you_learns?.map((el) => (
                 <ul key={el.id}>
                   <li>{el.name}</li>
                 </ul>

@@ -85,7 +85,7 @@ const PersonalData = () => {
       <h1>Личные данные</h1>
       <form>
         <div className={s.left}>
-          <InputData title="ФИО" values={userData?.username || "Не указано"} />
+          <InputData title="ФИО" values={userData?.fio || "Не указано"} />
           <InputData
             title="Номер телефона"
             values={userData?.phone_number || "Не указан"}

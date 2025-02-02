@@ -1,4 +1,5 @@
 "use client";
+
 import { FC, useEffect, useState } from "react";
 import scss from "./Header.module.scss";
 import Logo from "@/assets/logo.svg";
@@ -19,8 +20,7 @@ const Header: FC = () => {
   const router = useRouter();
   const [isMobile, setIsMobile] = useState(false);
   const language = useLanguageStore((state) => state.language);
-  const { data: user } = useGetUserQuery();
-  console.log("🚀 ~ user:", user);
+  const { data: user, isLoading, isError } = useGetUserQuery();
 
   const translations = {
     ru: {
@@ -54,6 +54,43 @@ const Header: FC = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  const renderAuthButtons = () => {
+    if (isLoading) {
+      return null;
+    }
+
+    const isAuthenticated = user && Object.keys(user).length > 0;
+
+    return isAuthenticated ? (
+      <>
+        <button className={scss.note}>
+          <IoMdNotificationsOutline />
+        </button>
+        <button
+          onClick={() => router.push(`/profile`)}
+          className={scss.subscribeBtn2}
+        >
+          Профиль
+        </button>
+      </>
+    ) : (
+      <>
+        <button
+          onClick={() => router.push(`/auth/login`)}
+          className={scss.loginBtn}
+        >
+          {translate(`signIn`)}
+        </button>
+        <button
+          onClick={() => router.push(`/registration`)}
+          className={scss.subscribeBtn}
+        >
+          {translate("follow")}
+        </button>
+      </>
+    );
+  };
+
   return (
     <header className={scss.Header}>
       <div className="container">
@@ -74,36 +111,7 @@ const Header: FC = () => {
                   <Link href="/about">{translate("about")}</Link>
                   <Language />
                 </nav>
-                <div className={scss.btns}>
-                  {!user ? (
-                    <>
-                      <button
-                        onClick={() => router.push(`/auth/login`)}
-                        className={scss.loginBtn}
-                      >
-                        {translate(`signIn`)}
-                      </button>
-                      <button
-                        onClick={() => router.push(`/registration`)}
-                        className={scss.subscribeBtn}
-                      >
-                        {translate("follow")}
-                      </button>
-                    </>
-                  ) : (
-                    <>
-                      <button className={scss.note}>
-                        <IoMdNotificationsOutline />
-                      </button>
-                      <button
-                        onClick={() => router.push(`/profile`)}
-                        className={scss.subscribeBtn2}
-                      >
-                        Профиль
-                      </button>
-                    </>
-                  )}
-                </div>
+                <div className={scss.btns}>{renderAuthButtons()}</div>
               </>
             ) : (
               <BurgerMenu />

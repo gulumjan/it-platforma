@@ -1,0 +1,74 @@
+.container {
+  min-height: 60vh;
+  padding: 2rem;
+}
+
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+
+  &_text {
+    margin-bottom: 3rem;
+
+    h1 {
+      color: white;
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      color: #cccccc;
+      font-size: 1.125rem;
+      line-height: 1.5;
+      width: 700px;
+    }
+  }
+}
+
+.progress_section {
+  color: white;
+
+  h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.progress_bar {
+  position: relative;
+  height: 8px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  margin-bottom: 2rem;
+}
+
+.progress_fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 7%;
+  background-color: #2196f3;
+  border-radius: 4px;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+}
+
+.stat_item {
+  .stat_label {
+    color: #999999;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+  }
+
+  .stat_value {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+}

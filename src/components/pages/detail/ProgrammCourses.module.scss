@@ -18,8 +18,17 @@
     text-align: left;
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
+    padding: 17px 0;
     @include mobile() {
       font-size: 28px;
+    }
+  }
+  .lesson {
+    display: flex;
+    justify-content: space-between;
+    video {
+      width: 50%;
+      height: auto;
     }
   }
   .content {

@@ -13,19 +13,35 @@ const ProgrammCourses: FC = () => {
     <section className={scss.ProgrammCourses}>
       <div className="container">
         <h1>ПРОГРАММА КУРСА </h1>
-        <div className={scss.content}>
-          <div className={scss.blocks}>
-            {data?.modules.map((el) => (
-              <div key={el.id} className={scss.block}>
-                <h5>Модуль {el.module_num}</h5>
-                <p>{el.description}</p>
-              </div>
+        {data?.private_video_course ? (
+          <div className={scss.lesson}>
+            {data.private_video_course.map((el, index) => (
+              <>
+                <video src={el.video}></video>
+                <div className={scss.lessonText}>
+                  <p>{el.name}</p>
+                  <p>{el.module}</p>
+                </div>
+              </>
             ))}
-
-            <button>Зарегистрироваться</button>
           </div>
-          <Image width={480} height={503} src={Img} alt="" />
-        </div>
+        ) : (
+          <>
+            <div className={scss.content}>
+              <div className={scss.blocks}>
+                {data?.modules?.map((el) => (
+                  <div key={el.id} className={scss.block}>
+                    <h5>Модуль {el.module_num}</h5>
+                    <p>{el.description}</p>
+                  </div>
+                ))}
+
+                <button>Зарегистрироваться</button>
+              </div>
+              <Image width={480} height={503} src={Img} alt="" />
+            </div>
+          </>
+        )}
       </div>
     </section>
   );
