@@ -49,6 +49,12 @@ interface iCourseDetail {
     title: string;
     description: string;
   }>;
+
+  private_video_course?: {
+    module: number;
+    name: string;
+    video: string;
+  }[];
 }
 
 interface iUserLogin {
@@ -155,4 +161,16 @@ interface IAboutSchool {
   description1: string;
   title2: string;
   description2: string;
+}
+
+interface iPaymentCourseTariff {
+  course: number;
+  tariff?: number;
+  fio: string;
+  email: string;
+  phone: string;
+  card_number: string;
+  card_expiry: string;
+  card_cvv: string;
+  payment_method: string;
 }

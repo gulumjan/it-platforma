@@ -64,7 +64,6 @@ const api = index.injectEndpoints({
       providesTags: ["data"],
     }),
 
-
     getFeedback: build.query<
       PRODUCT.GetFeedbackResponse,
       PRODUCT.GetFeedbackRequest
@@ -95,6 +94,17 @@ const api = index.injectEndpoints({
       }),
       providesTags: ["data"],
     }),
+    paymentCourseTariff: build.mutation<
+      PRODUCT.PostPaymentCourseTariffResponse,
+      PRODUCT.PostPaymentCourseTariffRequest
+    >({
+      query: (data) => ({
+        url: `/payment_create/`,
+        method: "POST",
+        body: data,
+      }),
+      invalidatesTags: ["data"],
+    }),
   }),
 });
 
@@ -108,4 +118,5 @@ export const {
   useGetMasterClassDetailQuery,
   useGetAboutUsQuery,
   useGetAboutSchoolQuery,
+  usePaymentCourseTariffMutation,
 } = api;
