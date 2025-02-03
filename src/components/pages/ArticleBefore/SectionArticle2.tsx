@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 const SectionArticle2 = () => {
+  
+
   return (
     <div id={scss.article2}>
       <div className="container">
@@ -17,7 +19,7 @@ const SectionArticle2 = () => {
           </div>
 
           <div className={scss.article2_btn}>
-            <Link href={`/kaufen/{id}`}>
+            <Link href={`/paket`}>
               {" "}
               <button>Получить доступ за 225,00$</button>
             </Link>

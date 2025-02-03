@@ -98,25 +98,26 @@ interface iMasterClassById {
   }>;
 }
 
-interface IStatyaDo {
-  id: number;
-  title: string;
-  description: string;
-  date: string;
-  image: string;
-  for_key_description: string;
-  keys_statya: Array<{
-    id: number;
-    key: string;
-  }>;
-}
+// interface IStatyaDo {
+//   id: number;
+//   title: string;
+//   description: string;
+//   date: string;
+//   image: string;
+//   for_key_description: string;
+//   keys_statya: Array<{
+//     id: number;
+//     key: string;
+//   }>;
+// }
 
-interface IStatyaPosle {
+interface IStatyaDo {
   id: number;
   title: string;
   description: string;
   date: number;
   image: string;
+  for_key_description: string;
   keys_statya: [
     {
       id: number;
@@ -126,6 +127,7 @@ interface IStatyaPosle {
   description1: string;
   description2: string;
   description3: string;
+  for_key_description2: string;
   keys_statya2: [
     {
       id: number;
@@ -175,6 +177,19 @@ interface iPaymentCourseTariff {
   payment_method: string;
 }
 
+
+interface iPaketTarif {
+  id: number;
+  term_status: string;
+  sum: number;
+  tariff_pay: string;
+  tariff_info: [
+    {
+      id: number;
+      info: string;
+    }
+  ];
+
 interface IVisaCart {
   user: number;
   bank_cart: string;
@@ -187,4 +202,5 @@ interface IVisaCartGet {
   bank_cart: string;
   number_cart: string;
   graduation_date: string;
+
 }
