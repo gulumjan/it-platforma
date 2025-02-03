@@ -7,8 +7,9 @@ const PaketPage = () => {
     return (
         <div>
             <Paket/>
-            <SectionHome4/>
             <SectionHome5/>
+            <SectionHome4/>
+          
         </div>
     );
 };
