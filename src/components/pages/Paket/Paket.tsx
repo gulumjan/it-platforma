@@ -1,3 +1,4 @@
+"use client"
 import React from 'react';
 import scss from "@/components/pages/Paket/Paket.module.scss"
 import { useGetPaketTarifQuery } from '@/redux/api/product';

@@ -1,4 +1,22 @@
+@mixin tablet {
+    @media (max-width: 1125px) {
+      @content;
+    }
+  }
+  
+  @mixin mobile {
+    @media (max-width: 768px) {
+      @content;
+    }
+  }
+  
+  @mixin phone {
+    @media (max-width: 480px) {
+      @content;
+    }
+  }
 .paket {
+    margin-bottom: 90px;
     h1 {
         font-size: 36px;
         font-weight: 700;
@@ -11,6 +29,12 @@
         align-items: center;
         justify-content: space-between;
         color: black;
+
+        @include tablet {
+           flex-wrap: wrap;
+            gap: 20px;
+          
+          }
 
         .paket_card {
             display: flex;
