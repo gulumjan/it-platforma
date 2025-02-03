@@ -189,6 +189,7 @@ interface iPaketTarif {
       info: string;
     }
   ];
+}
 
 interface IVisaCart {
   user: number;
@@ -204,3 +205,4 @@ interface IVisaCartGet {
   graduation_date: string;
 
 }
+
