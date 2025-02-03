@@ -31,4 +31,10 @@ namespace PRODUCT {
 
   type PostPaymentCourseTariffResponse = iPaymentCourseTariff;
   type PostPaymentCourseTariffRequest = iPaymentCourseTariff;
+
+  type PostCreateVisaCartResponse = IVisaCart;
+  type PostCreateVisaCartRequest = IVisaCart;
+
+  type GetVisaCartResponse = IVisaCartGet[];
+  type GetVisaCartRequest = void;
 }

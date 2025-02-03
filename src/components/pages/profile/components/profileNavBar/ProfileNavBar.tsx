@@ -12,14 +12,14 @@ import { TbLogout } from "react-icons/tb";
 import { MobileProfileNavBar } from "./MobileProfilNav";
 import ModalOut from "@/ui/modalOut/ModalOut";
 import { useRouter } from "next/navigation";
+import { useLoginUserMutation } from "@/redux/api/auth";
 
 const ProfileNavBar = () => {
   const [openModal, setOpenModal] = useState(false);
   const router = useRouter();
 
-  const handleLogoutConfirm = () => {
+  const handleLogoutConfirm = async () => {
     setOpenModal(false);
-    router.push("/");
   };
 
   const handleLogoutCancel = () => {

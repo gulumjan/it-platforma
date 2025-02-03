@@ -67,6 +67,9 @@ const api = index.injectEndpoints({
           url: "/logout/",
           method: "POST",
           body: data,
+          headers: {
+            Authorization: `Bearer ${data.access}`,
+          },
         }),
         invalidatesTags: ["data"],
       }

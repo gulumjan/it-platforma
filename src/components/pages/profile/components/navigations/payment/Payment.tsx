@@ -4,67 +4,131 @@ import React, { useState } from "react";
 import s from "./Payment.module.scss";
 import cardImg from "@/assets/card-img.svg";
 import visa from "@/assets/visa.svg";
+import { SubmitHandler, useForm } from "react-hook-form";
+import {
+  useCreateVisaCartMutation,
+  useGetVisaCartQuery,
+} from "@/redux/api/product";
 
 const Payment = () => {
   const [addCart, setAddCart] = useState(false);
+  const { register, handleSubmit, setValue } =
+    useForm<PRODUCT.PostCreateVisaCartRequest>();
+  const [createVisaCart] = useCreateVisaCartMutation();
+  const { data } = useGetVisaCartQuery();
+  console.log("🚀 ~ Payment ~ data:", data);
+
+  const [selectedPayment, setSelectedPayment] = useState<string | null>();
+
+  const handleCheckboxChange = (value: string) => {
+    setSelectedPayment(value);
+    setValue("bank_cart", value);
+  };
+
+  const onSubmit: SubmitHandler<PRODUCT.PostCreateVisaCartRequest> = async (
+    data
+  ) => {
+    console.log(data);
+    try {
+      const newData = {
+        user: 1,
+        bank_cart: selectedPayment,
+        number_cart: data.number_cart,
+        graduation_date: data.graduation_date,
+        csv: data.csv,
+      };
+      const result = await createVisaCart(newData);
+      console.log("🚀 ~ Payment ~ result:", result);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className={s.payment}>
       <h1>Платежные карты</h1>
       <div className={s.cards}>
-        <div className={s.card}>
-          <h2>Visa Classic</h2>
-          <Image src={cardImg} alt="img" />
-          <h4>4000 1234 5678 9010</h4>
-          <span>12/34</span>
-          <Image src={visa} alt="img" className={s.visa} />
-        </div>
-        <div className={s.card}>
-          <h2>Visa Classic</h2>
-          <Image src={cardImg} alt="img" />
-          <h4>4000 1234 5678 9010</h4>
-          <span>12/34</span>
-          <Image src={visa} alt="img" className={s.visa} />
-        </div>
+        {data.map((el) => (
+          <>
+            <div className={s.card}>
+              <h2>{el.bank_cart} Classic</h2>
+              <Image src={cardImg} alt="img" />
+              <h4>{el.number_cart}</h4>
+              <span>{el.graduation_date}</span>
+              <Image src={visa} alt="img" className={s.visa} />
+            </div>
+          </>
+        ))}
       </div>
       <div className={s.addCard}>
         {addCart ? (
-          <>
+          <form onSubmit={handleSubmit(onSubmit)} noValidate>
             <div className={s.number}>
-              <h1 className={s.inputText}>Номер карты *</h1>{" "}
-              <input type="text" className={s.input} />
+              <h1 className={s.inputText}>Номер карты *</h1>
+              <input
+                {...register("number_cart", {
+                  required: "Номер карты обязателен",
+                  pattern: {
+                    value: /^[0-9]{16}$/,
+                    message: "Введите правильный номер карты",
+                  },
+                })}
+                type="text"
+                className={s.input}
+              />
             </div>
             <div className={s.checkBoxes}>
               <div className={s.checkBox}>
                 <input
-                  type="checkbox"
-                  id="checkbox1"
+                  type="radio"
+                  id="visa"
+                  name="payment_type"
                   className={s.customCheckbox}
+                  checked={selectedPayment === "visa"}
+                  onChange={() => handleCheckboxChange("visa")}
                 />
-                <label htmlFor="checkbox1"></label>
-                <h1 className={s.cardText}>Visa</h1>
+                <label htmlFor="visa">Visa</label>
               </div>
               <div className={s.checkBox}>
                 <input
-                  type="checkbox"
-                  id="checkbox2"
+                  type="radio" // Changed from checkbox to radio for single selection
+                  id="mastercard"
+                  name="payment_type"
                   className={s.customCheckbox}
+                  checked={selectedPayment === "mastercard"}
+                  onChange={() => handleCheckboxChange("mastercard")}
                 />
-                <label htmlFor="checkbox2"></label>{" "}
-                <h1 className={s.cardText}>MasterCard</h1>
-              </div>{" "}
+                <label htmlFor="mastercard">MasterCard</label>
+              </div>
             </div>
             <div className={s.cardCode}>
               <div className={s.year}>
-                <h1 className={s.inputText}>ММ/ГГ *</h1>{" "}
-                <input type="number" className={s.input} />
+                <h1 className={s.inputText}>ММ/ГГ *</h1>
+                <input
+                  {...register("graduation_date", {
+                    required: "Дата обязательна",
+                  })}
+                  type="date"
+                  className={s.input}
+                />
               </div>
               <div className={s.year}>
-                <h1 className={s.inputText}>CVC *</h1>{" "}
-                <input type="number" className={s.input} />
+                <h1 className={s.inputText}>CVC *</h1>
+                <input
+                  {...register("csv", {
+                    required: "CVC обязателен",
+                    pattern: {
+                      value: /^[0-9]{3,4}$/,
+                      message: "Введите правильный CVC код",
+                    },
+                  })}
+                  type="number"
+                  className={s.input}
+                />
               </div>
             </div>
-            <button onClick={() => setAddCart(false)}>Сохранить картy</button>
-          </>
+            <button type="submit">Сохранить карту</button>
+          </form>
         ) : (
           <>
             <h1>Добавить карту</h1>

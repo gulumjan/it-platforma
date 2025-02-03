@@ -174,3 +174,17 @@ interface iPaymentCourseTariff {
   card_cvv: string;
   payment_method: string;
 }
+
+interface IVisaCart {
+  user: number;
+  bank_cart: string;
+  number_cart: string;
+  graduation_date: string;
+  csv: string;
+}
+
+interface IVisaCartGet {
+  bank_cart: string;
+  number_cart: string;
+  graduation_date: string;
+}

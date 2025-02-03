@@ -37,7 +37,7 @@
     width: 100%;
     border-radius: 10px;
     height: 373px;
-    padding: 40px;
+    padding: 50px;
     .checkBoxes {
       display: flex;
       width: 80%;
@@ -48,7 +48,6 @@
         position: relative;
         display: flex;
         align-items: center;
-        justify-content: center;
         border-radius: 10px;
         padding: 8px 20px;
         width: 300px;
@@ -71,7 +70,6 @@
         width: 30px;
         height: 30px;
         border-radius: 100%;
-        border: 2px solid gray;
         background: transparent;
         display: inline-block;
         cursor: pointer;
@@ -90,7 +88,7 @@
       }
     }
     .cardCode {
-      width: 80%;
+      width: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
