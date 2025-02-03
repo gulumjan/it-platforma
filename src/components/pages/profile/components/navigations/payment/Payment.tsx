@@ -9,6 +9,7 @@ import {
   useCreateVisaCartMutation,
   useGetVisaCartQuery,
 } from "@/redux/api/product";
+import { useLanguageStore } from "@/stores/UseLanguageStore";
 
 const Payment = () => {
   const [addCart, setAddCart] = useState(false);
@@ -19,6 +20,38 @@ const Payment = () => {
   console.log("🚀 ~ Payment ~ data:", data);
 
   const [selectedPayment, setSelectedPayment] = useState<string | null>();
+
+  const language = useLanguageStore((state) => state.language);
+
+  const translations = {
+    ru: {
+      cart: "Платежные карты",
+      cart_number: "Номер карты",
+      save: "Сохранить карту",
+      add: "Добавить карту",
+      text1:
+        "Добавьте свою карту, чтобы больше не тратить время на ввод данных вручную",
+      text2:
+        "Для проверки карты будет снята минимальная сумма в размере 1$. Сумма будет возвращена вам в течение 48 часов",
+    },
+    ky: {
+      cart: "Төлөм карталары",
+      cart_number: "Картанын номери",
+      save: "Картаны сактоо",
+      add: "Картаны кошуу",
+      text1:
+        "Өз картаңызды кошуп, маалыматтарды кол менен киргизүүгө убакыт коротпоңуз",
+      text2:
+        "Картаны текшерүү үчүн 1$ өлчөмүндөгү минималдуу сумма алынат. Бул сумма 48 сааттын ичинде кайтарылып берилет",
+    },
+  };
+
+  const translate = (key: keyof (typeof translations)["ru"]) => {
+    return (
+      translations[language as keyof typeof translations]?.[key] ??
+      translations.ru[key]
+    );
+  };
 
   const handleCheckboxChange = (value: string) => {
     setSelectedPayment(value);
@@ -31,7 +64,7 @@ const Payment = () => {
     console.log(data);
     try {
       const newData = {
-        user: 1,
+        user: 2,
         bank_cart: selectedPayment,
         number_cart: data.number_cart,
         graduation_date: data.graduation_date,
@@ -46,25 +79,23 @@ const Payment = () => {
 
   return (
     <div className={s.payment}>
-      <h1>Платежные карты</h1>
+      <h1>{translate("cart")}</h1>
       <div className={s.cards}>
-        {data.map((el) => (
-          <>
-            <div className={s.card}>
-              <h2>{el.bank_cart} Classic</h2>
-              <Image src={cardImg} alt="img" />
-              <h4>{el.number_cart}</h4>
-              <span>{el.graduation_date}</span>
-              <Image src={visa} alt="img" className={s.visa} />
-            </div>
-          </>
+        {data?.map((el, index) => (
+          <div key={index} className={s.card}>
+            <h2>{el.bank_cart} Classic</h2>
+            <Image src={cardImg} alt="img" />
+            <h4>{el.number_cart}</h4>
+            <span>{el.graduation_date}</span>
+            <Image src={visa} alt="img" className={s.visa} />
+          </div>
         ))}
       </div>
       <div className={s.addCard}>
         {addCart ? (
           <form onSubmit={handleSubmit(onSubmit)} noValidate>
             <div className={s.number}>
-              <h1 className={s.inputText}>Номер карты *</h1>
+              <h1 className={s.inputText}>{translate("cart_number")} *</h1>
               <input
                 {...register("number_cart", {
                   required: "Номер карты обязателен",
@@ -91,7 +122,7 @@ const Payment = () => {
               </div>
               <div className={s.checkBox}>
                 <input
-                  type="radio" // Changed from checkbox to radio for single selection
+                  type="radio"
                   id="mastercard"
                   name="payment_type"
                   className={s.customCheckbox}
@@ -127,20 +158,14 @@ const Payment = () => {
                 />
               </div>
             </div>
-            <button type="submit">Сохранить карту</button>
+            <button type="submit">{translate("save")}</button>
           </form>
         ) : (
           <>
-            <h1>Добавить карту</h1>
-            <p>
-              Добавьте свою карту, чтобы больше не тратить время на ввод данных
-              вручну
-            </p>
-            <button onClick={() => setAddCart(true)}>Добавить карту</button>
-            <p>
-              Для проверки карты будет снята минимальная сумма в размере 1$.
-              Сумма будет возвращена вам а течении 48 часов
-            </p>
+            <h1>{translate("add")}</h1>
+            <p>{translate("text1")}</p>
+            <button onClick={() => setAddCart(true)}>{translate("add")}</button>
+            <p>{translate("text2")}</p>
           </>
         )}
       </div>
