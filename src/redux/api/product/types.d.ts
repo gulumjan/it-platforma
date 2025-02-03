@@ -33,6 +33,14 @@ namespace PRODUCT {
   type PostPaymentCourseTariffResponse = iPaymentCourseTariff;
   type PostPaymentCourseTariffRequest = iPaymentCourseTariff;
 
+
   type GetPaketTarifResponse = iPaketTarif[];
   type GetPaketTarifRequest = void;
+
+  type PostCreateVisaCartResponse = IVisaCart;
+  type PostCreateVisaCartRequest = IVisaCart;
+
+  type GetVisaCartResponse = IVisaCartGet[];
+  type GetVisaCartRequest = void;
+
 }

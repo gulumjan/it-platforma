@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import scss from "./BuyCourses.module.scss";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import ModalWindow from "@/ui/modal_window/ModalWindow";
 import { useLanguageStore } from "@/stores/UseLanguageStore";
 import {
@@ -16,6 +16,7 @@ const BuyCourses = () => {
   const { data } = useGetCoursDetailQuery(Number(id));
   const { register, handleSubmit, setValue } =
     useForm<PRODUCT.PostPaymentCourseTariffRequest>();
+  const router = useRouter();
 
   const [selectedPayment, setSelectedPayment] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -72,7 +73,8 @@ const BuyCourses = () => {
         phone: data.phone,
       };
       const res = await paymentCourseTariff(newData);
-      console.log("🚀 ~ >= ~ res:", res);
+
+      router.push("/");
     } catch (error) {
       console.log(error);
     }

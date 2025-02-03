@@ -30,15 +30,11 @@ namespace AUTH {
   }[];
   type GetUserRequest = void;
   type LogoutUserRequest = {
-    refresh: string;
+    access: string;
   };
 
   type LogoutUserResponse = {
     message: string;
-    tokens: {
-      access: string;
-      refresh: string;
-    };
   };
   type NewPasswordResponse = {
     message: string;

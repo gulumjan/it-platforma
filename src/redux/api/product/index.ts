@@ -106,6 +106,7 @@ const api = index.injectEndpoints({
       invalidatesTags: ["data"],
     }),
 
+
     getPaketTarif: build.query<
     PRODUCT.GetPaketTarifResponse,
     PRODUCT.GetPaketTarifRequest
@@ -118,6 +119,28 @@ const api = index.injectEndpoints({
   }),
 
 
+
+    createVisaCart: build.mutation<
+      PRODUCT.PostCreateVisaCartResponse,
+      PRODUCT.PostCreateVisaCartRequest
+    >({
+      query: (data) => ({
+        url: `/visa_cart_create/`,
+        method: "POST",
+        body: data,
+      }),
+      invalidatesTags: ["data"],
+    }),
+    getVisaCart: build.query<
+      PRODUCT.GetVisaCartResponse,
+      PRODUCT.GetVisaCartRequest
+    >({
+      query: () => ({
+        url: `/visa_cart/`,
+        method: "GET",
+      }),
+      providesTags: ["data"],
+    }),
 
   }),
 });
@@ -133,5 +156,10 @@ export const {
   useGetAboutUsQuery,
   useGetAboutSchoolQuery,
   usePaymentCourseTariffMutation,
-  useGetPaketTarifQuery
+
+  useGetPaketTarifQuery,
+
+  useCreateVisaCartMutation,
+  useGetVisaCartQuery,
+
 } = api;
