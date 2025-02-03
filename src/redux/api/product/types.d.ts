@@ -29,6 +29,10 @@ namespace PRODUCT {
   type GetAboutSchoolResponse = IAboutSchool[];
   type GetAboutSchoolRequest = void;
 
+
   type PostPaymentCourseTariffResponse = iPaymentCourseTariff;
   type PostPaymentCourseTariffRequest = iPaymentCourseTariff;
+
+  type GetPaketTarifResponse = iPaketTarif[];
+  type GetPaketTarifRequest = void;
 }

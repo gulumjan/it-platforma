@@ -105,6 +105,20 @@ const api = index.injectEndpoints({
       }),
       invalidatesTags: ["data"],
     }),
+
+    getPaketTarif: build.query<
+    PRODUCT.GetPaketTarifResponse,
+    PRODUCT.GetPaketTarifRequest
+  >({
+    query: () => ({
+      url: `/tariff/`,
+      method: "GET",
+    }),
+    providesTags: ["data"],
+  }),
+
+
+
   }),
 });
 
@@ -119,4 +133,5 @@ export const {
   useGetAboutUsQuery,
   useGetAboutSchoolQuery,
   usePaymentCourseTariffMutation,
+  useGetPaketTarifQuery
 } = api;
