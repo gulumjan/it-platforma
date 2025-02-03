@@ -1,14 +1,13 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 import scss from "./DetailMasterClass.module.scss";
 
-import { useParams, useRouter } from "next/navigation";
+import { useParams } from "next/navigation";
 import Link from "next/link";
 import { useLanguageStore } from "@/stores/UseLanguageStore";
 import { useGetMasterClassDetailQuery } from "@/redux/api/product";
 
 const DetailMasterClass = () => {
-  const nav = useRouter();
   const language = useLanguageStore((state) => state.language);
   const { id } = useParams();
   const { data } = useGetMasterClassDetailQuery(Number(id));
