@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { FC, useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -10,7 +10,7 @@ import Brace from "@/assets/images (1) 2.svg";
 import Lamp from "@/assets/lamp 1.svg";
 import Tools from "@/assets/tools 1.svg";
 
-const Home:FC = () => {
+const Home: FC = () => {
   useEffect(() => {
     AOS.init({ duration: 1000, once: true });
   }, []);

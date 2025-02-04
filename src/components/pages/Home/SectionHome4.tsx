@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useEffect } from "react";
 import scss from "@/components/pages/Home/SectionHome4.module.scss";
 import Image from "next/image";
@@ -67,7 +67,7 @@ const SectionHome4 = () => {
               <details
                 key={index}
                 data-aos="fade-up"
-                data-aos-delay={`${index * 100}`} 
+                data-aos-delay={`${index * 100}`}
                 data-aos-duration="1500"
                 className={scss.details}
               >

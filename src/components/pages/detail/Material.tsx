@@ -5,7 +5,6 @@ import Image from "next/image";
 import img from "@/assets/ЗВЕЗДА.svg";
 import img2 from "@/assets/Frame 10.svg";
 import img3 from "@/assets/100 материао.svg";
-import profile from "@/assets/Rectangle 2196.svg";
 import { useParams } from "next/navigation";
 import { useGetCoursDetailQuery } from "@/redux/api/product";
 

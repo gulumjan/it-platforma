@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React from "react";
 import scss from "./Buy.module.scss";
 
 import { useLanguageStore } from "@/stores/UseLanguageStore";

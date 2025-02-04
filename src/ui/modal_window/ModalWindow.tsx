@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect } from "react";
 import styles from "./ModalWindow.module.scss";
-// import { useParams } from "next/navigation";
 import { useLanguageStore } from "@/stores/UseLanguageStore";
 
 interface ModalWindowProps {
@@ -10,7 +9,6 @@ interface ModalWindowProps {
 }
 
 const ModalWindow: React.FC<ModalWindowProps> = ({ isOpen, onClose }) => {
-  //   const params = useParams();
   const courseId = Number(1);
 
   const language = useLanguageStore((state) => state.language);

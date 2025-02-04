@@ -1,6 +1,5 @@
 import React from "react";
 import s from "./Comments.module.scss";
-// import Image from "next/image";
 
 const Comments = () => {
   return (
@@ -10,7 +9,6 @@ const Comments = () => {
         <div className={s.cards}>
           <div className={s.card}>
             <div className={s.userImg}>
-              {/* <Image src={""} alt='img'/> */}
               <div className={s.img}>H</div>
             </div>
             <div className={s.userInfo}>

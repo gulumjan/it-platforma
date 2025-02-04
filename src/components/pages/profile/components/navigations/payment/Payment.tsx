@@ -17,7 +17,6 @@ const Payment = () => {
     useForm<PRODUCT.PostCreateVisaCartRequest>();
   const [createVisaCart] = useCreateVisaCartMutation();
   const { data } = useGetVisaCartQuery();
-  console.log("🚀 ~ Payment ~ data:", data);
   const { data: user } = useGetUserQuery();
 
   const [selectedPayment, setSelectedPayment] = useState<string | null>();

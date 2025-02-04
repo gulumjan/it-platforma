@@ -6,13 +6,10 @@ import Image from "next/image";
 import { useGetStatyaDoQuery } from "@/redux/api/product";
 import { useParams } from "next/navigation";
 
-
 const ArticleBefore = () => {
   const { id } = useParams();
 
   const { data } = useGetStatyaDoQuery(Number(1));
-  console.log(data, "before");
-
 
   return (
     <div id={scss.articleBef}>

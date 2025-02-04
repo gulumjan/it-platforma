@@ -19,11 +19,11 @@ const Register = () => {
     console.log(data);
     try {
       const res = await registerUser(data);
-      console.log(
-        "🚀 ~ constonSubmit:SubmitHandler<AUTH.RegisterUserRequest>=async ~ res:",
-        res
-      );
+
       localStorage.setItem("tokens", JSON.stringify(res.data));
+      if (res) {
+        router.push("/");
+      }
     } catch (error) {
       console.log(error);
     }

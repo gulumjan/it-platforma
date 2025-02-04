@@ -8,8 +8,6 @@ const Section1 = () => {
   const { id } = useParams();
 
   const { data } = useGetStatyaDoQuery(Number(id));
-  console.log(data, "aiddd");
-  console.log(id, "dhghgj");
 
   return (
     <div id={scss.section1}>

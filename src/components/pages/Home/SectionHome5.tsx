@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useEffect } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import axios from "axios";
@@ -31,8 +31,8 @@ const SectionHome5 = () => {
 
   const sendToTelegram = async (data: FormData) => {
     try {
-      const chatId = -1002043264040; // Ваш chat_id
-      const token = `7043496915:AAEoRK9THxBn75bvcsgliKltPXT25dHhvcc`; // Ваш токен бота
+      const chatId = -1002043264040;
+      const token = `7043496915:AAEoRK9THxBn75bvcsgliKltPXT25dHhvcc`;
       const apiUrl = `https://api.telegram.org/bot${token}/sendMessage`;
 
       const message = `
@@ -72,10 +72,7 @@ const SectionHome5 = () => {
     <div id={scss.home5}>
       <div className="container">
         <div className={scss.home5}>
-          <div
-            className={scss.home5_text}
-            data-aos="fade-up" // Применяем анимацию
-          >
+          <div className={scss.home5_text} data-aos="fade-up">
             <h2>Оставить заявку</h2>
             <p>
               Заполните краткую форму с ключевыми вопросами, и мы подготовимся к
@@ -86,7 +83,7 @@ const SectionHome5 = () => {
           <div
             className={scss.home_form}
             data-aos="fade-up"
-            data-aos-delay="200" // Задержка анимации для формы
+            data-aos-delay="200"
           >
             <form onSubmit={handleSubmit(onSubmit)}>
               <p>ФИО*</p>

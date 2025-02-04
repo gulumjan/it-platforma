@@ -36,7 +36,12 @@ const SectionHome2 = () => {
         <h1 data-aos="fade-up">Последние статьи</h1>
         <div className={scss.home2}>
           {visibleData?.map((el, index) => (
-            <div key={index} className={scss.home2_block} data-aos="fade-up" data-aos-delay={index * 100}>
+            <div
+              key={index}
+              className={scss.home2_block}
+              data-aos="fade-up"
+              data-aos-delay={index * 100}
+            >
               <Image src={el.image} width={250} height={250} alt="img" />
               <div className={scss.home2_text}>
                 <h6>Статьи</h6>

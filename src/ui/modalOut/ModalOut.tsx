@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import style from "./ModalOut.module.scss";
-import { useLogoutUserMutation } from "@/redux/api/auth";
 
 const ModalOut = ({
   onConfirm,

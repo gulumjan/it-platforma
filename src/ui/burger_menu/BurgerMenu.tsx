@@ -36,7 +36,8 @@ const BurgerMenu = () => {
   };
   const translate = (key: keyof (typeof translations)["ru"]) => {
     return (
-      translations[language as keyof typeof translations]?.[key] ?? translations
+      translations[language as keyof typeof translations]?.[key] ??
+      translations.ru[key]
     );
   };
 

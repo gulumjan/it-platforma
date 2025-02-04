@@ -11,10 +11,6 @@ interface ModalWindowProps {
 const PasswordChanged: React.FC<ModalWindowProps> = ({ isOpen, onClose }) => {
   const language = useLanguageStore((state) => state.language);
 
-  useEffect(() => {
-    console.log("Current language in ModalWindow:", language);
-  }, [language]);
-
   const translations = {
     ru: {
       brief: "Пароль успешно изменен",

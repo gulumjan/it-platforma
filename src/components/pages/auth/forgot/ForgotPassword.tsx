@@ -24,7 +24,6 @@ const ForgotPassword = () => {
     console.log("Form Data:", data);
     try {
       const res = await forgotPassword(data).unwrap();
-      console.log("Forgot Password Response:", res);
       openModal();
     } catch (error) {
       console.error("Error submitting forgot password request:", error);
