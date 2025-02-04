@@ -21,6 +21,7 @@ const Header: FC = () => {
   const [isMobile, setIsMobile] = useState(false);
   const language = useLanguageStore((state) => state.language);
   const { data: user, isLoading, isError } = useGetUserQuery();
+  console.log("🚀 ~ user:", user);
 
   const translations = {
     ru: {

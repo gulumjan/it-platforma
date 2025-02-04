@@ -30,7 +30,7 @@ namespace AUTH {
   }[];
   type GetUserRequest = void;
   type LogoutUserRequest = {
-    access: string;
+    refresh: string;
   };
 
   type LogoutUserResponse = {

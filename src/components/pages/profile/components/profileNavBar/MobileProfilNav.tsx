@@ -16,12 +16,6 @@ export const MobileProfileNavBar = () => {
   const [openModal, setOpenModal] = useState(false);
   const { data } = useGetUserQuery();
   const [logoutUser] = useLogoutUserMutation();
-  const [selected, setSelected] = useState({
-    href: "/profile",
-    icon: <FaRegUser />,
-    label: "Личные данные",
-  });
-
   const router = useRouter();
 
   const items = [
@@ -41,44 +35,43 @@ export const MobileProfileNavBar = () => {
     },
   ];
 
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
-  };
+  const toggleDropdown = () => setIsOpen(!isOpen);
 
   const handleSelect = (item: (typeof items)[0]) => {
     if (item.requiresConfirmation) {
       setOpenModal(true);
     } else {
-      setSelected(item);
       setIsOpen(false);
     }
   };
-  const handleLogout = async () => {
-    const tokens = localStorage.getItem("tokens");
 
+  const handleLogout = async () => {
+    console.log("Начинаем выход...");
+
+    const tokens = localStorage.getItem("tokens");
     if (!tokens) {
-      console.error("No tokens found in localStorage. Cannot log out.");
+      console.error("Ошибка: нет токенов в localStorage.");
       return;
     }
 
     try {
       const parsedTokens = JSON.parse(tokens);
+      const refreshToken = parsedTokens?.tokens?.refresh;
 
-      if (!parsedTokens?.tokens) {
-        console.error("No refresh token found in tokens. Cannot log out.");
+      if (!refreshToken) {
+        console.error("Ошибка: отсутствует refresh токен.");
         return;
       }
 
-      const res = await logoutUser({
-        refresh: parsedTokens.tokens.refresh,
-      });
+      console.log("Отправляем запрос на logout...");
+      await logoutUser({ refresh: refreshToken }).unwrap();
 
       localStorage.removeItem("tokens");
-
       setOpenModal(false);
-      console.log("Logout successful!");
+      console.log("Выход успешен!");
+      router.push("/auth/login");
     } catch (error) {
-      console.error("Error during logout:", error);
+      console.error("Ошибка при выходе:", error);
     }
   };
 
@@ -87,31 +80,32 @@ export const MobileProfileNavBar = () => {
       <div className={style.mobile}>
         <ul>
           <li onClick={toggleDropdown}>
-            <Link href={selected.href}>
-              {selected.icon}
-              {selected.label}
+            <Link href={items[0].href}>
+              {items[0].icon}
+              {items[0].label}
               <SlArrowDown
                 className={`${style.arrow} ${isOpen ? style.open : ""}`}
-                style={{
-                  transform: isOpen ? "rotate(180deg)" : "rotate(360deg)",
-                }}
               />
             </Link>
           </li>
 
           {isOpen &&
-            items
-              .filter((item) => item.href !== selected.href)
-              .map((item, idx) => (
-                <li key={idx} onClick={() => handleSelect(item)}>
+            items.slice(1).map((item, idx) => (
+              <li key={idx} onClick={() => handleSelect(item)}>
+                {item.requiresConfirmation ? (
+                  <span>
+                    {item.icon} {item.label}
+                  </span>
+                ) : (
                   <Link href={item.href}>
-                    {item.icon}
-                    {item.label}
+                    {item.icon} {item.label}
                   </Link>
-                </li>
-              ))}
+                )}
+              </li>
+            ))}
         </ul>
       </div>
+
       {openModal && (
         <>
           <ModalOut

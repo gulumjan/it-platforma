@@ -12,18 +12,41 @@ import { TbLogout } from "react-icons/tb";
 import { MobileProfileNavBar } from "./MobileProfilNav";
 import ModalOut from "@/ui/modalOut/ModalOut";
 import { useRouter } from "next/navigation";
-import { useLoginUserMutation } from "@/redux/api/auth";
+import { useLogoutUserMutation } from "@/redux/api/auth";
 
 const ProfileNavBar = () => {
   const [openModal, setOpenModal] = useState(false);
   const router = useRouter();
+  const [logoutUser] = useLogoutUserMutation();
 
-  const handleLogoutConfirm = async () => {
-    setOpenModal(false);
-  };
+  const handleLogout = async () => {
+    console.log("Начинаем выход...");
 
-  const handleLogoutCancel = () => {
-    setOpenModal(false);
+    const tokens = localStorage.getItem("tokens");
+    if (!tokens) {
+      console.error("Ошибка: нет токенов в localStorage.");
+      return;
+    }
+
+    try {
+      const parsedTokens = JSON.parse(tokens);
+      const refreshToken = parsedTokens?.tokens?.refresh;
+
+      if (!refreshToken) {
+        console.error("Ошибка: отсутствует refresh токен.");
+        return;
+      }
+
+      console.log("Отправляем запрос на logout...");
+      await logoutUser({ refresh: refreshToken }).unwrap();
+
+      localStorage.removeItem("tokens");
+      setOpenModal(false);
+      console.log("Выход успешен!");
+      router.push("/login");
+    } catch (error) {
+      console.error("Ошибка при выходе:", error);
+    }
   };
 
   return (
@@ -55,15 +78,16 @@ const ProfileNavBar = () => {
           </span>
         </nav>
       </div>
+
       {openModal && (
         <>
           <ModalOut
-            onConfirm={handleLogoutConfirm}
-            onCancel={handleLogoutCancel}
+            onConfirm={handleLogout}
+            onCancel={() => setOpenModal(false)}
           />
           <div
             className={s.bg}
-            onClick={handleLogoutCancel}
+            onClick={() => setOpenModal(false)}
             aria-hidden="true"
           ></div>
         </>
