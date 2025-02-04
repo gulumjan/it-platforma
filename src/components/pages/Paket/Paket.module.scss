@@ -1,4 +1,25 @@
+@mixin tablet {
+    @media (max-width: 1125px) {
+        @content;
+    }
+}
+
+@mixin mobile {
+    @media (max-width: 768px) {
+        @content;
+    }
+}
+
+@mixin phone {
+    @media (max-width: 480px) {
+        @content;
+    }
+}
+
 .paket {
+    margin-top: 60px;
+    margin-bottom: 90px;
+
     h1 {
         font-size: 36px;
         font-weight: 700;
@@ -11,6 +32,12 @@
         align-items: center;
         justify-content: space-between;
         color: black;
+
+        @include tablet {
+            flex-wrap: wrap;
+            gap: 20px;
+
+        }
 
         .paket_card {
             display: flex;
@@ -71,32 +98,38 @@
 
 
 
-            .btn1 {
-                display: flex;
-                margin-top: auto;
 
-                button {
-                    background: rgb(34, 88, 165);
-                    color: white;
-                    padding: 10px 20px;
-                    border: none;
-                    border-radius: 5px;
-                    font-size: 16px;
-                    cursor: pointer;
-
-
-                }
-            }
         }
 
-       
+      
+
 
 
     }
 
-    p{
+    .btn1 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: auto;
+
+        button {
+            background: rgb(34, 88, 165);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+
+
+        }
+    }
+
+
+    p {
         text-align: center;
         margin-top: 40px;
-      
+
     }
 }
