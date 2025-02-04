@@ -5,8 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 const SectionArticle2 = () => {
-  
-
   return (
     <div id={scss.article2}>
       <div className="container">

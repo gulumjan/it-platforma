@@ -19,15 +19,10 @@ const LoginPage = () => {
     try {
       const res = await loginUser(data);
 
-      console.log(
-        "🚀 ~ constonSubmit:SubmitHandler<AUTH.LoginUserRequest>=async ~ res:",
-        res
-      );
       if (res) {
         localStorage.setItem("tokens", JSON.stringify(res.data));
+        router.push("/");
       }
-
-      router.push("/");
     } catch (error) {
       console.log(error);
     }

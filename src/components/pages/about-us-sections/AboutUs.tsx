@@ -9,7 +9,6 @@ import { useGetAboutUsQuery } from "@/redux/api/product";
 
 const AboutUs: FC = () => {
   const { data } = useGetAboutUsQuery();
-  console.log("🚀 ~ data:", data);
   return (
     <>
       {data && (

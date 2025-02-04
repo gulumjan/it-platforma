@@ -23,10 +23,6 @@ const BuyCourses = () => {
   const language = useLanguageStore((state) => state.language);
   const [paymentCourseTariff] = usePaymentCourseTariffMutation();
 
-  useEffect(() => {
-    console.log("Current language in Header:", language);
-  }, [language]);
-
   const translations = {
     ru: {
       agree: "Я ознакомился и согласен с Условиями оказания услуг",
@@ -54,7 +50,7 @@ const BuyCourses = () => {
 
   const handleCheckboxChange = (value: string) => {
     setSelectedPayment(value);
-    setValue("payment_method", value); // Set form value
+    setValue("payment_method", value);
   };
 
   const onSubmit: SubmitHandler<

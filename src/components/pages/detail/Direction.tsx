@@ -10,7 +10,6 @@ const Direction: FC = () => {
   const router = useRouter();
   const { id } = useParams();
   const { data } = useGetCoursDetailQuery(Number(id));
-  console.log("🚀 ~ data: fghj", data);
   return (
     <section className={scss.Direction}>
       <div className="container">

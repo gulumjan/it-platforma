@@ -20,8 +20,6 @@ const ProfileNavBar = () => {
   const [logoutUser] = useLogoutUserMutation();
 
   const handleLogout = async () => {
-    console.log("Начинаем выход...");
-
     const tokens = localStorage.getItem("tokens");
     if (!tokens) {
       console.error("Ошибка: нет токенов в localStorage.");

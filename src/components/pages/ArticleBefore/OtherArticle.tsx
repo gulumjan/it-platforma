@@ -18,7 +18,7 @@ const OtherArticle = () => {
       <div className="container">
         <h2>Другие статьи </h2>
         <div className={scss.otherArticle}>
-          {articles.map((article, index) => (
+          {articles?.map((article, index) => (
             <div key={index} className={scss.otherArticle_block}>
               <div className={scss.otherArticle_text}>
                 <h6>{article.title}</h6>
