@@ -23,7 +23,9 @@ const LoginPage = () => {
         "🚀 ~ constonSubmit:SubmitHandler<AUTH.LoginUserRequest>=async ~ res:",
         res
       );
-      localStorage.setItem("tokens", JSON.stringify(res.data));
+      if (res) {
+        localStorage.setItem("tokens", JSON.stringify(res.data));
+      }
 
       router.push("/");
     } catch (error) {

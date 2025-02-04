@@ -9,14 +9,16 @@ import {
   useCreateVisaCartMutation,
   useGetVisaCartQuery,
 } from "@/redux/api/product";
+import { useGetUserQuery } from "@/redux/api/auth";
 
 const Payment = () => {
   const [addCart, setAddCart] = useState(false);
-  const { register, handleSubmit, setValue } =
+  const { register, handleSubmit, setValue, reset } =
     useForm<PRODUCT.PostCreateVisaCartRequest>();
   const [createVisaCart] = useCreateVisaCartMutation();
   const { data } = useGetVisaCartQuery();
   console.log("🚀 ~ Payment ~ data:", data);
+  const { data: user } = useGetUserQuery();
 
   const [selectedPayment, setSelectedPayment] = useState<string | null>();
 
@@ -31,7 +33,7 @@ const Payment = () => {
     console.log(data);
     try {
       const newData = {
-        user: 1,
+        user: user[0].id,
         bank_cart: selectedPayment,
         number_cart: data.number_cart,
         graduation_date: data.graduation_date,
@@ -39,6 +41,7 @@ const Payment = () => {
       };
       const result = await createVisaCart(newData);
       console.log("🚀 ~ Payment ~ result:", result);
+      reset();
     } catch (error) {
       console.log(error);
     }
@@ -48,16 +51,14 @@ const Payment = () => {
     <div className={s.payment}>
       <h1>Платежные карты</h1>
       <div className={s.cards}>
-        {data.map((el) => (
-          <>
-            <div className={s.card}>
-              <h2>{el.bank_cart} Classic</h2>
-              <Image src={cardImg} alt="img" />
-              <h4>{el.number_cart}</h4>
-              <span>{el.graduation_date}</span>
-              <Image src={visa} alt="img" className={s.visa} />
-            </div>
-          </>
+        {data?.map((el) => (
+          <div key={el.id} className={s.card}>
+            <h2>{el.bank_cart} Classic</h2>
+            <Image src={cardImg} alt="img" />
+            <h4>{el.number_cart}</h4>
+            <span>{el.graduation_date}</span>
+            <Image src={visa} alt="img" className={s.visa} />
+          </div>
         ))}
       </div>
       <div className={s.addCard}>

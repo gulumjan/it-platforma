@@ -177,7 +177,6 @@ interface iPaymentCourseTariff {
   payment_method: string;
 }
 
-
 interface iPaketTarif {
   id: number;
   term_status: string;
@@ -200,9 +199,9 @@ interface IVisaCart {
 }
 
 interface IVisaCartGet {
+  id: number;
   bank_cart: string;
   number_cart: string;
   graduation_date: string;
-
 }
 
