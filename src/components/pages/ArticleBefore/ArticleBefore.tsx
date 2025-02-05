@@ -9,7 +9,7 @@ import { useParams } from "next/navigation";
 const ArticleBefore = () => {
   const { id } = useParams();
 
-  const { data } = useGetStatyaDoQuery(Number(1));
+  const { data } = useGetStatyaDoQuery(Number(id));
 
   return (
     <div id={scss.articleBef}>
