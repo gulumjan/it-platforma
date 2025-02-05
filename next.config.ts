@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    domains: ["54.243.160.162", "encrypted-tbn0.gstatic.com"],
+    domains: ["184.72.74.22", "encrypted-tbn0.gstatic.com"],
   },
 };
 

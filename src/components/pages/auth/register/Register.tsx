@@ -20,8 +20,8 @@ const Register = () => {
     try {
       const res = await registerUser(data);
 
-      localStorage.setItem("tokens", JSON.stringify(res.data));
       if (res) {
+        localStorage.setItem("tokens", JSON.stringify(res.data));
         router.push("/");
       }
     } catch (error) {
