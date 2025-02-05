@@ -16,13 +16,13 @@ const ProgrammCourses: FC = () => {
         {data?.private_video_course ? (
           <div className={scss.lesson}>
             {data.private_video_course.map((el, index) => (
-              <>
+              <div key={index}>
                 <video src={el.video}></video>
                 <div className={scss.lessonText}>
                   <p>{el.name}</p>
                   <p>{el.module}</p>
                 </div>
-              </>
+              </div>
             ))}
           </div>
         ) : (
