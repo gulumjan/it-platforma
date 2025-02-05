@@ -41,7 +41,7 @@ const ProfileNavBar = () => {
       localStorage.removeItem("tokens");
       setOpenModal(false);
       console.log("Выход успешен!");
-      router.push("/login");
+      router.push("/auth/login");
     } catch (error) {
       console.error("Ошибка при выходе:", error);
     }
