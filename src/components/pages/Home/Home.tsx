@@ -9,21 +9,40 @@ import Settings from "@/assets/images (1) 1.svg";
 import Brace from "@/assets/images (1) 2.svg";
 import Lamp from "@/assets/lamp 1.svg";
 import Tools from "@/assets/tools 1.svg";
+import { useLanguageStore } from "@/stores/UseLanguageStore";
 
 const Home: FC = () => {
   useEffect(() => {
     AOS.init({ duration: 1000, once: true });
   }, []);
 
+  const language = useLanguageStore((state) => state.language);
+
+  const translations = {
+    ru: {
+      title: "IT образовательная платформа",
+      description:
+        "Наша образовательная платформа вам даст необходимые практические знания для адаптации в IT-сфере.",
+    },
+    ky: {
+      title: "IT билим берүү платформасы",
+      description:
+        "Биздин билим берүү платформабыз IT тармагына ыңгайлашуу үчүн керектүү практикалык билимди берет.",
+    },
+  };
+
+  const translate = (key: keyof typeof translations["ru"]) => {
+    return translations[language as keyof typeof translations]?.[key] ?? translations.ru[key];
+  };
+
   return (
     <section className={scss.home}>
       <div className="container">
         <div className={scss.content}>
           <div className={scss.text}>
-            <h1 data-aos="fade-up">IT образовательная платформа</h1>
+            <h1 data-aos="fade-up">{translate("title")}</h1>
             <p data-aos="fade-up" data-aos-delay="200">
-              Наша образовательная платформа вам даст необходимые практические
-              знания для адаптации в IT-сфере.
+              {translate("description")}
             </p>
           </div>
           <div className={scss.illustration} data-aos="zoom-in">

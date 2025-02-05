@@ -5,9 +5,11 @@ import { useGetStatyaDoQuery } from "@/redux/api/product";
 import { useParams } from "next/navigation";
 
 const Section1 = () => {
-  const { id } = useParams();
+  const { id} = useParams();
 
   const { data } = useGetStatyaDoQuery(Number(id));
+  console.log(data);
+  
 
   return (
     <div id={scss.section1}>
