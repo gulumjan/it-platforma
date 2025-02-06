@@ -1,5 +1,7 @@
 "use client";
 import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css"; // Стили AOS
 import scss from "./AboutMasterClass.module.scss";
 import { useLanguageStore } from "@/stores/UseLanguageStore";
 import { useParams } from "next/navigation";
@@ -7,6 +9,10 @@ import { useGetMasterClassDetailQuery } from "@/redux/api/product";
 import { Link as Scrollhref } from "react-scroll";
 
 const AboutMasterClass = () => {
+  useEffect(() => {
+    AOS.init({ duration: 1000 }); // Инициализация AOS с анимацией 1 секунда
+  }, []);
+
   const language = useLanguageStore((state) => state.language);
   const { id } = useParams();
   const { data } = useGetMasterClassDetailQuery(Number(id));
@@ -15,7 +21,6 @@ const AboutMasterClass = () => {
     ru: {
       was: "Что, как и почему",
       about: "О МАСТЕР-КЛАССЕ",
-
       block:
         "В режиме мастер-класса он продемонстрировал, почему так важен неблокирующий ввод-вывод, в чем минусы классической многопоточности, в каких ситуациях нужна реактивность, и что она может дать. А еще описал недостатки реактивного подхода.",
       video: "Переходите к видеоурокам, что бы научится:",
@@ -38,21 +43,18 @@ const AboutMasterClass = () => {
   };
 
   const translate = (key: keyof (typeof translations)["ru"]) => {
-    return (
-      translations[language as keyof typeof translations]?.[key] ??
-      translations.ru[key]
-    );
+    return translations[language as keyof typeof translations]?.[key] ?? translations.ru[key];
   };
 
   return (
     <div className={scss.AboutMasterClass}>
       <div className="container">
-        <div className={scss.content}>
+        <div className={scss.content} data-aos="fade-up">
           <div className={scss.left}>
             <h3>{translate("was")}</h3>
             <h1>{translate("about")}</h1>
             <p>{translate("block")}</p>
-            <div className={scss.left_bottom}>
+            <div className={scss.left_bottom} data-aos="fade-right">
               <h4>{translate("video")}</h4>
               <ul>
                 {data?.materials.map((el, index) => (
@@ -60,26 +62,19 @@ const AboutMasterClass = () => {
                 ))}
               </ul>
             </div>
-            <div className={scss.buttons}>
+            <div className={scss.buttons} data-aos="zoom-in">
               <button>{translate("video")}</button>
-              <Scrollhref
-                activeClass="active"
-                to="programm"
-                spy={true}
-                smooth={true}
-                offset={0}
-                duration={500}
-              >
+              <Scrollhref activeClass="active" to="programm" spy={true} smooth={true} offset={0} duration={500}>
                 <button>{translate("watch")}</button>
               </Scrollhref>
             </div>
           </div>
-          <div className={scss.right}>
+          <div className={scss.right} data-aos="fade-left">
             <h2>
               {translate("dostup")}: <span>{data?.dostup}</span>
             </h2>
             <h3>
-              {translate("include")}:<span>{data?.count_lesson}</span>
+              {translate("include")}: <span>{data?.count_lesson}</span>
             </h3>
           </div>
         </div>

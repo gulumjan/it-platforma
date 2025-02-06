@@ -1,31 +1,37 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import scss from "./BuyCourses2.module.scss";
 import { useParams, useRouter } from "next/navigation";
 import ModalWindow from "@/ui/modal_window/ModalWindow";
 import { useLanguageStore } from "@/stores/UseLanguageStore";
 import {
   useGetCoursDetailQuery,
+  useGetVisaCartQuery,
   usePaymentCourseTariffMutation,
 } from "@/redux/api/product";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { useGetUserQuery } from "@/redux/api/auth";
 
 const BuyCourses2 = () => {
   const { id } = useParams();
   const { data } = useGetCoursDetailQuery(Number(id));
-  const { register, handleSubmit, setValue } =
-    useForm<PRODUCT.PostPaymentCourseTariffRequest>();
+  const { data: visa } = useGetVisaCartQuery();
   const router = useRouter();
-
-  const [selectedPayment, setSelectedPayment] = useState<string | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const language = useLanguageStore((state) => state.language);
   const [paymentCourseTariff] = usePaymentCourseTariffMutation();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { data: user } = useGetUserQuery();
 
-  useEffect(() => {
-    console.log("Current language in Header:", language);
-  }, [language]);
+  const {
+    register,
+    handleSubmit,
+    watch,
+    setError,
+    formState: { errors },
+  } = useForm<PRODUCT.PostPaymentCourseTariffRequest>();
+
+  const selectedCard = watch("card_number");
 
   const translations = {
     ru: {
@@ -52,29 +58,31 @@ const BuyCourses2 = () => {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
-  const handleCheckboxChange = (value: string) => {
-    setSelectedPayment(value);
-    setValue("payment_method", value); // Set form value
-  };
-
   const onSubmit: SubmitHandler<
     PRODUCT.PostPaymentCourseTariffRequest
   > = async (data) => {
-    console.log({ ...data, payment_method: selectedPayment, course: id });
+    if (!data.card_number) {
+      setError("card_number", {
+        type: "manual",
+        message: "Выберите карту для оплаты!",
+      });
+      return;
+    }
+
     try {
       const newData = {
-        card_cvv: data.card_cvv,
-        card_expiry: data.card_expiry,
-        card_number: data.card_number,
-        course: Number(id),
+        user: user[0].id,
+        tariff: Number(id),
         email: data.email,
         fio: data.fio,
-        payment_method: data.payment_method,
         phone: data.phone,
+        card_number: data.card_number,
+        is_active: true,
       };
       const res = await paymentCourseTariff(newData);
-
-      router.push("/");
+      // if (res) {
+      //   router.push("/");
+      // }
     } catch (error) {
       console.log(error);
     }
@@ -98,7 +106,7 @@ const BuyCourses2 = () => {
               type="number"
               className={scss.input}
             />
-         </div>
+          </div>
         </div>
 
         <div className={scss.emailInput}>
@@ -106,61 +114,26 @@ const BuyCourses2 = () => {
           <input {...register("email")} type="email" className={scss.input} />
         </div>
 
-        <div className={scss.card}>
+        <div className={scss.cardSelection}>
           <h1 className={scss.inputText}>{translate("cart")}</h1>
-          <div className={scss.checkBoxes}>
-            <div className={scss.checkBox}>
-              <input
-                type="checkbox"
-                id="checkbox1"
-                className={scss.customCheckbox}
-                checked={selectedPayment === "visa"}
-                onChange={() => handleCheckboxChange("visa")}
-              />
-              <label htmlFor="checkbox1"></label>
-              <h1 className={scss.cardText}>Visa</h1>
-            </div>
-
-            <div className={scss.checkBox}>
-              <input
-                type="checkbox"
-                id="checkbox2"
-                className={scss.customCheckbox}
-                checked={selectedPayment === "MasterCard"}
-                onChange={() => handleCheckboxChange("MasterCard")}
-              />
-              <label htmlFor="checkbox2"></label>
-              <h1 className={scss.cardText}>MasterCard</h1>
-            </div>
-          </div>
-        </div>
-
-        <div className={scss.cardNumber}>
-          <h1 className={scss.inputText}>{translate("number")}</h1>
-          <input
+          <select
+            className={scss.select}
             {...register("card_number")}
-            type="number"
-            className={scss.input}
-          />
-        </div>
-
-        <div className={scss.cardCode}>
-          <div className={scss.year}>
-            <h1 className={scss.inputText}>ММ/ГГ *</h1>
-            <input
-              {...register("card_expiry")}
-              type="date"
-              className={scss.input}
-            />
-          </div>
-          <div className={scss.cvc}>
-            <h1 className={scss.inputText}>CVC *</h1>
-            <input
-              {...register("card_cvv")}
-              type="number"
-              className={scss.input}
-            />
-          </div>
+            defaultValue=""
+          >
+            <option value="" disabled>
+              {translate("cart")}
+            </option>
+            {visa?.map((el) => (
+              <option key={el.id} value={el.id}>
+                {el.number_cart}
+                {el.graduation_date}
+              </option>
+            ))}
+          </select>
+          {errors.card_number && (
+            <p className={scss.errorText}>{errors.card_number.message}</p>
+          )}
         </div>
 
         <div className={scss.actions}>
