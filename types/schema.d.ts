@@ -134,6 +134,12 @@ interface IStatyaDo {
       keys: string;
     }
   ];
+
+  // private_video_course?: {
+  //   module: number;
+  //   name: string;
+  //   video: string;
+  // }[];
 }
 
 interface IFeedback {

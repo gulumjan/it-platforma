@@ -70,7 +70,7 @@ const BuyCourses = () => {
       };
       const res = await paymentCourseTariff(newData);
 
-      router.push("/");
+      router.push("/articleBefore");
     } catch (error) {
       console.log(error);
     }
