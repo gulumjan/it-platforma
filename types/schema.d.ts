@@ -172,17 +172,15 @@ interface IAboutSchool {
 }
 
 interface iPaymentCourseTariff {
-  course: number;
+  user: number;
+  course?: number;
   tariff?: number;
   fio: string;
-  email: string;
   phone: string;
-  card_number: string;
-  card_expiry: string;
-  card_cvv: string;
-  payment_method: string;
+  email: string;
+  card_number: number;
+  is_active: boolean;
 }
-
 interface iPaketTarif {
   id: number;
   term_status: string;
@@ -210,4 +208,3 @@ interface IVisaCartGet {
   number_cart: string;
   graduation_date: string;
 }
-
