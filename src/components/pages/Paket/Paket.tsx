@@ -2,16 +2,16 @@
 import React from "react";
 import scss from "@/components/pages/Paket/Paket.module.scss";
 import { useGetPaketTarifQuery } from "@/redux/api/product";
-import { useRouter } from "next/navigation"; // ✅ правильный импорт
+import { useRouter } from "next/navigation"; 
 
 const Paket = () => {
   const { data } = useGetPaketTarifQuery();
-  const router = useRouter(); // ✅ переменную лучше назвать router
+  const router = useRouter();
 
   console.log(data, "sdfghj");
 
   const handlebox = (id: number) => {
-    router.push(`/buy/${id}`); // ✅ используем router, а не route
+    router.push(`/buy/${id}`); 
   };
 
   return (

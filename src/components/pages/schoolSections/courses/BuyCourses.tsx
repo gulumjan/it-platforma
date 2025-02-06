@@ -80,9 +80,14 @@ const BuyCourses = () => {
         is_active: true,
       };
       const res = await paymentCourseTariff(newData);
+
+
+      router.push("/articleBefore");
+
       if (res) {
         router.push("/");
       }
+
     } catch (error) {
       console.log(error);
     }
