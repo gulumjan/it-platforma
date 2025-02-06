@@ -1,11 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./CourseProgress.module.scss";
+import "aos/dist/aos.css"; // Импортируем стили для AOS
+import AOS from "aos"; // Импортируем AOS
 
 const CourseProgress = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      easing: "ease-in-out",
+      once: true,
+    });
+  }, []);
+
   return (
     <div className={styles.container}>
       <div className={styles.content}>
-        <div className={styles.content_text}>
+        <div className={styles.content_text} data-aos="fade-up">
           <h1>Frontend-разработчик</h1>
           <p>
             Когда нужно переходить от прокачивания личной эффективности к
@@ -13,7 +23,7 @@ const CourseProgress = () => {
           </p>
         </div>
 
-        <div className={styles.progress_section}>
+        <div className={styles.progress_section} data-aos="fade-up">
           <h2>Прогресс по курсу</h2>
 
           <div className={styles.progress_bar}>
@@ -21,11 +31,11 @@ const CourseProgress = () => {
           </div>
 
           <div className={styles.stats}>
-            <div className={styles.stat_item}>
+            <div className={styles.stat_item} data-aos="fade-left">
               <p className={styles.stat_label}>Пройдено модулей</p>
               <p className={styles.stat_value}>0/3</p>
             </div>
-            <div className={styles.stat_item}>
+            <div className={styles.stat_item} data-aos="fade-right">
               <p className={styles.stat_label}>Пройдено материалов</p>
               <p className={styles.stat_value}>4/60</p>
             </div>

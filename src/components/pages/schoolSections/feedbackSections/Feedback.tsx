@@ -1,20 +1,27 @@
 "use client";
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import scss from "./Feedback.module.scss";
 import Image from "next/image";
-
 import { useGetFeedbackQuery } from "@/redux/api/product";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Feedback: FC = () => {
   const { data } = useGetFeedbackQuery();
 
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+  }, []);
+
   return (
     <section className={scss.Feedback}>
       <div className="container">
-        <h2 className={scss.title}>Отзывы наших студентов</h2>
+        <h2 className={scss.title} data-aos="fade-up">
+          Отзывы наших студентов
+        </h2>
         <div className={scss.cardsContainer}>
           {data?.map((el, index) => (
-            <div className={scss.card} key={index}>
+            <div className={scss.card} key={index} data-aos="flip-left">
               <Image
                 src={el.user.image}
                 alt="img"

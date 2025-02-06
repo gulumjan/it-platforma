@@ -1,5 +1,7 @@
 "use client";
 import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import scss from "./DetailMasterClass.module.scss";
 
 import { useParams, useRouter } from "next/navigation";
@@ -12,6 +14,10 @@ const DetailMasterClass = () => {
   const language = useLanguageStore((state) => state.language);
   const { id } = useParams();
   const { data } = useGetMasterClassDetailQuery(Number(id));
+
+  useEffect(() => {
+    AOS.init({ duration: 1000 }); // Инициализируем AOS
+  }, []);
 
   const translations = {
     ru: {
@@ -42,25 +48,25 @@ const DetailMasterClass = () => {
   return (
     <section className={scss.DetMasterClass}>
       <div className="container">
-        <Link className={scss.homeNav} href={"/"}>
+        <Link className={scss.homeNav} href={"/"} data-aos="fade-right">
           {translate("main")}
         </Link>
 
-        <Link className={scss.nav} href={"/allMasterClass"}>
+        <Link className={scss.nav} href={"/allMasterClass"} data-aos="fade-right">
           {translate("allMasterClass")}
         </Link>
 
-        <Link className={scss.navAb} href={"/allMasterClass"}>
+        <Link className={scss.navAb} href={"/allMasterClass"} data-aos="fade-right">
           {translate("java")}
         </Link>
 
-        <div className={scss.content}>
-          <div className={scss.left}>
+        <div className={scss.content} data-aos="fade-up">
+          <div className={scss.left} data-aos="fade-left">
             <h1>{data?.title}</h1>
             <p>{data?.description_about_master_class}</p>
-            <button>{translate("buy")}</button>
+            <button data-aos="zoom-in">{translate("buy")}</button>
           </div>
-          <div className={scss.right}>
+          <div className={scss.right} data-aos="fade-left">
             <h2>
               {translate("dostup")}: <span>{data?.dostup}</span>
             </h2>

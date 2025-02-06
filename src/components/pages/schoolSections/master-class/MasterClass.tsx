@@ -1,44 +1,83 @@
 "use client";
-import { FC } from "react";
-import scss from "./MasterClass.module.scss";
-import { useRouter } from "next/navigation";
-import { useGetMasterClassQuery } from "@/redux/api/product";
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import scss from "./DetailMasterClass.module.scss";
 
-const MasterClass: FC = () => {
-  const router = useRouter();
-  const { data } = useGetMasterClassQuery();
+import { useParams, useRouter } from "next/navigation";
+import Link from "next/link";
+import { useLanguageStore } from "@/stores/UseLanguageStore";
+import { useGetMasterClassDetailQuery } from "@/redux/api/product";
+
+const DetailMasterClass = () => {
+  const nav = useRouter();
+  const language = useLanguageStore((state) => state.language);
+  const { id } = useParams();
+  const { data } = useGetMasterClassDetailQuery(Number(id));
+
+  useEffect(() => {
+    AOS.init({ duration: 1000 }); // Инициализируем AOS
+  }, []);
+
+  const translations = {
+    ru: {
+      main: "Главная",
+      allMasterClass: "Мастер классы",
+      java: "Реактивное программирование на Java",
+      buy: "Купить мастер-класс за 46 $",
+      dostup: "Доступ",
+      include: "В мастер-класс входит",
+    },
+    ky: {
+      main: "Башкы бет",
+      allMasterClass: "Бардык мастер-класстар",
+      java: "Java да реактивдүү программалоо",
+      buy: "Мастер-классты 46 $ сатып алуу",
+      dostup: "Жеткиликтүүлүк",
+      include: "Мастер-класска кирет",
+    },
+  };
+
+  const translate = (key: keyof (typeof translations)["ru"]) => {
+    return (
+      translations[language as keyof typeof translations]?.[key] ??
+      translations.ru[key]
+    );
+  };
+
   return (
-    <section className={scss.MasterClass}>
+    <section className={scss.DetMasterClass}>
       <div className="container">
-        <h1>Мастер Kлассы</h1>
-        <div className={scss.content}>
-          {data?.map((el) => (
-            <div
-              key={el.id}
-              onClick={() => router.push(`/detailMasterClass/${el.id}`)}
-              className={scss.block}
-            >
-              <h4>
-                Реактивное программирование на Java: как, зачем и стоит ли?{" "}
-              </h4>
-              <p>
-                Программирования появилась сравнительно недавно, лет 10 назад.
-                Что вызвало популярность этого относительно нового подхода и
-                почему сейчас он в тренде, рассказал на конференции РИТ++ ...
-              </p>
-            </div>
-          ))}
+        <Link className={scss.homeNav} href={"/"} data-aos="fade-right">
+          {translate("main")}
+        </Link>
 
-          <button
-            onClick={() => router.push(`/master-class`)}
-            className={scss.allBtn}
-          >
-            Все мастер классы
-          </button>
+        <Link className={scss.nav} href={"/allMasterClass"} data-aos="fade-right">
+          {translate("allMasterClass")}
+        </Link>
+
+        <Link className={scss.navAb} href={"/allMasterClass"} data-aos="fade-right">
+          {translate("java")}
+        </Link>
+
+        <div className={scss.content} data-aos="fade-up">
+          <div className={scss.left} data-aos="fade-left">
+            <h1>{data?.title}</h1>
+            <p>{data?.description_about_master_class}</p>
+            <button data-aos="zoom-in">{translate("buy")}</button>
+          </div>
+          <div className={scss.right} data-aos="fade-left">
+            <h2>
+              {translate("dostup")}: <span>{data?.dostup}</span>
+            </h2>
+            <h3>
+              {translate("include")}: <span>{data?.count_lesson}</span>
+            </h3>
+          </div>
         </div>
       </div>
     </section>
   );
 };
 
-export default MasterClass;
+export default DetailMasterClass;
