@@ -1,5 +1,5 @@
 import AuthLayout from "@/components/layout/authLayout/AuthLayout";
-import NewPassword from "@/components/pages/auth/reset/NewPassword";
+import NewPassword from "@/components/pages/authCom/reset/NewPassword";
 import React from "react";
 
 const page = () => {

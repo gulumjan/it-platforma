@@ -1,5 +1,5 @@
 import AuthLayout from "@/components/layout/authLayout/AuthLayout";
-import LoginPage from "@/components/pages/auth/login/LoginPage";
+import LoginPage from "@/components/pages/authCom/login/LoginPage";
 import React from "react";
 
 const page = () => {
