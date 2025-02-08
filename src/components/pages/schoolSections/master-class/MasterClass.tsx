@@ -16,7 +16,7 @@ const DetailMasterClass = () => {
   const { data } = useGetMasterClassDetailQuery(Number(id));
 
   useEffect(() => {
-    AOS.init({ duration: 1000 }); // Инициализируем AOS
+    AOS.init({ duration: 1000 });
   }, []);
 
   const translations = {
@@ -52,11 +52,19 @@ const DetailMasterClass = () => {
           {translate("main")}
         </Link>
 
-        <Link className={scss.nav} href={"/allMasterClass"} data-aos="fade-right">
+        <Link
+          className={scss.nav}
+          href={"/allMasterClass"}
+          data-aos="fade-right"
+        >
           {translate("allMasterClass")}
         </Link>
 
-        <Link className={scss.navAb} href={"/allMasterClass"} data-aos="fade-right">
+        <Link
+          className={scss.navAb}
+          href={"/allMasterClass"}
+          data-aos="fade-right"
+        >
           {translate("java")}
         </Link>
 

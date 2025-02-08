@@ -32,7 +32,11 @@ const ProgrammCourses: FC = () => {
                 data-aos="fade-up"
                 data-aos-delay={`${index * 200}`}
               >
-                <video src={el.video}></video>
+                <video
+                  style={{ width: "500px", height: "200px" }}
+                  controls
+                  src={el.video}
+                ></video>
                 <div className={scss.lessonText}>
                   <p>{el.name}</p>
                   <p>{el.module}</p>

@@ -9,6 +9,7 @@ import "aos/dist/aos.css";
 
 const AboutSchool: FC = () => {
   const { data } = useGetAboutSchoolQuery();
+  console.log("🚀 ~ data:", data);
 
   useEffect(() => {
     AOS.init({ duration: 1000 });
@@ -19,7 +20,7 @@ const AboutSchool: FC = () => {
       {data && (
         <section className={scss.AboutSchool}>
           <div className="container">
-            {data.map((el, index) => (
+            {data?.map((el, index) => (
               <div key={index} className={scss.content}>
                 <div className={scss.text} data-aos="fade-up">
                   <div className={scss.relate}>
@@ -35,7 +36,7 @@ const AboutSchool: FC = () => {
                   width={489}
                   height={435}
                   src={Img}
-                  alt=""
+                  alt="Img"
                   data-aos="zoom-in"
                 />
               </div>

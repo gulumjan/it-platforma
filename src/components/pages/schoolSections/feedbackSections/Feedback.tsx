@@ -8,6 +8,7 @@ import "aos/dist/aos.css";
 
 const Feedback: FC = () => {
   const { data } = useGetFeedbackQuery();
+  console.log("🚀 ~ data:", data);
 
   useEffect(() => {
     AOS.init({ duration: 1000 });
@@ -23,7 +24,10 @@ const Feedback: FC = () => {
           {data?.map((el, index) => (
             <div className={scss.card} key={index} data-aos="flip-left">
               <Image
-                src={el.user.image}
+                src={
+                  el.user.image ||
+                  "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
+                }
                 alt="img"
                 className={scss.image}
                 width={50}
