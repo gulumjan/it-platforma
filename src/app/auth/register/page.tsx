@@ -1,5 +1,5 @@
 import AuthLayout from "@/components/layout/authLayout/AuthLayout";
-import Register from "@/components/pages/auth/register/Register";
+import Register from "@/components/pages/authCom/register/Register";
 import React from "react";
 
 const page = () => {
