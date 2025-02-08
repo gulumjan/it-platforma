@@ -52,11 +52,19 @@ const DetailMasterClass = () => {
           {translate("main")}
         </Link>
 
-        <Link className={scss.nav} href={"/allMasterClass"} data-aos="fade-right">
+        <Link
+          className={scss.nav}
+          href={"/allMasterClass"}
+          data-aos="fade-right"
+        >
           {translate("allMasterClass")}
         </Link>
 
-        <Link className={scss.navAb} href={"/allMasterClass"} data-aos="fade-right">
+        <Link
+          className={scss.navAb}
+          href={"/allMasterClass"}
+          data-aos="fade-right"
+        >
           {translate("java")}
         </Link>
 

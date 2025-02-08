@@ -6,7 +6,7 @@ import Image from "next/image";
 import { useParams } from "next/navigation";
 import { useGetCoursDetailQuery } from "@/redux/api/product";
 import AOS from "aos";
-import "aos/dist/aos.css"; // Импортируем стили для AOS
+import "aos/dist/aos.css";
 
 const ProgrammCourses: FC = () => {
   const { id } = useParams();

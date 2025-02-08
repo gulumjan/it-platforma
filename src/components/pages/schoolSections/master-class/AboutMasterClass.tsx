@@ -43,7 +43,10 @@ const AboutMasterClass = () => {
   };
 
   const translate = (key: keyof (typeof translations)["ru"]) => {
-    return translations[language as keyof typeof translations]?.[key] ?? translations.ru[key];
+    return (
+      translations[language as keyof typeof translations]?.[key] ??
+      translations.ru[key]
+    );
   };
 
   return (
@@ -64,7 +67,14 @@ const AboutMasterClass = () => {
             </div>
             <div className={scss.buttons} data-aos="zoom-in">
               <button>{translate("video")}</button>
-              <Scrollhref activeClass="active" to="programm" spy={true} smooth={true} offset={0} duration={500}>
+              <Scrollhref
+                activeClass="active"
+                to="programm"
+                spy={true}
+                smooth={true}
+                offset={0}
+                duration={500}
+              >
                 <button>{translate("watch")}</button>
               </Scrollhref>
             </div>

@@ -11,7 +11,7 @@ const AllMasterClass: FC = () => {
   const { data } = useGetMasterClassQuery();
 
   useEffect(() => {
-    AOS.init({ duration: 1000 }); // Инициализируем AOS с анимацией 1 секунда
+    AOS.init({ duration: 1000 });
   }, []);
 
   return (

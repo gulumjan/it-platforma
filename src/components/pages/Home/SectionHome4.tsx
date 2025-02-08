@@ -95,14 +95,17 @@ const SectionHome4 = () => {
     });
   }, []);
 
-  const translatedQuestions = questions[language as keyof typeof questions] || questions.ru;
+  const translatedQuestions =
+    questions[language as keyof typeof questions] || questions.ru;
 
   return (
     <div id={scss.answer1}>
       <div className="container">
         <div className={scss.answer1} data-aos="fade-up">
           <div className={scss.answer1_text}>
-            <h2>{language === "ky" ? "Суроолоруңуз барбы?" : "Остались вопросы?"}</h2>
+            <h2>
+              {language === "ky" ? "Суроолоруңуз барбы?" : "Остались вопросы?"}
+            </h2>
             <Image src={img_home4} alt="img" />
           </div>
 

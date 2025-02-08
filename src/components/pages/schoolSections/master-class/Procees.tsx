@@ -12,7 +12,7 @@ const Process = () => {
   const { data } = useGetMasterClassDetailQuery(Number(id));
 
   useEffect(() => {
-    AOS.init({ duration: 1000 }); // Инициализация AOS с анимацией в 1 сек
+    AOS.init({ duration: 1000 });
   }, []);
 
   return (
