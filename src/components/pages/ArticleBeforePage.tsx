@@ -1,4 +1,3 @@
-
 import React from "react";
 import ArticleBefore from "./ArticleBefore/ArticleBefore";
 import SectionArticle2 from "./ArticleBefore/SectionArticle2";
@@ -12,7 +11,6 @@ const ArticleBeforePage = () => {
   const { id } = useParams();
   const { data } = useGetStatyaDoQuery(Number(id));
 
-  // Если есть description1, показываем один набор компонентов
   if (data?.description1) {
     return (
       <div>
@@ -23,7 +21,6 @@ const ArticleBeforePage = () => {
     );
   }
 
-  // Если description1 отсутствует, показываем другой набор компонентов
   return (
     <div>
       <ArticleBefore />

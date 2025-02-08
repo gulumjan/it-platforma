@@ -3,8 +3,8 @@ import { FC, useEffect } from "react";
 import scss from "./AboutCourses.module.scss";
 import { useParams } from "next/navigation";
 import { useGetCoursDetailQuery } from "@/redux/api/product";
-import "aos/dist/aos.css"; // Импортируем стили для AOS
-import AOS from "aos";      // Импортируем библиотеку AOS
+import "aos/dist/aos.css";
+import AOS from "aos";
 
 const AboutCourses: FC = () => {
   const { id } = useParams();
@@ -12,16 +12,18 @@ const AboutCourses: FC = () => {
 
   useEffect(() => {
     AOS.init({
-      duration: 1000, // Длительность анимации (в миллисекундах)
-      easing: 'ease-in-out', // Функция плавности анимации
-      once: true, // Анимация срабатывает только один раз
+      duration: 1000,
+      easing: "ease-in-out",
+      once: true,
     });
   }, []);
 
   return (
     <section className={scss.AboutCourses}>
       <div className="container">
-        <h2 className={scss.title} data-aos="fade-up">О КУРСЕ</h2>
+        <h2 className={scss.title} data-aos="fade-up">
+          О КУРСЕ
+        </h2>
         <p>{data?.description2}</p>
         <p>{data?.description3}</p>
         <p>{data?.description4}</p>
@@ -47,14 +49,20 @@ const AboutCourses: FC = () => {
         </div>
 
         <div className={scss.results}>
-          <h3 data-aos="fade-up">К каким результатам вас может привести этот курс?</h3>
+          <h3 data-aos="fade-up">
+            К каким результатам вас может привести этот курс?
+          </h3>
           <p>{data?.description3}</p>
           <p>{data?.description4}</p>
         </div>
 
         <div className={scss.actions}>
-          <button className={scss.buyButton} data-aos="zoom-in">Купить курс</button>
-          <button className={scss.programButton} data-aos="zoom-in">Смотреть программу</button>
+          <button className={scss.buyButton} data-aos="zoom-in">
+            Купить курс
+          </button>
+          <button className={scss.programButton} data-aos="zoom-in">
+            Смотреть программу
+          </button>
         </div>
       </div>
     </section>

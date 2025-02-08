@@ -51,19 +51,29 @@ const SectionHome5 = () => {
         text: message,
       });
 
-      toast.success(language === "ky" ? "Заявка успешно отправлена!" : "Заявка успешно отправлена!", {
-        position: "top-right",
-        autoClose: 2000,
-        theme: "light",
-      });
+      toast.success(
+        language === "ky"
+          ? "Заявка успешно отправлена!"
+          : "Заявка успешно отправлена!",
+        {
+          position: "top-right",
+          autoClose: 2000,
+          theme: "light",
+        }
+      );
 
       reset();
     } catch (error) {
-      toast.error(language === "ky" ? "Произошла ошибка при отправке заявки." : "Произошла ошибка при отправке заявки.", {
-        position: "top-right",
-        autoClose: 2000,
-        theme: "light",
-      });
+      toast.error(
+        language === "ky"
+          ? "Произошла ошибка при отправке заявки."
+          : "Произошла ошибка при отправке заявки.",
+        {
+          position: "top-right",
+          autoClose: 2000,
+          theme: "light",
+        }
+      );
     }
   };
 
@@ -76,9 +86,13 @@ const SectionHome5 = () => {
       <div className="container">
         <div className={scss.home5}>
           <div className={scss.home5_text} data-aos="fade-up">
-            <h2>{language === "ky" ? "Заявка калтырыңыз" : "Оставить заявку"}</h2>
+            <h2>
+              {language === "ky" ? "Заявка калтырыңыз" : "Оставить заявку"}
+            </h2>
             <p>
-              {language === "ky" ? "Кыскача форма толтуруп, биз сиз менен сүйлөшүүгө даяр болобуз." : "Заполните краткую форму с ключевыми вопросами, и мы подготовимся к разговору с вами."}
+              {language === "ky"
+                ? "Кыскача форма толтуруп, биз сиз менен сүйлөшүүгө даяр болобуз."
+                : "Заполните краткую форму с ключевыми вопросами, и мы подготовимся к разговору с вами."}
             </p>
           </div>
 
@@ -92,9 +106,16 @@ const SectionHome5 = () => {
               <div className={scss.inputWrapper}>
                 <input
                   type="text"
-                  placeholder={language === "ky" ? "Аты-жөнүңүздү киргизиңиз" : "Введите ФИО"}
+                  placeholder={
+                    language === "ky"
+                      ? "Аты-жөнүңүздү киргизиңиз"
+                      : "Введите ФИО"
+                  }
                   {...register("fullName", {
-                    required: language === "ky" ? "Бул талааны толтуруңуз" : "Пожалуйста, заполните это поле",
+                    required:
+                      language === "ky"
+                        ? "Бул талааны толтуруңуз"
+                        : "Пожалуйста, заполните это поле",
                   })}
                   className={errors.fullName ? scss.errorInput : ""}
                 />
@@ -109,9 +130,16 @@ const SectionHome5 = () => {
               <div className={scss.inputWrapper}>
                 <input
                   type="tel"
-                  placeholder={language === "ky" ? "Телефон номериңизди киргизиңиз" : "Введите номер телефона"}
+                  placeholder={
+                    language === "ky"
+                      ? "Телефон номериңизди киргизиңиз"
+                      : "Введите номер телефона"
+                  }
                   {...register("phone", {
-                    required: language === "ky" ? "Телефон номериңизди киргизиңиз" : "Пожалуйста, введите номер телефона",
+                    required:
+                      language === "ky"
+                        ? "Телефон номериңизди киргизиңиз"
+                        : "Пожалуйста, введите номер телефона",
                   })}
                   className={errors.phone ? scss.errorInput : ""}
                 />
@@ -124,12 +152,22 @@ const SectionHome5 = () => {
               <div className={scss.inputWrapper}>
                 <input
                   type="email"
-                  placeholder={language === "ky" ? "Email'иңизди киргизиңиз" : "Введите email"}
+                  placeholder={
+                    language === "ky"
+                      ? "Email'иңизди киргизиңиз"
+                      : "Введите email"
+                  }
                   {...register("email", {
-                    required: language === "ky" ? "Email'иңизди киргизиңиз" : "Пожалуйста, введите email",
+                    required:
+                      language === "ky"
+                        ? "Email'иңизди киргизиңиз"
+                        : "Пожалуйста, введите email",
                     pattern: {
                       value: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/,
-                      message: language === "ky" ? "Дурус email киргизиңиз" : "Введите корректный email",
+                      message:
+                        language === "ky"
+                          ? "Дурус email киргизиңиз"
+                          : "Введите корректный email",
                     },
                   })}
                   className={errors.email ? scss.errorInput : ""}
@@ -139,7 +177,9 @@ const SectionHome5 = () => {
                 )}
               </div>
 
-              <button type="submit">{language === "ky" ? "Жиберүү" : "Отправить"}</button>
+              <button type="submit">
+                {language === "ky" ? "Жиберүү" : "Отправить"}
+              </button>
             </form>
           </div>
         </div>

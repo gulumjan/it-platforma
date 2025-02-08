@@ -10,7 +10,6 @@ const ArticleBefore = () => {
   const { id } = useParams();
   const { data } = useGetStatyaDoQuery(Number(id));
 
-  // Render the keys_statya list
   const renderKeysList = (keys) => {
     return keys?.map((item, idx) => (
       <ul key={idx}>
@@ -19,7 +18,6 @@ const ArticleBefore = () => {
     ));
   };
 
-  // Render the keys_statya2 list
   const renderKeys2List = (keys) => {
     return keys?.map((el, idx) => (
       <ul key={idx}>
@@ -31,7 +29,6 @@ const ArticleBefore = () => {
   return (
     <div id={scss.articleBef}>
       <div className="container">
-        {/* Main article section - always rendered */}
         <div className={scss.articleBef}>
           <h2>{data?.title}</h2>
           <p>{data?.description}</p>
@@ -40,7 +37,6 @@ const ArticleBefore = () => {
           {renderKeysList(data?.keys_statya)}
         </div>
 
-        {/* Section1 - conditionally rendered */}
         {data?.description1 && (
           <div className={scss.section1}>
             <p>{data?.description1}</p>

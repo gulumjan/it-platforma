@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import styles from "./CourseProgress.module.scss";
-import "aos/dist/aos.css"; // Импортируем стили для AOS
-import AOS from "aos"; // Импортируем AOS
+import "aos/dist/aos.css";
+import AOS from "aos";
 
 const CourseProgress = () => {
   useEffect(() => {

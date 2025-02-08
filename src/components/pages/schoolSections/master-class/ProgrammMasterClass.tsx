@@ -5,8 +5,8 @@ import Img from "@/assets/proggramImg.svg";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 import { useGetMasterClassDetailQuery } from "@/redux/api/product";
-import AOS from 'aos';
-import 'aos/dist/aos.css'; // Import AOS styles
+import AOS from "aos";
+import "aos/dist/aos.css"; // Import AOS styles
 
 const ProgrammMasterClass: FC = () => {
   const { id } = useParams();
@@ -14,8 +14,8 @@ const ProgrammMasterClass: FC = () => {
 
   useEffect(() => {
     AOS.init({
-      duration: 1000,  // Animation duration (in ms)
-      once: true,      // Trigger animation only once when scrolling
+      duration: 1000, // Animation duration (in ms)
+      once: true, // Trigger animation only once when scrolling
     });
   }, []);
 
@@ -29,7 +29,7 @@ const ProgrammMasterClass: FC = () => {
               <div
                 key={index}
                 className={scss.block}
-                data-aos="fade-up"  // AOS animation on scroll
+                data-aos="fade-up" // AOS animation on scroll
               >
                 <h5>Модуль {index + 1}</h5>
                 <p>{el.name_master}</p>

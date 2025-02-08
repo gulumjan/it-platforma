@@ -5,8 +5,8 @@ import { useParams, useRouter } from "next/navigation";
 import { useGetCoursDetailQuery } from "@/redux/api/product";
 import CourseProgress from "./CourseProgress";
 import AboutCourses from "./AboutCourses";
-import "aos/dist/aos.css"; // Импортируем стили для AOS
-import AOS from "aos"; // Импортируем саму библиотеку
+import "aos/dist/aos.css";
+import AOS from "aos";
 
 const Direction: FC = () => {
   const router = useRouter();

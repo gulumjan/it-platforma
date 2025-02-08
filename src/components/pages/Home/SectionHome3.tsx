@@ -33,8 +33,11 @@ const SectionHome3 = () => {
     },
   };
 
-  const translate = (key: keyof typeof translations["ru"]) => {
-    return translations[language as keyof typeof translations]?.[key] ?? translations.ru[key];
+  const translate = (key: keyof (typeof translations)["ru"]) => {
+    return (
+      translations[language as keyof typeof translations]?.[key] ??
+      translations.ru[key]
+    );
   };
 
   return (

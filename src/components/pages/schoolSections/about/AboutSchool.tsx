@@ -9,7 +9,6 @@ import "aos/dist/aos.css";
 
 const AboutSchool: FC = () => {
   const { data } = useGetAboutSchoolQuery();
-  console.log("🚀 ~ data:", data);
 
   useEffect(() => {
     AOS.init({ duration: 1000 });
