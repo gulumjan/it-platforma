@@ -142,6 +142,17 @@ const api = index.injectEndpoints({
       providesTags: ["data"],
     }),
 
+    getTarifId: build.query<
+    PRODUCT.GetTarifIdResponse,
+    PRODUCT.GetTarifIdRequest
+  >({
+    query: (id) => ({
+      url: `/tariff/${id}/`,
+      method: "GET",
+    }),
+    providesTags: ["data"],
+  }),
+
   }),
 });
 
@@ -161,5 +172,6 @@ export const {
 
   useCreateVisaCartMutation,
   useGetVisaCartQuery,
+  useGetTarifIdQuery,
 
 } = api;

@@ -11,7 +11,8 @@ import { useGetCoursDetailQuery } from "@/redux/api/product";
 const Buy2 = () => {
   const { id } = useParams();
   const { data } = useGetCoursDetailQuery(Number(id));
-  const language = useLanguageStore((state) => state.language);
+
+   const language = useLanguageStore((state) => state.language);
 
   const translations = {
     ru: {

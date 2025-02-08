@@ -208,3 +208,16 @@ interface IVisaCartGet {
   number_cart: string;
   graduation_date: string;
 }
+
+interface ITarifId {
+  id: id;
+  term_status: string;
+  sum: number;
+  tariff_pay: string;
+  tariff_info: [
+    {
+      id: id;
+      info: number;
+    }
+  ];
+}
