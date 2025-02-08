@@ -61,7 +61,7 @@ const LoginPage = () => {
       <div className={s.btn}>
         <Link href="/auth/register">У Вас нет аккаунта? </Link>
         <Link href={"/auth/forgot"} className={s.forgot}>
-          Забыли пароль?
+          Забыли пароль ?
         </Link>
       </div>
       <button type="submit">Войти</button>
