@@ -14,6 +14,7 @@ import { useGetUserQuery } from "@/redux/api/auth";
 
 const PersonalData = () => {
   const { data } = useGetUserQuery();
+  console.log("🚀 ~ PersonalData ~ data:", data);
   const userData = data?.[0];
   const [selectedYear, setSelectedYear] = useState<string>("2025");
   const [selectedMonth, setSelectedMonth] = useState<string>("Январь");
@@ -85,18 +86,14 @@ const PersonalData = () => {
       <h1>Личные данные</h1>
       <form>
         <div className={s.left}>
-          <InputData title="ФИО" values={userData?.fio || "Не указано"} />
+          <InputData title="ФИО" values={userData?.username || "Не указано"} />
           <InputData
             title="Номер телефона"
             values={userData?.phone_number || "Не указан"}
           />
           <InputData
             title="Email"
-            values={
-              userData?.username
-                ? `${userData.username}@gmail.com`
-                : "Не указан"
-            }
+            values={userData?.username ? `${userData.email}` : "Не указан"}
           />
           <label className={s.label}>
             Пол

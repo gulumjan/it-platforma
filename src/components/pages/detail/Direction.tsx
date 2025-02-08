@@ -33,7 +33,10 @@ const Direction: FC = () => {
                 <h1>{data?.title}</h1>
                 <p> {data?.description1}</p>
 
-                <button onClick={() => router.push(`/kaufen/${data?.id}`)} data-aos="zoom-in">
+                <button
+                  onClick={() => router.push(`/kaufen/${data?.id}`)}
+                  data-aos="zoom-in"
+                >
                   Купить курс за {data?.price}${" "}
                 </button>
               </div>

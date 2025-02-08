@@ -8,7 +8,7 @@ import img3 from "@/assets/100 материао.svg";
 import { useParams } from "next/navigation";
 import { useGetCoursDetailQuery } from "@/redux/api/product";
 import AOS from "aos";
-import "aos/dist/aos.css"; // Импортируем стили для AOS
+import "aos/dist/aos.css";
 
 const Material: FC = () => {
   const { id } = useParams();
