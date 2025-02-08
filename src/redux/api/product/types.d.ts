@@ -43,4 +43,7 @@ namespace PRODUCT {
   type GetVisaCartResponse = IVisaCartGet[];
   type GetVisaCartRequest = void;
 
+  type GetTarifIdResponse = ITarifId[];
+  type GetTarifIdRequest = void;
+
 }
