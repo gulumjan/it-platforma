@@ -42,7 +42,7 @@
       }
 
       h2 {
-        font-size: 36px;
+        font-size: 45px;
         font-weight: 700;
         color: #ffffff;
         margin-bottom: 25px;
@@ -96,6 +96,7 @@
           font-size: 14px;
           background: none;
           color: #000000;
+         
         
 
           &:focus {
@@ -115,7 +116,13 @@
           margin-top: 5px;
         }
       }
-
+      ::placeholder{
+        font-size: 15px;
+        font-weight: 600;
+      }
+p{
+  font-size: 20px;
+}
       button {
         display: inline-block;
         width: 100%;
